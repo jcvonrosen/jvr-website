@@ -13,7 +13,7 @@ export const electricDuskTheme = {
   semantic: {
     // Maps PrimeNG's "primary" action scale to blue→indigo→violet
     primary: {
-      50:  '{blue.50}',
+      50: '{blue.50}',
       100: '{blue.100}',
       200: '{indigo.200}',
       300: '{indigo.300}',
@@ -29,22 +29,22 @@ export const electricDuskTheme = {
       light: {
         // Interactive primary: royal blue → shifts to violet on hover
         primary: {
-          color:         '#1D6FE8',
+          color: '#1D6FE8',
           contrastColor: '#FFFFFF',
-          hoverColor:    '#7C3AED',
-          activeColor:   '#6B3BE6',
+          hoverColor: '#7C3AED',
+          activeColor: '#6B3BE6',
         },
         // Accent: amber-orange for selected/highlighted states
         highlight: {
-          background:      '#FFEDD5',
+          background: '#FFEDD5',
           focusBackground: '#FED7AA',
-          color:           '#9A3412',
-          focusColor:      '#7C2D12',
+          color: '#9A3412',
+          focusColor: '#7C2D12',
         },
         // Surfaces: white → light grays (direct hex, no broken self-references)
         surface: {
-          0:   '#FFFFFF',
-          50:  '#F8F9FC',
+          0: '#FFFFFF',
+          50: '#F8F9FC',
           100: '#F1F5F9',
           200: '#E2E8F0',
           300: '#CBD5E1',
@@ -60,22 +60,22 @@ export const electricDuskTheme = {
       dark: {
         // Interactive primary: lighter indigo for dark backgrounds
         primary: {
-          color:         '#818CF8',
+          color: '#818CF8',
           contrastColor: '#0A1628',
-          hoverColor:    '#A5B4FC',
-          activeColor:   '#C7D2FE',
+          hoverColor: '#A5B4FC',
+          activeColor: '#C7D2FE',
         },
         // Accent: orange with transparency for dark mode
         highlight: {
-          background:      'color-mix(in srgb, #F97316, transparent 84%)',
+          background: 'color-mix(in srgb, #F97316, transparent 84%)',
           focusBackground: 'color-mix(in srgb, #F97316, transparent 76%)',
-          color:           'rgba(255,255,255,0.87)',
-          focusColor:      'rgba(255,255,255,0.87)',
+          color: 'rgba(255,255,255,0.87)',
+          focusColor: 'rgba(255,255,255,0.87)',
         },
         // Surfaces: deep navy → near-black
         surface: {
-          0:   '#FFFFFF',
-          50:  '#EEF2FF',
+          0: '#FFFFFF',
+          50: '#EEF2FF',
           100: '#1A2235',
           200: '#16202E',
           300: '#121A28',
