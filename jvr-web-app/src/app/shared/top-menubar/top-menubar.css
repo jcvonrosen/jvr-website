@@ -26,6 +26,22 @@
   :host ::ng-deep .mobile-cta-item {
     display: block;
   }
+
+  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content {
+    background-color: var(--orange);
+    border-radius: 6px;
+    margin: 4px 8px;
+  }
+
+  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content .p-menubar-item-link {
+    color: #ffffff !important;
+    font-weight: 600;
+    justify-content: center;
+  }
+
+  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content:hover {
+    background-color: var(--orange-deep) !important;
+  }
 }
 
 /* CTA button — orange colors */
