@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { PanelModule } from 'primeng/panel';
+import { RouterOutlet } from '@angular/router';
+import { TopMenubar } from './shared/top-menubar/top-menubar';
+import { Footer } from './shared/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, PanelModule],
+  imports: [RouterOutlet, TopMenubar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

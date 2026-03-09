@@ -1,0 +1,11 @@
+.cta-btn {
+  --p-button-primary-background: var(--orange);
+  --p-button-primary-hover-background: var(--orange-deep);
+  --p-button-primary-active-background: var(--orange-deep);
+  --p-button-primary-border-color: var(--orange);
+  --p-button-primary-hover-border-color: var(--orange-deep);
+  --p-button-primary-active-border-color: var(--orange-deep);
+  --p-button-primary-color: #ffffff;
+  --p-button-primary-hover-color: #ffffff;
+  --p-button-primary-active-color: #ffffff;
+}
