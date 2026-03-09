@@ -1,15 +1,61 @@
-:host ::ng-deep .p-menubar {
+:host ::ng-deep .p-menubar,
+:host ::ng-deep .p-menubar .p-menubar-inner {
   border-radius: 0;
   border-left: none;
   border-right: none;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+:host ::ng-deep .p-menubar-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  flex: 0 0 auto;
+}
+
+:host ::ng-deep .p-menubar-end {
   padding-left: 0;
   padding-right: 0;
 }
 
-:host ::ng-deep .p-menubar-start,
-:host ::ng-deep .p-menubar-end {
-  padding-left: 0;
-  padding-right: 0;
+@media (min-width: 961px) {
+  :host ::ng-deep .p-menubar-root-list {
+    margin-left: auto;
+  }
+}
+
+.logo-link {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.logo-tagline {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 2px;
 }
 
 :host ::ng-deep .mobile-cta-item {
@@ -17,6 +63,31 @@
 }
 
 @media (max-width: 960px) {
+  :host ::ng-deep .p-menubar.p-menubar-mobile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  :host ::ng-deep .p-menubar.p-menubar-mobile .p-menubar-start {
+    order: 0;
+  }
+
+  /* Push the burger/menu button to the far right */
+  :host ::ng-deep .p-menubar.p-menubar-mobile .p-menubar-button {
+    flex: 0 0 auto;
+    order: 2;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  :host ::ng-deep .p-menubar.p-menubar-mobile .p-menubar-root-list {
+    flex: 0 0 100%;
+    order: 3;
+  }
+
   .cta-btn-wrapper {
     display: none;
   }
