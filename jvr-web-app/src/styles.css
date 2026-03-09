@@ -3,6 +3,7 @@
 @import 'primeflex/primeflex.css';
 
 :root {
+  --menubar-height: 57px;
   --white: #ffffff;
   --light: #f8f9fc;
   --light-2: #eef2ff;
@@ -23,12 +24,28 @@ html {
     DM Sans,
     sans-serif;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'DM Sans', sans-serif;
   color: var(--text);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+.page-content {
+  min-height: calc(100vh - var(--menubar-height));
+}
+
 
 h1,
 h2,

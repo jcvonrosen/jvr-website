@@ -25,5 +25,6 @@ export class TopMenubar {
       ],
     },
     { label: 'Contact', routerLink: '/contact' },
+    { label: 'Get Started', routerLink: '/get-started', styleClass: 'mobile-cta-item' },
   ];
 }

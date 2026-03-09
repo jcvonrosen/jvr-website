@@ -1,0 +1,68 @@
+/* Background color (no PrimeFlex class for custom CSS vars) */
+.site-footer {
+  background: var(--blue-deep);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Max-width container (PrimeFlex max-w only goes to 30rem) */
+.footer-inner {
+  max-width: 1160px;
+}
+
+/* Brand — custom font + letter-spacing */
+.footer-logo-text {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.04em;
+}
+
+.footer-logo-sub {
+  letter-spacing: 0.2em;
+  color: var(--orange);
+}
+
+/* Column headings — letter-spacing only */
+.footer-col-heading {
+  letter-spacing: 0.15em;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Link colors + hover transition */
+.footer-link {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+/* Social icon buttons */
+.social-btn {
+  width: 2rem;
+  height: 2rem;
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.15);
+  transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* Bottom bar link */
+.footer-bottom-link {
+  color: rgba(255, 255, 255, 0.32);
+  transition: color 0.2s;
+}
+
+.footer-bottom-link:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Gradient accent bar */
+.footer-accent-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--orange));
+}
