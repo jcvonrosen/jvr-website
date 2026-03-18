@@ -82,60 +82,52 @@
   margin-left: 8px;
 }
 
-.metric-label {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.metric-value {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--orange);
-}
-
-/* p-progressBar overrides */
-:host ::ng-deep .metric-bar {
-  height: 6px !important;
-  border-radius: 999px !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-}
-
-:host ::ng-deep .metric-bar .p-progressbar-value {
-  background: linear-gradient(90deg, var(--blue), var(--purple)) !important;
-  border-radius: 999px !important;
-}
-
-/* ROI box */
-.roi-box {
+/* ── Stat blocks ───────────────────────── */
+.stat-block {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 16px;
+  text-align: center;
 }
 
-.roi-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 4px;
-}
-
-.roi-value {
-  font-size: 36px;
+.stat-value {
+  font-size: 28px;
   font-weight: 800;
   font-family: 'Playfair Display', serif;
-  background: linear-gradient(135deg, var(--blue), var(--orange));
+  background: linear-gradient(135deg, var(--blue), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 
-.roi-sub {
-  font-size: 12px;
+.stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Panel sections (industries / tech) ─ */
+.panel-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.45);
-  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+.info-tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 4px 12px;
 }
 
 @media (max-width: 768px) {

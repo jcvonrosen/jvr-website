@@ -12,30 +12,30 @@ export class ProcessSection {
     {
       num: '01',
       colorClass: 's1',
-      title: 'Discovery & Audit',
+      title: 'Discovery',
       description:
-        'We immerse ourselves in your environment—interviewing stakeholders, auditing existing systems, and mapping technical debt to business impact.',
+        'We meet with your stakeholders to understand your goals, constraints, and critical success factors — before any planning begins.',
     },
     {
       num: '02',
       colorClass: 's2',
-      title: 'Strategy & Roadmap',
+      title: 'Planning',
       description:
-        'From findings we craft a prioritized roadmap with clear milestones, resource plans, and risk mitigation strategies.',
+        'We document requirements, review them with your team, and produce proof-of-concept code or mockups to validate the approach before production work begins.',
     },
     {
       num: '03',
       colorClass: 's3',
-      title: 'Build & Integrate',
+      title: 'Implementation',
       description:
-        'Agile sprints, continuous integration, and rigorous QA ensure every release meets your security, performance, and usability standards.',
+        'Development is iterative and MVP-first. Working software is delivered early and often, with regular stakeholder reviews built into every cycle.',
     },
     {
       num: '04',
       colorClass: 's4',
-      title: 'Optimize & Scale',
+      title: 'Delivery & QA',
       description:
-        'Post-launch, we monitor performance, iterate on feedback, and scale your solution to meet growing enterprise demand.',
+        'We define a quality assurance process centered on customer acceptance, finalize the delivery, and include post-launch support to ensure a stable transition.',
     },
   ];
 }

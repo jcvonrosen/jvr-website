@@ -12,46 +12,46 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
 export class ServicesSection {
   services = [
     {
-      icon: '🏛️',
+      icon: '🖥️',
       iconColor: 'blue',
-      title: 'Enterprise Architecture',
+      title: 'Frontend Development',
       description:
-        'Design resilient, scalable systems that align technology with your business goals—built for growth from day one.',
-    },
-    {
-      icon: '🔗',
-      iconColor: 'purple',
-      title: 'Systems Integration',
-      description:
-        'Connect disparate platforms and legacy systems into a unified ecosystem that drives operational efficiency.',
+        'Enterprise web applications built with Angular, React, or Vue — responsive, dynamic, and designed to handle real complexity at scale.',
     },
     {
       icon: '☁️',
-      iconColor: 'orange',
-      title: 'Cloud Transformation',
-      description:
-        'Migrate, modernize, and optimize your infrastructure on AWS, Azure, or GCP with zero-downtime strategies.',
-    },
-    {
-      icon: '📊',
-      iconColor: 'blue',
-      title: 'Data & Analytics',
-      description:
-        'Turn raw data into decision-ready intelligence with robust pipelines, warehousing, and BI dashboards.',
-    },
-    {
-      icon: '🛡️',
       iconColor: 'purple',
-      title: 'Security & Compliance',
+      title: 'Cloud Infrastructure',
       description:
-        'Embed SOC 2, HIPAA, and ISO 27001 controls into your software delivery lifecycle from the ground up.',
+        'Azure and AWS architecture, deployment, and ongoing operations. We bring deep platform expertise to cloud migrations and enterprise integrations.',
+    },
+    {
+      icon: '⚙️',
+      iconColor: 'orange',
+      title: 'Backend Development',
+      description:
+        'Solid, maintainable server-side systems built with C#/.NET and Node.js — REST APIs, service layers, and the infrastructure that keeps enterprise applications running.',
+    },
+    {
+      icon: '🔄',
+      iconColor: 'blue',
+      title: 'ETL & Data Pipelines',
+      description:
+        'Large-scale data movement built for reliability — whether for internal system functionality, reporting, or enterprise analytics workflows.',
+    },
+    {
+      icon: '✅',
+      iconColor: 'purple',
+      title: 'Automated Testing & QA',
+      description:
+        'Playwright-based and custom automated testing integrated directly into your deployment pipeline — so quality is enforced at every release.',
     },
     {
       icon: '🤖',
       iconColor: 'orange',
-      title: 'AI & Automation',
+      title: 'AI Integration',
       description:
-        'Deploy intelligent automation and ML-powered solutions that reduce manual work and surface actionable insights.',
+        'Practical AI adoption into existing development workflows and business processes — focused on real utility and measurable outcomes, not trends.',
     },
   ];
 }

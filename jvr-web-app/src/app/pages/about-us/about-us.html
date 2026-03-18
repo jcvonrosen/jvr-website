@@ -1,1 +1,214 @@
-<p>about-us works!</p>
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="about-hero">
+  <div class="section-inner">
+    <span class="section-label light">About Us</span>
+    <h1 class="hero-heading">
+      People Who Love<br /><em>What They Build</em>
+    </h1>
+    <p class="hero-sub">
+      JVR Enterprises is a Grand Rapids-based software consultancy. We work alongside enterprise
+      teams as trusted partners — embedded, accountable, and genuinely invested in getting it right.
+    </p>
+  </div>
+</section>
+
+<!-- ─── OUR STORY ─────────────────────────────────────────────── -->
+<section class="story-section">
+  <div class="section-inner">
+    <div class="grid">
+
+      <!-- Left: Narrative -->
+      <div class="col-12 lg:col-5">
+        <app-section-header
+          label="Our Story"
+          align="left"
+          sub="From a one-person shop to a small, focused team — grown deliberately, one trusted hire at a time."
+        >
+          Where We Came From
+        </app-section-header>
+
+        <blockquote class="founder-quote">
+          "The client has the vision. I am their trusted partner who will make that vision a reality."
+          <cite>— Jay von Rosen, Founder</cite>
+        </blockquote>
+
+        <p class="story-body">
+          After years at software firms that gradually shifted their focus from solving real problems
+          to building their own reputations, Jay wanted something different — a place where the
+          client's vision comes first, developers are valued for their craft, and the work speaks
+          for itself.
+        </p>
+        <p class="story-body mt-3">
+          The company name is a fitting reflection of that mindset. Jay spent weeks searching for
+          the perfect name, came up empty, and eventually just used his initials. It is practical,
+          unpretentious, and to the point — and that is still how we approach everything.
+        </p>
+      </div>
+
+      <!-- Right: Timeline -->
+      <div class="col-12 lg:col-7 pl-0 lg:pl-6">
+        <div class="timeline">
+          @for (milestone of milestones; track milestone.year; let last = $last) {
+            <div class="timeline-item" [class.last]="last">
+              <div class="timeline-marker">
+                <span class="timeline-year">{{ milestone.year }}</span>
+                <div class="timeline-dot"></div>
+                @if (!last) {
+                  <div class="timeline-line"></div>
+                }
+              </div>
+              <div class="timeline-content">
+                <p>{{ milestone.text }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CORE VALUES ───────────────────────────────────────────── -->
+<section class="values-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Our Values"
+      sub="These show up in how we communicate, how we make decisions, and how we treat the people we work with."
+    >
+      What We Stand For
+    </app-section-header>
+
+    <div class="grid mt-5">
+      @for (value of values; track value.title) {
+        <div class="col-12 md:col-4">
+          <div class="value-card">
+            <div [class]="'value-icon accent-' + value.colorClass">{{ value.icon }}</div>
+            <h3 class="value-title">{{ value.title }}</h3>
+            <p class="value-desc">{{ value.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── MEET THE TEAM ─────────────────────────────────────────── -->
+<section class="team-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Meet the Team"
+      [dark]="true"
+      sub="Small by design. We hire people we'd genuinely want to work alongside for years — and that care shows in everything we build."
+    >
+      The People Behind the Work
+    </app-section-header>
+
+    <div class="grid mt-5">
+      @for (member of team; track member.name) {
+        <div class="col-12 md:col-4">
+          <div class="team-card">
+            <div [class]="'member-avatar avatar-' + member.colorClass">{{ member.initials }}</div>
+            <h3 class="member-name">{{ member.name }}</h3>
+            <p class="member-role">{{ member.role }}</p>
+            <p class="member-bio">{{ member.bio }}</p>
+            @if (member.bio2) {
+              <p class="member-bio mt-3">{{ member.bio2 }}</p>
+            }
+            <div class="member-tags flex flex-wrap gap-2 mt-3">
+              @for (tag of member.tags; track tag) {
+                <span class="skill-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── GRAND RAPIDS ──────────────────────────────────────────── -->
+<section class="community-section">
+  <div class="section-inner">
+    <div class="grid align-items-center">
+
+      <!-- Left: Narrative -->
+      <div class="col-12 lg:col-5">
+        <app-section-header
+          label="Rooted in Grand Rapids"
+          align="left"
+          sub="West Michigan is more than our zip code — it shapes how we think about partnerships, community, and craft."
+        >
+          A Community Worth Investing In
+        </app-section-header>
+        <p class="community-body">
+          Grand Rapids drew Jay in for a few reasons: the variety of strong industries here, a
+          tech community that genuinely supports one another, and a regional culture that values doing
+          good work over putting on a show. We are proud to be part of it, and we try to give
+          back where we can.
+        </p>
+      </div>
+
+      <!-- Right: Involvement cards -->
+      <div class="col-12 lg:col-7 mt-4 lg:mt-0 pl-0 lg:pl-5">
+        <div class="involvement-list flex flex-column gap-4">
+
+          <div class="involvement-item flex gap-3 align-items-start">
+            <div class="inv-icon accent-blue">🍺</div>
+            <div>
+              <h4 class="inv-title">Beer City Code</h4>
+              <p class="inv-desc">
+                Jay is an organizer for one of the Midwest's premier developer conferences —
+                37 speakers, approximately 500 attendees, and two days of world-class technical
+                content in Grand Rapids.
+              </p>
+            </div>
+          </div>
+
+          <div class="involvement-item flex gap-3 align-items-start">
+            <div class="inv-icon accent-purple">☁️</div>
+            <div>
+              <h4 class="inv-title">West Michigan Azure Users Group</h4>
+              <p class="inv-desc">
+                Monthly meetups where local practitioners share knowledge, tackle real
+                problems, and support each other's growth in Microsoft's cloud platform.
+              </p>
+            </div>
+          </div>
+
+          <div class="involvement-item flex gap-3 align-items-start">
+            <div class="inv-icon accent-orange">🏫</div>
+            <div>
+              <h4 class="inv-title">Hour of Code</h4>
+              <p class="inv-desc">
+                Jay has presented at area schools through the Hour of Code initiative,
+                helping introduce the next generation to software development and the
+                opportunities it can create.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────── -->
+<section class="about-cta-section">
+  <div class="section-inner text-center">
+    <span class="section-label">Work With Us</span>
+    <h2 class="section-title cta-heading">
+      Let's Build Something<br /><em class="cta-em">Worth Being Proud Of</em>
+    </h2>
+    <p class="section-sub mx-auto cta-sub">
+      Whether you need to strengthen an existing team, take on a large initiative, or bring in
+      specialized cloud and full-stack expertise — we'd love to hear about it.
+    </p>
+    <div class="cta-actions flex justify-content-center gap-3 mt-5 flex-wrap">
+      <a routerLink="/contact" class="btn-primary-cta">Start a Conversation</a>
+      <a routerLink="/services" class="btn-ghost-cta">Explore Our Services →</a>
+    </div>
+  </div>
+</section>

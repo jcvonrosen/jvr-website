@@ -10,9 +10,9 @@
           label="Why JVR"
           align="left"
           [dark]="true"
-          sub="We don't just deliver code—we embed ourselves in your organization to drive outcomes that matter at the board level."
+          sub="We embed with your team, take shared ownership of outcomes, and stay focused on what actually benefits the client — not what is trending."
         >
-          Built for Enterprise.<br />Designed to Scale.
+          The Right Partner<br />for the Right Work.
         </app-section-header>
 
         <div class="feature-list flex flex-column gap-4 mb-5">
@@ -30,34 +30,49 @@
         <a routerLink="/why-us" class="btn-outline">See Full Capabilities →</a>
       </div>
 
-      <!-- Right: Metrics panel -->
+      <!-- Right: Experience panel -->
       <div class="col-12 lg:col-6 mt-5 lg:mt-0">
         <div class="metrics-panel">
-          <div class="panel-header flex align-items-center gap-2 mb-4">
+          <div class="panel-header flex align-items-center gap-2 mb-5">
             <div class="panel-dots flex gap-1">
               <span class="dot dot-red"></span>
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <span class="panel-filename">performance_metrics.json</span>
+            <span class="panel-filename">about_jvr.json</span>
           </div>
 
-          <div class="metric-list flex flex-column gap-3">
-            @for (metric of metrics; track metric.label) {
-              <div class="metric-row">
-                <div class="flex justify-content-between mb-1">
-                  <span class="metric-label">{{ metric.label }}</span>
-                  <span class="metric-value">{{ metric.value }}</span>
-                </div>
-                <p-progressBar [value]="metric.pct" [showValue]="false" styleClass="metric-bar" />
+          <div class="stat-grid grid mb-5">
+            <div class="col-6">
+              <div class="stat-block">
+                <div class="stat-value">36+</div>
+                <div class="stat-label">Years in Software</div>
               </div>
-            }
+            </div>
+            <div class="col-6">
+              <div class="stat-block">
+                <div class="stat-value">2010</div>
+                <div class="stat-label">JVR Founded</div>
+              </div>
+            </div>
           </div>
 
-          <div class="roi-box text-center mt-4">
-            <div class="roi-label">Average ROI</div>
-            <div class="roi-value">340%</div>
-            <div class="roi-sub">across all active engagements</div>
+          <div class="panel-section mb-4">
+            <div class="panel-section-label">Industries Served</div>
+            <div class="tag-list flex flex-wrap gap-2 mt-2">
+              @for (industry of industries; track industry) {
+                <span class="info-tag">{{ industry }}</span>
+              }
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="panel-section-label">Core Technologies</div>
+            <div class="tag-list flex flex-wrap gap-2 mt-2">
+              @for (tech of techStack; track tech) {
+                <span class="info-tag">{{ tech }}</span>
+              }
+            </div>
           </div>
         </div>
       </div>

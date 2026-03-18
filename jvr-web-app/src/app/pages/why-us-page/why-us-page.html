@@ -1,1 +1,161 @@
-<p>why-us-page works!</p>
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="why-hero">
+  <div class="section-inner">
+    <span class="section-label light">Why JVR</span>
+    <h1 class="hero-heading">
+      A Partner,<br /><em>Not a Vendor</em>
+    </h1>
+    <p class="hero-sub">
+      Most consultants deliver a scope of work and move on. We embed directly with your team,
+      learn your systems, and deliver alongside your people — as one unified group.
+    </p>
+  </div>
+</section>
+
+<!-- ─── HOW WE ENGAGE ─────────────────────────────────────────── -->
+<section class="engage-section">
+  <div class="section-inner">
+    <div class="grid align-items-center">
+
+      <!-- Left: Narrative -->
+      <div class="col-12 lg:col-5">
+        <app-section-header
+          label="Our Approach"
+          align="left"
+          sub="We integrate with your existing team, learn your environment, and deliver as a single, unified group — so nothing gets lost in translation."
+        >
+          Embedded. Accountable. Unified.
+        </app-section-header>
+        <p class="engage-body">
+          Jay founded JVR on the belief that the best outcomes happen when the boundary between
+          client and consultant disappears. When we take on an engagement, we are not a separate
+          vendor managing a ticket queue — we are part of your team, sharing the same goals,
+          the same accountability, and the same definition of success.
+        </p>
+      </div>
+
+      <!-- Right: Engagement modes -->
+      <div class="col-12 lg:col-7 pl-0 lg:pl-6 mt-4 lg:mt-0">
+        <div class="engage-modes flex flex-column gap-4">
+
+          <div class="mode-card">
+            <div class="mode-label accent-blue">Integration Mode</div>
+            <h4 class="mode-title">Working Within Your Team</h4>
+            <p class="mode-desc">
+              When you have a strong internal team but need additional skills or capacity, we embed
+              directly into your workflow. We adopt your tools, attend your standups, and contribute
+              as a natural extension of your existing group.
+            </p>
+          </div>
+
+          <div class="mode-card">
+            <div class="mode-label accent-purple">Full Ownership Mode</div>
+            <h4 class="mode-title">Owning the Full Process</h4>
+            <p class="mode-desc">
+              When you need a team to drive an initiative end-to-end, we take full ownership —
+              from discovery and planning through implementation, QA, and post-launch support —
+              while keeping your stakeholders informed and involved throughout.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUR PROCESS ───────────────────────────────────────────── -->
+<section class="process-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Our Process"
+      [dark]="true"
+      sub="When we own the full engagement, we follow a four-stage approach — iterative by nature and adaptive by design."
+    >
+      How We Get Things Done
+    </app-section-header>
+
+    <div class="grid mt-5">
+      @for (step of processSteps; track step.num) {
+        <div class="col-12 md:col-6 lg:col-3">
+          <div class="process-card">
+            <div [class]="'step-num step-' + step.colorClass">{{ step.num }}</div>
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <p class="process-note text-center mt-5">
+      These phases are iterative. A project may cycle through planning, implementation, and QA
+      multiple times across different feature sets — the process adapts to the project,
+      not the other way around.
+    </p>
+  </div>
+</section>
+
+<!-- ─── WHAT WE SOLVE ─────────────────────────────────────────── -->
+<section class="scenarios-section">
+  <div class="section-inner">
+    <app-section-header
+      label="What We Solve"
+      sub="Every engagement is different, but a few scenarios come up consistently."
+    >
+      Common Reasons Teams Call Us
+    </app-section-header>
+
+    <div class="grid mt-5">
+      @for (scenario of scenarios; track scenario.title) {
+        <div class="col-12 md:col-4">
+          <div class="scenario-card">
+            <div [class]="'scenario-icon accent-' + scenario.colorClass">{{ scenario.icon }}</div>
+            <h3 class="scenario-title">{{ scenario.title }}</h3>
+            <p class="scenario-desc">{{ scenario.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUR SCOPE ─────────────────────────────────────────────── -->
+<section class="scope-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Our Focus"
+      sub="We concentrate on the areas where we consistently deliver strong results for our clients."
+    >
+      What We Do
+    </app-section-header>
+
+    <div class="grid scope-grid mt-5">
+      @for (item of doList; track item) {
+        <div class="col-12 sm:col-6 lg:col-3">
+          <div class="scope-tile">
+            <p class="scope-tile-text">{{ item }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────── -->
+<section class="why-cta-section">
+  <div class="section-inner text-center">
+    <span class="section-label">Get Started</span>
+    <h2 class="section-title cta-heading">
+      Ready to Work<br /><em class="cta-em">Differently?</em>
+    </h2>
+    <p class="section-sub mx-auto cta-sub">
+      If you have a project that needs the right team — not just available contractors —
+      we'd like to hear about it.
+    </p>
+    <div class="cta-actions flex justify-content-center gap-3 mt-5 flex-wrap">
+      <a routerLink="/contact" class="btn-primary-cta">Start a Conversation</a>
+      <a routerLink="/about" class="btn-ghost-cta">Meet Our Team →</a>
+    </div>
+  </div>
+</section>

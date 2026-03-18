@@ -1,51 +1,46 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProgressBarModule } from 'primeng/progressbar';
 import { SectionHeader } from '../../../../shared/section-header/section-header';
 
 @Component({
   selector: 'app-why-jvr-section',
-  imports: [RouterLink, ProgressBarModule, SectionHeader],
+  imports: [RouterLink, SectionHeader],
   templateUrl: './why-jvr-section.html',
   styleUrl: './why-jvr-section.css',
 })
 export class WhyJvrSection {
   features = [
     {
-      icon: '🎯',
-      dotColor: 'blue',
-      title: 'Outcome-Driven Methodology',
-      description:
-        "Every engagement is anchored to measurable KPIs. We define success metrics upfront so you always know what you're getting.",
-    },
-    {
-      icon: '🔒',
-      dotColor: 'purple',
-      title: 'Enterprise-Grade Security',
-      description:
-        'SOC 2 Type II compliant processes baked into every phase—security is never an afterthought.',
-    },
-    {
-      icon: '⚡',
-      dotColor: 'orange',
-      title: 'Rapid Time-to-Value',
-      description:
-        'Our phased delivery model gets working software into your hands within 90 days of kickoff.',
-    },
-    {
       icon: '🤝',
       dotColor: 'blue',
-      title: 'Dedicated Partnership Model',
+      title: 'A Trusted Partner, Not a Vendor',
       description:
-        'A senior consultant owns your account end-to-end. No bait-and-switch staffing, ever.',
+        'The client has the vision. We make it a reality. We embed with your team, share accountability, and take genuine ownership of outcomes.',
+    },
+    {
+      icon: '👥',
+      dotColor: 'purple',
+      title: 'Team-First Approach',
+      description:
+        'We face every challenge together — internally and alongside our clients. When something needs solving, everyone is accountable for finding the solution.',
+    },
+    {
+      icon: '🎯',
+      dotColor: 'orange',
+      title: 'Practical Technology Selection',
+      description:
+        'We evaluate every technology on one question: does it genuinely help the client? We are not here to sell the latest trend — we are here to build the right solution.',
+    },
+    {
+      icon: '💡',
+      dotColor: 'blue',
+      title: 'Genuine Passion for the Craft',
+      description:
+        'Everyone on our team genuinely loves what they do. That enthusiasm is not a talking point — it shows up in how thoughtfully we build and how reliably we deliver.',
     },
   ];
 
-  metrics = [
-    { label: 'Client Satisfaction', value: '97%', pct: 97 },
-    { label: 'On-Time Delivery', value: '94%', pct: 94 },
-    { label: 'Cost Reduction', value: '38%', pct: 38 },
-    { label: 'Performance Uplift', value: '2.4×', pct: 80 },
-    { label: 'Scope Accuracy', value: '91%', pct: 91 },
-  ];
+  industries = ['Manufacturing', 'Retail', 'Energy', 'Entertainment'];
+
+  techStack = ['Azure', 'AWS', 'Angular', 'React', 'Vue', '.NET / C#', 'Node.js', 'Playwright'];
 }
