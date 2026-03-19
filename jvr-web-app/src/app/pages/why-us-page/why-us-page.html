@@ -1,5 +1,5 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="why-hero">
+<section class="page-hero">
   <div class="section-inner">
     <span class="section-label light">Why JVR</span>
     <h1 class="hero-heading">
@@ -39,7 +39,7 @@
         <div class="engage-modes flex flex-column gap-4">
 
           <div class="mode-card">
-            <div class="mode-label accent-blue">Integration Mode</div>
+            <div class="mode-label accent-blue">Integration Approach</div>
             <h4 class="mode-title">Working Within Your Team</h4>
             <p class="mode-desc">
               When you have a strong internal team but need additional skills or capacity, we embed
@@ -49,7 +49,7 @@
           </div>
 
           <div class="mode-card">
-            <div class="mode-label accent-purple">Full Ownership Mode</div>
+            <div class="mode-label accent-purple">Full Ownership Approach</div>
             <h4 class="mode-title">Owning the Full Process</h4>
             <p class="mode-desc">
               When you need a team to drive an initiative end-to-end, we take full ownership —
@@ -109,7 +109,7 @@
     <div class="grid mt-5">
       @for (scenario of scenarios; track scenario.title) {
         <div class="col-12 md:col-4">
-          <div class="scenario-card">
+          <div class="card-light">
             <div [class]="'scenario-icon accent-' + scenario.colorClass">{{ scenario.icon }}</div>
             <h3 class="scenario-title">{{ scenario.title }}</h3>
             <p class="scenario-desc">{{ scenario.description }}</p>
@@ -145,7 +145,7 @@
 <!-- ─── CTA ──────────────────────────────────────────────────── -->
 <section class="why-cta-section">
   <div class="section-inner text-center">
-    <span class="section-label">Get Started</span>
+    <span class="section-label light">Get Started</span>
     <h2 class="section-title cta-heading">
       Ready to Work<br /><em class="cta-em">Differently?</em>
     </h2>
@@ -155,7 +155,7 @@
     </p>
     <div class="cta-actions flex justify-content-center gap-3 mt-5 flex-wrap">
       <a routerLink="/contact" class="btn-primary-cta">Start a Conversation</a>
-      <a routerLink="/about" class="btn-ghost-cta">Meet Our Team →</a>
+      <a routerLink="/about" fragment="team" class="btn-ghost-light">Meet Our Team →</a>
     </div>
   </div>
 </section>

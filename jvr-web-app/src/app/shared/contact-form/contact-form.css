@@ -1,0 +1,102 @@
+:host { display: block; }
+
+/* ─── Form layout ────────────────────────────────────────────── */
+.contact-form { width: 100%; }
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ─── Labels ─────────────────────────────────────────────────── */
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.required {
+  color: var(--orange);
+  margin-left: 1px;
+}
+
+.optional {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+/* ─── Validation error ───────────────────────────────────────── */
+.field-error {
+  font-size: 12px;
+  color: #dc2626;
+  line-height: 1.4;
+}
+
+/* ─── Actions row ────────────────────────────────────────────── */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.form-note {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Success state ──────────────────────────────────────────── */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 32px;
+  min-height: 320px;
+}
+
+.success-icon {
+  font-size: 52px;
+  margin-bottom: 20px;
+}
+
+.success-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.success-body {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.75;
+  max-width: 360px;
+  margin: 0 0 28px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 580px) {
+  .form-row { grid-template-columns: 1fr; }
+}

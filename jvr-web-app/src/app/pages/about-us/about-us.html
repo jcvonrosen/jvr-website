@@ -1,5 +1,5 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="about-hero">
+<section class="page-hero">
   <div class="section-inner">
     <span class="section-label light">About Us</span>
     <h1 class="hero-heading">
@@ -82,7 +82,7 @@
     <div class="grid mt-5">
       @for (value of values; track value.title) {
         <div class="col-12 md:col-4">
-          <div class="value-card">
+          <div class="card-light">
             <div [class]="'value-icon accent-' + value.colorClass">{{ value.icon }}</div>
             <h3 class="value-title">{{ value.title }}</h3>
             <p class="value-desc">{{ value.description }}</p>
@@ -94,7 +94,7 @@
 </section>
 
 <!-- ─── MEET THE TEAM ─────────────────────────────────────────── -->
-<section class="team-section">
+<section id="team" class="team-section">
   <div class="section-inner">
     <app-section-header
       label="Meet the Team"
@@ -107,7 +107,7 @@
     <div class="grid mt-5">
       @for (member of team; track member.name) {
         <div class="col-12 md:col-4">
-          <div class="team-card">
+          <div class="card-dark">
             <div [class]="'member-avatar avatar-' + member.colorClass">{{ member.initials }}</div>
             <h3 class="member-name">{{ member.name }}</h3>
             <p class="member-role">{{ member.role }}</p>

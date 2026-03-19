@@ -1,40 +1,8 @@
 :host { display: block; }
 
-/* ─── HERO ─────────────────────────────────────────────────── */
-.about-hero {
-  background: linear-gradient(135deg, var(--blue-deep) 0%, #0f1f3d 55%, #1a0a2e 100%);
-  padding: 80px 0 72px;
-  text-align: center;
-}
-
-.hero-heading {
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1.1;
-  color: #fff;
-  margin: 0 0 20px;
-  letter-spacing: -0.02em;
-}
-
-.hero-heading em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.75;
-  max-width: 620px;
-  margin: 0 auto;
-}
-
 /* ─── STORY ─────────────────────────────────────────────────── */
 .story-section {
-  background: var(--light-2);
+  background: var(--bg-light-2);
   padding: 80px 0;
 }
 
@@ -63,17 +31,14 @@
   margin: 0;
 }
 
-/* Timeline */
+/* ─── Timeline ───────────────────────────────────────────────── */
 .timeline {
   display: flex;
   flex-direction: column;
   padding-top: 4px;
 }
 
-.timeline-item {
-  display: flex;
-  gap: 0;
-}
+.timeline-item { display: flex; gap: 0; }
 
 .timeline-marker {
   display: flex;
@@ -97,7 +62,7 @@
   height: 11px;
   border-radius: 50%;
   background: var(--blue);
-  border: 2px solid var(--light-2);
+  border: 2px solid var(--bg-light-2);
   box-shadow: 0 0 0 2px var(--blue);
   flex-shrink: 0;
   z-index: 1;
@@ -124,28 +89,15 @@
 
 /* ─── VALUES ─────────────────────────────────────────────────── */
 .values-section {
-  background: var(--white);
+  background: var(--bg-white);
   padding: 80px 0;
 }
 
-.value-card {
-  background: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 32px 28px;
-  height: 100%;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(29, 111, 232, 0.1);
-}
-
+/* .value-card → global .card-light */
 .value-icon {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,24 +121,11 @@
 
 /* ─── TEAM ──────────────────────────────────────────────────── */
 .team-section {
-  background: var(--blue-deep);
+  background: var(--bg-dark);
   padding: 80px 0;
 }
 
-.team-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 14px;
-  padding: 32px 28px;
-  height: 100%;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.team-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-3px);
-}
-
+/* .team-card → global .card-dark */
 .member-avatar {
   width: 58px;
   height: 58px;
@@ -204,12 +143,7 @@
 .avatar-purple { background: rgba(124, 58, 237, 0.2);  color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.35); }
 .avatar-orange { background: rgba(249, 115, 22, 0.2);  color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.35); }
 
-.member-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 4px;
-}
+.member-name { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 4px; }
 
 .member-role {
   font-size: 11px;
@@ -233,14 +167,14 @@
   color: rgba(255, 255, 255, 0.65);
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
+  border-radius: var(--radius-pill);
   padding: 4px 10px;
   letter-spacing: 0.02em;
 }
 
 /* ─── COMMUNITY ─────────────────────────────────────────────── */
 .community-section {
-  background: var(--light);
+  background: var(--bg-light);
   padding: 80px 0;
 }
 
@@ -255,7 +189,7 @@
   width: 44px;
   height: 44px;
   min-width: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,72 +212,14 @@
 }
 
 /* ─── CTA ───────────────────────────────────────────────────── */
+/* .btn-primary-cta and .btn-ghost-cta → global styles.css      */
 .about-cta-section {
-  background: linear-gradient(180deg, var(--light-2) 0%, var(--light) 100%);
+  background: linear-gradient(180deg, var(--bg-light-2) 0%, var(--bg-light) 100%);
   padding: 88px 0;
-}
-
-.cta-heading {
-  margin-bottom: 16px;
-}
-
-.cta-em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cta-sub {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn-primary-cta {
-  display: inline-flex;
-  align-items: center;
-  padding: 13px 28px;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: opacity 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 18px rgba(29, 111, 232, 0.3);
-}
-
-.btn-primary-cta:hover {
-  opacity: 0.88;
-  box-shadow: 0 6px 24px rgba(29, 111, 232, 0.45);
-}
-
-.btn-ghost-cta {
-  display: inline-flex;
-  align-items: center;
-  padding: 13px 28px;
-  background: transparent;
-  color: var(--blue);
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: 1.5px solid var(--border);
-  text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.btn-ghost-cta:hover {
-  border-color: var(--blue);
-  color: var(--blue-dark);
 }
 
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 960px) {
-  .about-hero { padding: 60px 0 52px; }
-  .hero-heading { font-size: 40px; }
-
   .story-section,
   .values-section,
   .team-section,
@@ -356,10 +232,6 @@
 }
 
 @media (max-width: 480px) {
-  .hero-heading { font-size: 32px; }
   .timeline-marker { min-width: 60px; }
-  .timeline-year { font-size: 10px; }
-  .cta-actions { flex-direction: column; align-items: center; }
-  .btn-primary-cta,
-  .btn-ghost-cta { width: 100%; justify-content: center; }
+  .timeline-year   { font-size: 10px; }
 }

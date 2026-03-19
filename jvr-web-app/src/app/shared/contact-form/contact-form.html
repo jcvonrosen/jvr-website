@@ -1,0 +1,176 @@
+<!-- ── Success state ─────────────────────────────────────────────── -->
+@if (submitSuccess()) {
+  <div class="form-success">
+    <div class="success-icon">✅</div>
+    <h3 class="success-title">Message Sent!</h3>
+    <p class="success-body">
+      Thanks for reaching out. We'll review your message and get back to you
+      within one business day.
+    </p>
+    <p-button
+      label="Send Another Message"
+      [outlined]="true"
+      (onClick)="resetForm()"
+    />
+  </div>
+
+} @else {
+
+  <!-- ── Form ──────────────────────────────────────────────────────── -->
+  <form class="contact-form" (submit)="onSubmit(); $event.preventDefault()">
+    <div class="form-fields">
+
+      <!-- Name row -->
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-firstName" class="form-label">
+            First Name <span class="required">*</span>
+          </label>
+          <input
+            id="cf-firstName"
+            pInputText
+            name="firstName"
+            type="text"
+            [ngModel]="firstName()"
+            (ngModelChange)="firstName.set($event)"
+            (blur)="markTouched('firstName')"
+            [invalid]="isFieldInvalid('firstName')"
+            placeholder="Jane"
+            class="w-full"
+          />
+          @if (isFieldInvalid('firstName')) {
+            <small class="field-error">First name is required.</small>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="cf-lastName" class="form-label">
+            Last Name <span class="required">*</span>
+          </label>
+          <input
+            id="cf-lastName"
+            pInputText
+            name="lastName"
+            type="text"
+            [ngModel]="lastName()"
+            (ngModelChange)="lastName.set($event)"
+            (blur)="markTouched('lastName')"
+            [invalid]="isFieldInvalid('lastName')"
+            placeholder="Smith"
+            class="w-full"
+          />
+          @if (isFieldInvalid('lastName')) {
+            <small class="field-error">Last name is required.</small>
+          }
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <label for="cf-email" class="form-label">
+          Email Address <span class="required">*</span>
+        </label>
+        <input
+          id="cf-email"
+          pInputText
+          name="email"
+          type="email"
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          (blur)="markTouched('email')"
+          [invalid]="isFieldInvalid('email')"
+          placeholder="jane@example.com"
+          class="w-full"
+        />
+        @if (isFieldInvalid('email')) {
+          <small class="field-error">Please enter a valid email address.</small>
+        }
+      </div>
+
+      <!-- Phone -->
+      <div class="form-field">
+        <label for="cf-phone" class="form-label">
+          Phone Number <span class="optional">(optional)</span>
+        </label>
+        <p-inputmask
+          id="cf-phone"
+          name="phone"
+          [ngModel]="phone()"
+          (ngModelChange)="phone.set($event ?? '')"
+          mask="(999) 999-9999"
+          placeholder="(616) 555-0123"
+          styleClass="w-full"
+        />
+      </div>
+
+      <!-- Inquiry Type -->
+      <div class="form-field">
+        <label for="cf-inquiry" class="form-label">
+          How Can We Help? <span class="required">*</span>
+        </label>
+        <p-select
+          inputId="cf-inquiry"
+          name="inquiryType"
+          [ngModel]="inquiryType()"
+          (ngModelChange)="inquiryType.set($event)"
+          (onBlur)="markTouched('inquiryType')"
+          [options]="inquiryOptions"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select an inquiry type"
+          [invalid]="isFieldInvalid('inquiryType')"
+          styleClass="w-full"
+        />
+        @if (isFieldInvalid('inquiryType')) {
+          <small class="field-error">Please select an inquiry type.</small>
+        }
+      </div>
+
+      <!-- Message -->
+      <div class="form-field">
+        <label for="cf-message" class="form-label">
+          Message <span class="required">*</span>
+        </label>
+        <textarea
+          id="cf-message"
+          pTextarea
+          name="message"
+          [ngModel]="message()"
+          (ngModelChange)="message.set($event)"
+          (blur)="markTouched('message')"
+          [invalid]="isFieldInvalid('message')"
+          placeholder="Tell us about your project, timeline, or any questions you have…"
+          rows="5"
+          class="w-full"
+        ></textarea>
+        @if (isFieldInvalid('message')) {
+          <small class="field-error">Please include a message.</small>
+        }
+      </div>
+
+      <!-- Submission error -->
+      @if (submitError()) {
+        <p-message severity="error" [text]="submitError()!" />
+      }
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <p-button
+          type="submit"
+          label="Send Message"
+          icon="pi pi-send"
+          iconPos="right"
+          [loading]="isSubmitting()"
+          [disabled]="isSubmitting()"
+          class="btn-orange"
+          size="large"
+        />
+        <p class="form-note">
+          <span class="pi pi-clock" style="font-size: 12px; margin-right: 4px;"></span>
+          We typically respond within one business day.
+        </p>
+      </div>
+
+    </div>
+  </form>
+}

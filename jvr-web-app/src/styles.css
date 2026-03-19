@@ -2,28 +2,62 @@
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.css';
 
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   Single source of truth for all colours, gradients, shadows,
+   radii, and spacing used across the application.
+   ═══════════════════════════════════════════════════════════════ */
 :root {
-  --menubar-height: 57px;
-  --white: #ffffff;
-  --light: #f8f9fc;
-  --light-2: #eef2ff;
-  --blue: #1d6fe8;
-  --blue-dark: #0f4baa;
-  --blue-deep: #0a1628;
-  --purple: #7c3aed;
-  --orange: #f97316;
-  --orange-deep: #c2570c;
-  --text: #0d1e3d;
-  --text-mid: #2d3e5c;
+  /* ── Palette ──────────────────────────────────────────────── */
+  --white:      #ffffff;
+  --light:      #f8f9fc;
+  --light-2:    #eef2ff;
+  --blue:       #1d6fe8;
+  --blue-dark:  #0f4baa;
+  --blue-deep:  #0a1628;
+  --purple:     #7c3aed;
+  --orange:     #f97316;
+  --orange-deep:#c2570c;
+  --text:       #0d1e3d;
+  --text-mid:   #2d3e5c;
   --text-light: #5c6e8a;
-  --border: #dde3f0;
+  --border:     #dde3f0;
+
+  /* ── Menubar ──────────────────────────────────────────────── */
+  --menubar-height: 57px;
+
+  /* ── Gradients ────────────────────────────────────────────── */
+  --gradient-brand:    linear-gradient(135deg, var(--blue), var(--purple));
+  --gradient-hero-bg:  linear-gradient(135deg, var(--blue-deep) 0%, #0f1f3d 55%, #1a0a2e 100%);
+  --gradient-accent:   linear-gradient(90deg, var(--blue), var(--purple), var(--orange));
+
+  /* ── Shadows ──────────────────────────────────────────────── */
+  --shadow-card:       0 4px 24px rgba(13, 30, 61, 0.06);
+  --shadow-card-hover: 0 12px 36px rgba(29, 111, 232, 0.1);
+  --shadow-btn:        0 4px 18px rgba(29, 111, 232, 0.3);
+  --shadow-btn-hover:  0 6px 24px rgba(29, 111, 232, 0.45);
+
+  /* ── Border radius ────────────────────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:  12px;
+  --radius-lg:  14px;
+  --radius-xl:  16px;
+  --radius-pill: 20px;
+
+  /* ── Section backgrounds ──────────────────────────────────── */
+  --bg-dark:    var(--blue-deep);
+  --bg-light:   var(--light);
+  --bg-light-2: var(--light-2);
+  --bg-white:   var(--white);
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE RESET & BODY
+   ═══════════════════════════════════════════════════════════════ */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -37,25 +71,24 @@ body {
   min-height: 100vh;
 }
 
-.page-content {
-  min-height: calc(100vh - var(--menubar-height));
-}
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+.page-content { min-height: calc(100vh - var(--menubar-height)); }
 
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Playfair Display', serif;
-}
-
-/* ─── SHARED SECTION UTILITIES ──────────── */
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
 .section-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED SECTION LABELS / TITLES / SUBS
+   ═══════════════════════════════════════════════════════════════ */
 .section-label {
   display: inline-block;
   font-size: 11px;
@@ -66,9 +99,8 @@ h4 {
   margin-bottom: 12px;
 }
 
-.section-label.light {
-  color: rgba(255, 255, 255, 0.7);
-}
+/* Light variant — use on dark backgrounds */
+.section-label.light { color: rgba(255, 255, 255, 0.7); }
 
 .section-title {
   font-size: 36px;
@@ -85,36 +117,226 @@ h4 {
   max-width: 600px;
 }
 
-@media (max-width: 768px) {
-  .section-title { font-size: 28px; }
-  .section-sub   { font-size: 15px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE HERO  (shared across About, Why Us, Contact, etc.)
+   Apply class="page-hero" to the <section> element.
+   ═══════════════════════════════════════════════════════════════ */
+.page-hero {
+  background: var(--gradient-hero-bg);
+  padding: 80px 0 72px;
+  text-align: center;
 }
 
-/* ─── ACCENT ICON BACKGROUND UTILITIES ──── */
-/* Tinted background containers for icons/badges — use alongside sizing classes */
+.page-hero .hero-heading {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+
+.page-hero .hero-heading em {
+  font-style: normal;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-hero .hero-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT TEXT UTILITY
+   Apply to any inline element that should show the brand gradient.
+   ═══════════════════════════════════════════════════════════════ */
+.gradient-text,
+.cta-em {
+  font-style: normal;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED CTA TEXT
+   ═══════════════════════════════════════════════════════════════ */
+.cta-heading { margin-bottom: 16px; }
+
+.cta-sub {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Primary — gradient fill, white text */
+.btn-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-btn);
+}
+.btn-primary-cta:hover {
+  opacity: 0.88;
+  box-shadow: var(--shadow-btn-hover);
+}
+
+/* Ghost on light backgrounds */
+.btn-ghost-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost-cta:hover {
+  border-color: var(--blue);
+  color: var(--blue-dark);
+}
+
+/* Ghost on dark backgrounds */
+.btn-ghost-light {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost-light:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED CARDS
+   Use these base classes in HTML; add component-specific classes
+   alongside them for any personalised overrides.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Light card — for white / light-2 section backgrounds */
+.card-light {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Dark card — for blue-deep / dark section backgrounds */
+.card-dark {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  height: 100%;
+  transition: background 0.2s, transform 0.2s;
+}
+.card-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ICON BOX UTILITY
+   Shape / display only — use alongside .accent-* for colour.
+   ═══════════════════════════════════════════════════════════════ */
+.icon-box {
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCENT ICON BACKGROUND UTILITIES
+   Tinted containers for icons / badges — pair with .icon-box
+   or any sized element.
+   ═══════════════════════════════════════════════════════════════ */
 .accent-blue   { background: var(--light-2); }
 .accent-purple { background: #f3edff; }
 .accent-orange { background: #fff4ec; }
 
-/* ─── ORANGE ACCENT BUTTON (shared) ─────── */
-/* Apply class="btn-orange" to any <p-button> host to get orange + glow */
+
+/* ═══════════════════════════════════════════════════════════════
+   PRIMENG BUTTON OVERRIDES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Orange / warm CTA — apply class="btn-orange" to <p-button> host */
 .btn-orange {
-  --p-button-primary-background:        var(--orange);
-  --p-button-primary-hover-background:  var(--orange-deep);
-  --p-button-primary-active-background: var(--orange-deep);
+  --p-button-primary-background:         var(--orange);
+  --p-button-primary-hover-background:   var(--orange-deep);
+  --p-button-primary-active-background:  var(--orange-deep);
   --p-button-primary-border-color:        var(--orange);
   --p-button-primary-hover-border-color:  var(--orange-deep);
   --p-button-primary-active-border-color: var(--orange-deep);
-  --p-button-primary-color:        #ffffff;
-  --p-button-primary-hover-color:  #ffffff;
-  --p-button-primary-active-color: #ffffff;
+  --p-button-primary-color:               #ffffff;
+  --p-button-primary-hover-color:         #ffffff;
+  --p-button-primary-active-color:        #ffffff;
 }
-
 .btn-orange .p-button {
   box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
   transition: box-shadow 0.2s, opacity 0.2s !important;
 }
+.btn-orange .p-button:hover { box-shadow: 0 0 24px rgba(249, 115, 22, 0.7); }
 
-.btn-orange .p-button:hover {
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .page-hero                   { padding: 60px 0 52px; }
+  .page-hero .hero-heading     { font-size: 40px; }
+  .section-title               { font-size: 28px; }
+  .section-sub                 { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .page-hero .hero-heading     { font-size: 32px; }
+  .cta-actions                 { flex-direction: column; align-items: center; }
+  .btn-primary-cta,
+  .btn-ghost-cta,
+  .btn-ghost-light             { width: 100%; justify-content: center; }
 }

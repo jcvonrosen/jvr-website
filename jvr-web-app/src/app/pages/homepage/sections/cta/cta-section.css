@@ -35,18 +35,19 @@
   max-width: 540px;
 }
 
-/* ── CTA ghost button — dark variant for light bg ── */
-:host ::ng-deep .cta-btn-ghost {
-  border-color: var(--border) !important;
-  color: var(--text-mid) !important;
+/* ── CTA gradient button — blue-purple fill ── */
+:host ::ng-deep .cta-btn-gradient {
+  background: linear-gradient(135deg, var(--blue), var(--purple)) !important;
+  border-color: transparent !important;
+  color: #fff !important;
   border-radius: 8px !important;
-  transition: border-color 0.2s, background 0.2s, color 0.2s !important;
+  box-shadow: 0 4px 18px rgba(29, 111, 232, 0.3) !important;
+  transition: opacity 0.2s, box-shadow 0.2s !important;
 }
 
-:host ::ng-deep .cta-btn-ghost:hover {
-  border-color: var(--blue) !important;
-  color: var(--blue) !important;
-  background: var(--light-2) !important;
+:host ::ng-deep .cta-btn-gradient:hover {
+  opacity: 0.88 !important;
+  box-shadow: 0 6px 24px rgba(29, 111, 232, 0.45) !important;
 }
 
 /* ── Detail line ───────────────────────── */
