@@ -83,7 +83,7 @@
       @for (value of values; track value.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'value-icon accent-' + value.colorClass">{{ value.icon }}</div>
+            <div [class]="'value-icon accent-' + value.colorClass"><i [class]="'pi ' + value.icon"></i></div>
             <h3 class="value-title">{{ value.title }}</h3>
             <p class="value-desc">{{ value.description }}</p>
           </div>
@@ -166,7 +166,7 @@
           </div>
 
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-purple">☁️</div>
+            <div class="inv-icon accent-purple"><i class="pi pi-cloud"></i></div>
             <div>
               <h4 class="inv-title">West Michigan Azure Users Group</h4>
               <p class="inv-desc">

@@ -110,7 +110,7 @@
       @for (scenario of scenarios; track scenario.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'scenario-icon accent-' + scenario.colorClass">{{ scenario.icon }}</div>
+            <div [class]="'scenario-icon accent-' + scenario.colorClass"><i [class]="'pi ' + scenario.icon"></i></div>
             <h3 class="scenario-title">{{ scenario.title }}</h3>
             <p class="scenario-desc">{{ scenario.description }}</p>
           </div>
@@ -131,10 +131,14 @@
     </app-section-header>
 
     <div class="grid scope-grid mt-5">
-      @for (item of doList; track item) {
+      @for (item of doList; track item.title) {
         <div class="col-12 sm:col-6 lg:col-3">
           <div class="scope-tile">
-            <p class="scope-tile-text">{{ item }}</p>
+            <div [class]="'scope-icon accent-' + item.color">
+              <i [class]="'pi ' + item.icon"></i>
+            </div>
+            <h4 class="scope-tile-title">{{ item.title }}</h4>
+            <p class="scope-tile-text">{{ item.desc }}</p>
           </div>
         </div>
       }

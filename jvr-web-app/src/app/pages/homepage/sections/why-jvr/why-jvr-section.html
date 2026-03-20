@@ -20,7 +20,7 @@
             <div class="feature-item flex gap-3">
               <div [class]="'feature-dot dot-' + feature.dotColor"></div>
               <div>
-                <h4 class="feature-title">{{ feature.icon }} {{ feature.title }}</h4>
+                <h4 class="feature-title"><i [class]="'pi ' + feature.icon"></i> {{ feature.title }}</h4>
                 <p class="feature-desc">{{ feature.description }}</p>
               </div>
             </div>

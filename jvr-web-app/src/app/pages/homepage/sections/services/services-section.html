@@ -13,7 +13,7 @@
       @for (service of services; track service.title) {
         <div class="col-12 md:col-6 lg:col-4 flex">
           <p-card styleClass="service-card w-full">
-            <div [class]="'svc-icon accent-' + service.iconColor">{{ service.icon }}</div>
+            <div [class]="'svc-icon accent-' + service.iconColor"><i [class]="'pi ' + service.icon"></i></div>
             <h3 class="svc-title">{{ service.title }}</h3>
             <p class="svc-desc">{{ service.description }}</p>
             <a routerLink="/services" class="svc-link">Learn more →</a>

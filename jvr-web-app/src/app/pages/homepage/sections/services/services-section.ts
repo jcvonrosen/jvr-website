@@ -12,42 +12,42 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
 export class ServicesSection {
   services = [
     {
-      icon: '🖥️',
+      icon: 'pi-desktop',
       iconColor: 'blue',
       title: 'Frontend Development',
       description:
         'Enterprise web applications built with Angular, React, or Vue — responsive, dynamic, and designed to handle real complexity at scale.',
     },
     {
-      icon: '☁️',
+      icon: 'pi-cloud',
       iconColor: 'purple',
       title: 'Cloud Infrastructure',
       description:
         'Azure and AWS architecture, deployment, and ongoing operations. We bring deep platform expertise to cloud migrations and enterprise integrations.',
     },
     {
-      icon: '⚙️',
+      icon: 'pi-cog',
       iconColor: 'orange',
       title: 'Backend Development',
       description:
         'Solid, maintainable server-side systems built with C#/.NET and Node.js — REST APIs, service layers, and the infrastructure that keeps enterprise applications running.',
     },
     {
-      icon: '🔄',
+      icon: 'pi-refresh',
       iconColor: 'blue',
       title: 'ETL & Data Pipelines',
       description:
         'Large-scale data movement built for reliability — whether for internal system functionality, reporting, or enterprise analytics workflows.',
     },
     {
-      icon: '✅',
+      icon: 'pi-check-circle',
       iconColor: 'purple',
       title: 'Automated Testing & QA',
       description:
         'Playwright-based and custom automated testing integrated directly into your deployment pipeline — so quality is enforced at every release.',
     },
     {
-      icon: '🤖',
+      icon: 'pi-microchip',
       iconColor: 'orange',
       title: 'AI Integration',
       description:

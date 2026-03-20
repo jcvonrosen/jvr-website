@@ -42,21 +42,21 @@ export class AboutUs {
 
   values = [
     {
-      icon: '🤝',
+      icon: 'pi-handshake',
       colorClass: 'blue',
       title: 'Success Is a Team Sport',
       description:
         'We tackle challenges together — with each other and with our clients. When something needs solving, we own it as a team. That means honest communication, shared accountability, and showing up fully, even when things get complicated.',
     },
     {
-      icon: '🎯',
+      icon: 'pi-crosshairs',
       colorClass: 'purple',
       title: 'Right Tool, Not the Trending One',
       description:
         'We evaluate every technology on one question: does it genuinely help our clients? We are not here to sell the latest trend or position ourselves as thought leaders. We are here to find the right solution — and build it well.',
     },
     {
-      icon: '💡',
+      icon: 'pi-lightbulb',
       colorClass: 'orange',
       title: 'We Actually Love This Work',
       description:

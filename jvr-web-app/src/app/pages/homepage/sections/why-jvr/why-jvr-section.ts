@@ -11,28 +11,28 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
 export class WhyJvrSection {
   features = [
     {
-      icon: '🤝',
+      icon: 'pi-handshake',
       dotColor: 'blue',
       title: 'A Trusted Partner, Not a Vendor',
       description:
         'The client has the vision. We make it a reality. We embed with your team, share accountability, and take genuine ownership of outcomes.',
     },
     {
-      icon: '👥',
+      icon: 'pi-users',
       dotColor: 'purple',
       title: 'Team-First Approach',
       description:
         'We face every challenge together — internally and alongside our clients. When something needs solving, everyone is accountable for finding the solution.',
     },
     {
-      icon: '🎯',
+      icon: 'pi-crosshairs',
       dotColor: 'orange',
       title: 'Practical Technology Selection',
       description:
         'We evaluate every technology on one question: does it genuinely help the client? We are not here to sell the latest trend — we are here to build the right solution.',
     },
     {
-      icon: '💡',
+      icon: 'pi-lightbulb',
       dotColor: 'blue',
       title: 'Genuine Passion for the Craft',
       description:
@@ -40,7 +40,7 @@ export class WhyJvrSection {
     },
   ];
 
-  industries = ['Manufacturing', 'Retail', 'Energy', 'Entertainment'];
+  industries = ['Manufacturing', 'Retail', 'Energy', 'Education'];
 
   techStack = ['Azure', 'AWS', 'Angular', 'React', 'Vue', '.NET / C#', 'Node.js', 'Playwright'];
 }
