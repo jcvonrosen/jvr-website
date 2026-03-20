@@ -79,6 +79,7 @@
           mask="(999) 999-9999"
           [ngModel]="contactForm.phone().value()"
           (ngModelChange)="contactForm.phone().value.set($event ?? '')"
+          (onBlur)="phoneTouched.set(true)"
           [ngModelOptions]="{standalone: true}"
           placeholder="(999) 999-9999"
           styleClass="w-full"
@@ -114,6 +115,7 @@
           pTextarea
           [ngModel]="contactForm.message().value()"
           (ngModelChange)="contactForm.message().value.set($event)"
+          (blur)="messageTouched.set(true)"
           [ngModelOptions]="{ standalone: true }"
           placeholder="Tell us about your project, timeline, or any questions you have…"
           rows="5"
@@ -131,25 +133,28 @@
 
       <!-- Actions -->
       <div class="form-actions">
-        <p-button
-          type="submit"
-          label="Send Message"
-          icon="pi pi-send"
-          iconPos="right"
-          [loading]="isSubmitting()"
-          [disabled]="isSubmitting()"
-          class="btn-orange"
-          size="large"
-        />
-        <p-button
-          type="button"
-          label="Clear"
-          icon="pi pi-times"
-          [outlined]="true"
-          (onClick)="clearForm()"
-          severity="secondary"
-          size="large"
-        />
+        <div class="form-buttons">
+          <p-button
+            type="submit"
+            label="Send Message"
+            icon="pi pi-send"
+            iconPos="right"
+            [loading]="isSubmitting()"
+            [disabled]="isSubmitting()"
+            class="btn-orange"
+            size="large"
+          />
+          <p-button
+            type="button"
+            label="Clear"
+            icon="pi pi-times"
+            [outlined]="true"
+            (onClick)="clearForm()"
+            severity="secondary"
+            size="large"
+            [disabled]="!formTouched()"
+          />
+        </div>
         <p class="form-note">
           <span class="pi pi-clock" style="font-size: 12px; margin-right: 4px"></span>
           We typically respond within one business day.

@@ -56,6 +56,12 @@
   padding-top: 4px;
 }
 
+.form-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
 .form-note {
   font-size: 13px;
   color: var(--text-light);

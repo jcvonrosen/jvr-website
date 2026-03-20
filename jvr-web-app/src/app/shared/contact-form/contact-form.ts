@@ -94,6 +94,10 @@ export class ContactForm implements OnInit {
     });
   });
 
+  // ── Manual touched state for ngModel-bound fields ─────────────
+  readonly phoneTouched = signal(false);
+  readonly messageTouched = signal(false);
+
   // ── Form submission state ──────────────────────────────────────
   isSubmitting = signal(false);
   submitSuccess = signal(false);
@@ -114,6 +118,17 @@ export class ContactForm implements OnInit {
     { label: 'UX/UI Design',              value: 'ux-design' },
   ];
 
+  // ── Whether the form has been touched at all ──────────────────
+  readonly formTouched = computed(() =>
+    this.submitted() ||
+    this.contactForm.firstName().touched() ||
+    this.contactForm.lastName().touched() ||
+    this.contactForm.email().touched() ||
+    this.phoneTouched() ||
+    this.contactForm.inquiryType().touched() ||
+    this.messageTouched(),
+  );
+
   // ── Per-field invalid state ────────────────────────────────────
   // Required errors: only after submit.  Format errors: after touch.
   readonly firstNameInvalid = computed(
@@ -126,13 +141,13 @@ export class ContactForm implements OnInit {
     () => (this.contactForm.email().touched() || this.submitted()) && this.contactForm.email().invalid(),
   );
   readonly phoneInvalid = computed(
-    () => this.contactForm.phone().touched() && this.contactForm.phone().invalid(),
+    () => this.phoneTouched() && this.contactForm.phone().invalid(),
   );
   readonly inquiryTypeInvalid = computed(
     () => (this.contactForm.inquiryType().touched() || this.submitted()) && this.contactForm.inquiryType().invalid(),
   );
   readonly messageInvalid = computed(
-    () => (this.contactForm.message().touched() || this.submitted()) && this.contactForm.message().invalid(),
+    () => (this.messageTouched() || this.submitted()) && this.contactForm.message().invalid(),
   );
 
   // ── Init: ensure clean state on component mount ───────────────
@@ -152,6 +167,7 @@ export class ContactForm implements OnInit {
     this.isSubmitting.set(true);
     try {
       // TODO: replace with your backend / API call
+      console.log('Contact form submitted:', this.contactFormModel());
       this.submitSuccess.set(true);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
@@ -166,6 +182,8 @@ export class ContactForm implements OnInit {
     this.contactFormModel.set({ ...EMPTY_FORM });
     this.contactForm().reset();
     this.submitted.set(false);
+    this.phoneTouched.set(false);
+    this.messageTouched.set(false);
     this.submitError.set(null);
   }
 
@@ -174,6 +192,8 @@ export class ContactForm implements OnInit {
     this.contactFormModel.set({ ...EMPTY_FORM });
     this.contactForm().reset();
     this.submitted.set(false);
+    this.phoneTouched.set(false);
+    this.messageTouched.set(false);
     this.submitSuccess.set(false);
     this.submitError.set(null);
   }
