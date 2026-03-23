@@ -1,5 +1,5 @@
 :host { display: block; }
 
 /* Dark-background text overrides */
-.section-header-block.dark .section-title { color: var(--white); }
+.section-header-block.dark .section-title { color: #fff; }
 .section-header-block.dark .section-sub   { color: rgba(255, 255, 255, 0.62); }

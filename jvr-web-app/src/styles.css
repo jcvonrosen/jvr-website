@@ -417,3 +417,128 @@ h4 {
     justify-content: center;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE
+   Toggled by ThemeService via <body class="dark-mode">.
+   PrimeNG components switch automatically via darkModeSelector.
+   ═══════════════════════════════════════════════════════════════ */
+body.dark-mode {
+  /* ── Base palette overrides (propagates to --bg-* aliases
+        and any component using --white/--light/--light-2 directly) */
+  --white:   #0d1829;
+  --light:   #111f35;
+  --light-2: #152239;
+
+  /* ── Section backgrounds (also override aliases explicitly) ── */
+  --bg-white:   #0d1829;
+  --bg-light:   #111f35;
+  --bg-light-2: #152239;
+  --bg-dark:    #060d18;
+
+  /* ── Text ─────────────────────────────────────────────────── */
+  --text:       #eef2ff;
+  --text-mid:   #b8c7e0;
+  --text-light: #7a92b0;
+
+  /* ── Borders & shadows ────────────────────────────────────── */
+  --border:            rgba(255, 255, 255, 0.1);
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 12px 36px rgba(29, 111, 232, 0.25);
+
+  /* ── Brand colours — slightly brighter for dark bg contrast ─ */
+  --blue:      #5b9bf5;
+  --blue-dark: #3a7fe8;
+  --purple:    #9d6bff;
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+body.dark-mode .card-light {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+body.dark-mode .card-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Accent icon boxes ─────────────────────────────────────── */
+body.dark-mode .accent-blue   { background: rgba(29,  111, 232, 0.18); color: #5b9bf5; }
+body.dark-mode .accent-purple { background: rgba(124,  58, 237, 0.18); color: #a78bfa; }
+body.dark-mode .accent-orange { background: rgba(249, 115,  22, 0.18); color: #fb923c; }
+
+/* ── Ghost button (on what is now a dark surface) ──────────── */
+body.dark-mode .btn-ghost-cta {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+body.dark-mode .btn-ghost-cta:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+/* ── Homepage hero stat cards ──────────────────────────────── */
+body.dark-mode .stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+body.dark-mode .stat-badge {
+  background: rgba(22, 163, 74, 0.18);
+  color: #86efac;
+}
+
+/* ── Engagement mode cards (Why Us) ────────────────────────── */
+body.dark-mode .mode-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* ── Industry / stat tags (Case Studies) ───────────────────── */
+body.dark-mode .industry-blue   { background: rgba(29,  111, 232, 0.2); color: #5b9bf5; }
+body.dark-mode .industry-purple { background: rgba(124,  58, 237, 0.2); color: #a78bfa; }
+body.dark-mode .industry-orange { background: rgba(249, 115,  22, 0.2); color: #fb923c; }
+body.dark-mode .stat-blue   { background: rgba(29,  111, 232, 0.1); }
+body.dark-mode .stat-purple { background: rgba(124,  58, 237, 0.1); }
+body.dark-mode .stat-orange { background: rgba(249, 115,  22, 0.1); }
+body.dark-mode .stat-value  { color: var(--text); }
+
+/* ── Tech tags (Services page) ─────────────────────────────── */
+body.dark-mode .tech-tag {
+  background: rgba(29, 111, 232, 0.12);
+  border-color: rgba(29, 111, 232, 0.25);
+  color: #5b9bf5;
+}
+
+/* ── "Best for" callout box (Services page) ────────────────── */
+body.dark-mode .cap-best-for {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Alternating study card (Case Studies) ─────────────────── */
+body.dark-mode .study-alt { background: rgba(255, 255, 255, 0.03); }
+body.dark-mode .study-impact { background: rgba(255, 255, 255, 0.04); }
+body.dark-mode .lesson-quote-mark { color: rgba(255, 255, 255, 0.15); }
+
+/* ── Context note (Case Studies) ───────────────────────────── */
+body.dark-mode .context-note {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Contact page cards ─────────────────────────────────────── */
+body.dark-mode .form-card,
+body.dark-mode .sidebar-block {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+body.dark-mode .sidebar-community {
+  background: linear-gradient(135deg, rgba(29, 111, 232, 0.12), rgba(124, 58, 237, 0.12));
+  border-color: rgba(29, 111, 232, 0.2);
+}
+
+/* ── Process step number badges (How We Work) ───────────────── */
+body.dark-mode {
+  --step-s1-bg: rgba(91, 155, 245, 0.12);
+  --step-s2-bg: rgba(91, 155, 245, 0.12);
+  --step-s3-bg: rgba(157,  107, 255, 0.12);
+  --step-s4-bg: rgba(251, 146,  60, 0.12);
+}

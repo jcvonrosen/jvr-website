@@ -58,6 +58,27 @@
   margin-top: 2px;
 }
 
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.theme-toggle:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: var(--bg-light-2);
+}
+
 :host ::ng-deep .mobile-cta-item {
   display: none;
 }
@@ -92,6 +113,12 @@
     display: none;
   }
 
+  /* Keep the toggle visible on mobile; only hide the CTA button */
+  .menubar-end-group {
+    order: 1;
+    margin-right: 0.5rem;
+  }
+
   :host ::ng-deep .mobile-cta-item {
     display: block;
   }
@@ -114,4 +141,48 @@
     background-color: var(--orange-deep) !important;
     box-shadow: 0 0 24px rgba(249, 115, 22, 0.7) !important;
   }
+}
+
+/* ── Dark mode ───────────────────────────────────────────── */
+:host-context(body.dark-mode) ::ng-deep .p-menubar,
+:host-context(body.dark-mode) ::ng-deep .p-menubar .p-menubar-inner {
+  background: var(--bg-white);
+  border-color: var(--border);
+}
+
+:host-context(body.dark-mode) ::ng-deep .p-menubar-item-link {
+  color: var(--text-mid);
+}
+
+:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover,
+:host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-focus > .p-menubar-item-content {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover .p-menubar-item-link,
+:host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-item-link {
+  color: var(--text) !important;
+}
+
+/* Dropdown submenu panel */
+:host-context(body.dark-mode) ::ng-deep .p-menubar-submenu {
+  background: var(--bg-light);
+  border-color: var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile hamburger button */
+:host-context(body.dark-mode) ::ng-deep .p-menubar-button {
+  color: var(--text-mid);
+  background: transparent;
+}
+:host-context(body.dark-mode) ::ng-deep .p-menubar-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+/* Mobile expanded nav list */
+:host-context(body.dark-mode) ::ng-deep .p-menubar-root-list {
+  background: var(--bg-white);
+  border-color: var(--border);
 }

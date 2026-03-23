@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-top-menubar',
@@ -11,6 +12,7 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './top-menubar.css',
 })
 export class TopMenubar {
+  readonly themeService = inject(ThemeService);
   items: MenuItem[] = [
     { label: 'Home', routerLink: '/home' },
     { label: 'Services', routerLink: '/services' },
@@ -23,6 +25,6 @@ export class TopMenubar {
       ],
     },
     { label: 'Contact', routerLink: '/contact' },
-    { label: 'Get Started', routerLink: '/get-started', styleClass: 'mobile-cta-item' },
+    { label: 'Get Started', routerLink: '/contact', styleClass: 'mobile-cta-item' },
   ];
 }

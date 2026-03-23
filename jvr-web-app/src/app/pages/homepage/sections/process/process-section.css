@@ -34,10 +34,10 @@
   border: 2px solid currentColor;
 }
 
-.step-s1 { color: var(--blue);       background: var(--light-2); border-color: var(--blue); }
-.step-s2 { color: var(--blue-dark);  background: #e8efff;        border-color: var(--blue-dark); }
-.step-s3 { color: var(--purple);     background: #f3edff;        border-color: var(--purple); }
-.step-s4 { color: var(--orange);     background: #fff4ec;        border-color: var(--orange); }
+.step-s1 { color: var(--blue);    background: var(--step-s1-bg, var(--light-2)); border-color: var(--blue); }
+.step-s2 { color: var(--blue);    background: var(--step-s2-bg, #e8efff);        border-color: var(--blue); }
+.step-s3 { color: var(--purple);  background: var(--step-s3-bg, #f3edff);        border-color: var(--purple); }
+.step-s4 { color: var(--orange);  background: var(--step-s4-bg, #fff4ec);        border-color: var(--orange); }
 
 /* ── Step text ─────────────────────────── */
 .step-title {

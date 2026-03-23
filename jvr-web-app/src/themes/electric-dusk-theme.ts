@@ -73,10 +73,10 @@ export const electricDuskTheme = {
           color: 'rgba(255,255,255,0.87)',
           focusColor: 'rgba(255,255,255,0.87)',
         },
-        // Surfaces: deep navy → near-black
+        // Surfaces: dark navy matched to --bg-white / --bg-light / --bg-light-2
         surface: {
-          0: '#FFFFFF',
-          50: '#EEF2FF',
+          0: '#0d1829',   // --bg-white (dark)
+          50: '#111f35',  // --bg-light (dark)
           100: '#1A2235',
           200: '#16202E',
           300: '#121A28',

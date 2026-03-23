@@ -90,7 +90,7 @@
 /* Actions — flex layout handled inline via PrimeFlex */
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: var(--white);
+  color: #fff;
   padding: 14px 28px;
   border-radius: 8px;
   font-weight: 600;

@@ -51,7 +51,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 40px;
   font-weight: 800;
-  color: var(--white);
+  color: #fff;
   letter-spacing: 0.01em;
   margin-bottom: 8px;
 }
@@ -70,7 +70,7 @@
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.03em;
-  color: var(--light);
+  color: rgba(255, 255, 255, 0.62);
   margin: 0 0 36px;
 }
 
@@ -80,7 +80,7 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--white);
+  color: #fff;
   margin: 0 0 24px;
 }
 
@@ -127,31 +127,31 @@
 .pill:hover {
   background: rgba(255, 255, 255, 0.32);
   border-color: rgba(255, 255, 255, 0.6);
-  color: var(--white);
+  color: #fff;
 }
 
 .pill-accent {
   background: rgba(249, 115, 22, 0.35);
   border-color: rgba(249, 115, 22, 0.65);
-  color: var(--white);
+  color: #fff;
 }
 
 .pill-accent:hover {
   background: rgba(249, 115, 22, 0.72);
   border-color: var(--orange);
-  color: var(--white);
+  color: #fff;
 }
 
 .pill-brand {
   background: rgba(29, 111, 232, 0.42);
   border-color: rgba(29, 111, 232, 0.75);
-  color: var(--white);
+  color: #fff;
 }
 
 .pill-brand:hover {
   background: rgba(147, 51, 255, 0.78);
   border-color: rgba(147, 51, 255, 1);
-  color: var(--white);
+  color: #fff;
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

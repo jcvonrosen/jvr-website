@@ -42,14 +42,14 @@ export class AboutUs {
 
   values = [
     {
-      icon: 'pi-handshake',
+      icon: 'pi-users',
       colorClass: 'blue',
       title: 'Success Is a Team Sport',
       description:
         'We tackle challenges together — with each other and with our clients. When something needs solving, we own it as a team. That means honest communication, shared accountability, and showing up fully, even when things get complicated.',
     },
     {
-      icon: 'pi-crosshairs',
+      icon: 'pi-bullseye',
       colorClass: 'purple',
       title: 'Right Tool, Not the Trending One',
       description:
