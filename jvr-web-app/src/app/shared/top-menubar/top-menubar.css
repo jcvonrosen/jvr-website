@@ -78,6 +78,10 @@
   border-color: var(--blue);
   background: var(--bg-light-2);
 }
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
 
 :host ::ng-deep .mobile-cta-item {
   display: none;

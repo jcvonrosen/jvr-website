@@ -110,7 +110,7 @@
       @for (scenario of scenarios; track scenario.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'icon-box icon-box-md accent-' + scenario.colorClass"><i [class]="'pi ' + scenario.icon"></i></div>
+            <div [class]="'icon-box icon-box-md accent-' + scenario.colorClass" aria-hidden="true"><i [class]="'pi ' + scenario.icon"></i></div>
             <h3 class="card-title">{{ scenario.title }}</h3>
             <p class="card-desc">{{ scenario.description }}</p>
           </div>
@@ -134,7 +134,7 @@
       @for (cap of capabilities; track cap.title) {
         <div class="col-12 md:col-6 lg:col-4">
           <div class="card-light wwd-card">
-            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass" aria-hidden="true">
               <i [class]="'pi ' + cap.icon"></i>
             </div>
             <h3 class="card-title">{{ cap.title }}</h3>

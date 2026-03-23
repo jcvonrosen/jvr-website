@@ -26,7 +26,7 @@
       @for (cap of capabilities; track cap.title) {
         <div class="col-12 md:col-6">
           <div class="cap-card card-light" [id]="cap.id">
-            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass" aria-hidden="true">
               <i [class]="'pi ' + cap.icon"></i>
             </div>
             <h3 class="card-title">{{ cap.title }}</h3>
@@ -86,7 +86,7 @@
       @for (model of engagementModels; track model.title) {
         <div class="col-12 md:col-4">
           <div class="card-light engage-card">
-            <div [class]="'icon-box icon-box-md accent-' + model.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + model.colorClass" aria-hidden="true">
               <i [class]="'pi ' + model.icon"></i>
             </div>
             <h3 class="card-title">{{ model.title }}</h3>
@@ -117,7 +117,7 @@
       <ul class="limits-list">
         @for (limit of honestLimits; track limit) {
           <li class="limit-item">
-            <i class="pi pi-times-circle limit-icon"></i>
+            <i class="pi pi-times-circle limit-icon" aria-hidden="true"></i>
             <span>{{ limit }}</span>
           </li>
         }

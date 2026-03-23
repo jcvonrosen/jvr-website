@@ -1,7 +1,8 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
 @if (showShell()) {
   <app-top-menubar />
 }
-<main [class]="showShell() ? 'page-content' : ''">
+<main id="main-content" [class]="showShell() ? 'page-content' : ''">
   <router-outlet />
 </main>
 @if (showShell()) {

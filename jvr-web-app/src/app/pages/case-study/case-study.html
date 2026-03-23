@@ -16,7 +16,7 @@
 <section class="context-section">
   <div class="section-inner">
     <div class="context-note">
-      <i class="pi pi-info-circle context-icon"></i>
+      <i class="pi pi-info-circle context-icon" aria-hidden="true"></i>
       <p>
         Client names and logos are not currently published at this time. Projects below are
         described by industry and challenge type. We are actively working on formal case study
@@ -93,7 +93,7 @@
     <div class="industries-row flex flex-wrap justify-content-center gap-3 mt-5">
       @for (ind of industries; track ind.label) {
         <div class="industry-chip">
-          <i [class]="'pi ' + ind.icon + ' industry-chip-icon'"></i>
+          <i [class]="'pi ' + ind.icon + ' industry-chip-icon'" aria-hidden="true"></i>
           <span>{{ ind.label }}</span>
         </div>
       }

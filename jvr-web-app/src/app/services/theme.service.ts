@@ -4,9 +4,9 @@ const STORAGE_KEY = 'jvr-theme';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  /** True = dark mode. Defaults to false (light) for first-time visitors. */
+  /** True = dark mode. Defaults to true (dark) for first-time visitors. */
   readonly isDark = signal<boolean>(
-    localStorage.getItem(STORAGE_KEY) === 'dark'
+    localStorage.getItem(STORAGE_KEY) !== 'light'
   );
 
   constructor() {

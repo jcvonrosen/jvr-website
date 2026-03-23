@@ -83,7 +83,7 @@
       @for (value of values; track value.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'icon-box icon-box-md accent-' + value.colorClass"><i [class]="'pi ' + value.icon"></i></div>
+            <div [class]="'icon-box icon-box-md accent-' + value.colorClass" aria-hidden="true"><i [class]="'pi ' + value.icon"></i></div>
             <h3 class="card-title">{{ value.title }}</h3>
             <p class="card-desc">{{ value.description }}</p>
           </div>
@@ -154,7 +154,7 @@
         <div class="involvement-list flex flex-column gap-4">
 
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-blue"><i class="pi pi-microphone"></i></div>
+            <div class="inv-icon accent-blue" aria-hidden="true"><i class="pi pi-microphone"></i></div>
             <div>
               <h4 class="inv-title">Beer City Code</h4>
               <p class="inv-desc">
@@ -166,7 +166,7 @@
           </div>
 
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-purple"><i class="pi pi-cloud"></i></div>
+            <div class="inv-icon accent-purple" aria-hidden="true"><i class="pi pi-cloud"></i></div>
             <div>
               <h4 class="inv-title">West Michigan Azure Users Group</h4>
               <p class="inv-desc">
@@ -177,7 +177,7 @@
           </div>
 
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-orange"><i class="pi pi-graduation-cap"></i></div>
+            <div class="inv-icon accent-orange" aria-hidden="true"><i class="pi pi-graduation-cap"></i></div>
             <div>
               <h4 class="inv-title">Hour of Code</h4>
               <p class="inv-desc">

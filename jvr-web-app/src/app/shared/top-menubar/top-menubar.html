@@ -1,3 +1,4 @@
+<nav aria-label="Main navigation">
 <p-menubar [model]="items">
 
   <ng-template #start>
@@ -15,9 +16,10 @@
       <button
         class="theme-toggle"
         (click)="themeService.toggle()"
-        [title]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        type="button"
       >
-        <i [class]="'pi ' + (themeService.isDark() ? 'pi-sun' : 'pi-moon')"></i>
+        <i [class]="'pi ' + (themeService.isDark() ? 'pi-sun' : 'pi-moon')" aria-hidden="true"></i>
       </button>
       <div class="cta-btn-wrapper pr-3">
         <p-button label="Get Started" routerLink="/contact" class="btn-orange" />
@@ -26,3 +28,4 @@
   </ng-template>
 
 </p-menubar>
+</nav>

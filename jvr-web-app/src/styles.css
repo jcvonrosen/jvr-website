@@ -60,6 +60,29 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Skip navigation link — visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  z-index: 9999;
+  background: var(--blue);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    BASE RESET & BODY
    ═══════════════════════════════════════════════════════════════ */
 *,
@@ -218,6 +241,10 @@ h4 {
   opacity: 0.88;
   box-shadow: var(--shadow-btn-hover);
 }
+.btn-primary-cta:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
 
 /* Ghost on light backgrounds */
 .btn-ghost-cta {
@@ -238,6 +265,10 @@ h4 {
 .btn-ghost-cta:hover {
   border-color: var(--blue);
   color: var(--blue-dark);
+}
+.btn-ghost-cta:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
 }
 
 /* Ghost on dark backgrounds — also used as the dark-mode clear/outlined button style */
@@ -263,6 +294,11 @@ h4 {
   border-color: rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
+}
+.btn-ghost-light:focus-visible,
+.btn-clear:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -292,6 +328,7 @@ h4 {
   transition: color 0.2s;
 }
 .card-link:hover { color: var(--blue-dark); }
+.card-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
 
 /* ═══════════════════════════════════════════════════════════════
    SHARED CARDS

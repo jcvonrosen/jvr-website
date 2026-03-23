@@ -1,7 +1,7 @@
 <!-- ── Success state ─────────────────────────────────────────────── -->
 @if (submitSuccess()) {
-  <div class="form-success">
-    <div class="success-icon"><i class="pi pi-check-circle"></i></div>
+  <div class="form-success" role="status" aria-live="polite">
+    <div class="success-icon"><i class="pi pi-check-circle" aria-hidden="true"></i></div>
     <h3 class="success-title">Message Sent!</h3>
     <p class="success-body">
       Thanks for reaching out. We'll review your message and get back to you within one business
@@ -11,13 +11,14 @@
   </div>
 } @else {
   <!-- ── Form ──────────────────────────────────────────────────────── -->
-  <form class="contact-form" (submit)="onSubmit(); $event.preventDefault()">
+  <form class="contact-form" (submit)="onSubmit(); $event.preventDefault()" novalidate aria-label="Contact form">
+    <p class="form-required-note"><span aria-hidden="true">* </span>Required fields</p>
     <div class="form-fields">
       <!-- Name row -->
       <div class="form-row">
         <div class="form-field">
           <label for="cf-firstName" class="form-label">
-            First Name <span class="required">*</span>
+            First Name <span class="required" aria-hidden="true">*</span>
           </label>
           <input
             id="cf-firstName"
@@ -26,15 +27,18 @@
             [formField]="contactForm.firstName"
             placeholder="Jane"
             class="w-full"
+            aria-required="true"
+            [attr.aria-describedby]="firstNameInvalid() ? 'cf-firstName-error' : null"
+            [attr.aria-invalid]="firstNameInvalid() ? 'true' : null"
           />
           @if (firstNameInvalid()) {
-            <small class="field-error">{{ contactForm.firstName().errors()[0].message }}</small>
+            <small id="cf-firstName-error" class="field-error" role="alert">{{ contactForm.firstName().errors()[0].message }}</small>
           }
         </div>
 
         <div class="form-field">
           <label for="cf-lastName" class="form-label">
-            Last Name <span class="required">*</span>
+            Last Name <span class="required" aria-hidden="true">*</span>
           </label>
           <input
             id="cf-lastName"
@@ -43,9 +47,12 @@
             [formField]="contactForm.lastName"
             placeholder="Smith"
             class="w-full"
+            aria-required="true"
+            [attr.aria-describedby]="lastNameInvalid() ? 'cf-lastName-error' : null"
+            [attr.aria-invalid]="lastNameInvalid() ? 'true' : null"
           />
           @if (lastNameInvalid()) {
-            <small class="field-error">{{ contactForm.lastName().errors()[0].message }}</small>
+            <small id="cf-lastName-error" class="field-error" role="alert">{{ contactForm.lastName().errors()[0].message }}</small>
           }
         </div>
       </div>
@@ -53,7 +60,7 @@
       <!-- Email -->
       <div class="form-field">
         <label for="cf-email" class="form-label">
-          Email Address <span class="required">*</span>
+          Email Address <span class="required" aria-hidden="true">*</span>
         </label>
         <input
           id="cf-email"
@@ -63,9 +70,12 @@
           (blur)="contactForm.email().touched()"
           placeholder="jane@example.com"
           class="w-full"
+          aria-required="true"
+          [attr.aria-describedby]="emailInvalid() ? 'cf-email-error' : null"
+          [attr.aria-invalid]="emailInvalid() ? 'true' : null"
         />
         @if (emailInvalid()) {
-          <small class="field-error">{{ contactForm.email().errors()[0].message }}</small>
+          <small id="cf-email-error" class="field-error" role="alert">{{ contactForm.email().errors()[0].message }}</small>
         }
       </div>
 
@@ -89,7 +99,7 @@
       <!-- Inquiry Type -->
       <div class="form-field">
         <label for="cf-inquiry" class="form-label">
-          How Can We Help? <span class="required">*</span>
+          How Can We Help? <span class="required" aria-hidden="true">*</span>
         </label>
         <p-select
           inputId="cf-inquiry"
@@ -101,15 +111,18 @@
           optionValue="value"
           placeholder="Select an inquiry type"
           styleClass="w-full"
+          [attr.aria-required]="true"
+          [attr.aria-describedby]="inquiryTypeInvalid() ? 'cf-inquiry-error' : null"
+          [attr.aria-invalid]="inquiryTypeInvalid() ? 'true' : null"
         />
         @if (inquiryTypeInvalid()) {
-          <small class="field-error">{{ contactForm.inquiryType().errors()[0].message }}</small>
+          <small id="cf-inquiry-error" class="field-error" role="alert">{{ contactForm.inquiryType().errors()[0].message }}</small>
         }
       </div>
 
       <!-- Message -->
       <div class="form-field">
-        <label for="cf-message" class="form-label"> Message <span class="required">*</span> </label>
+        <label for="cf-message" class="form-label"> Message <span class="required" aria-hidden="true">*</span> </label>
         <textarea
           id="cf-message"
           pTextarea
@@ -120,15 +133,18 @@
           placeholder="Tell us about your project, timeline, or any questions you have…"
           rows="5"
           class="w-full"
+          aria-required="true"
+          [attr.aria-describedby]="messageInvalid() ? 'cf-message-error' : null"
+          [attr.aria-invalid]="messageInvalid() ? 'true' : null"
         ></textarea>
         @if (messageInvalid()) {
-          <small class="field-error">{{ contactForm.message().errors()[0].message }}</small>
+          <small id="cf-message-error" class="field-error" role="alert">{{ contactForm.message().errors()[0].message }}</small>
         }
       </div>
 
       <!-- Submission error -->
       @if (submitError()) {
-        <p-message severity="error" [text]="submitError()!" />
+        <p-message severity="error" [text]="submitError()!" aria-live="assertive" />
       }
 
       <!-- Actions -->
@@ -153,10 +169,11 @@
             severity="secondary"
             size="large"
             [disabled]="!formTouched()"
+            aria-label="Clear form"
           />
         </div>
         <p class="form-note">
-          <span class="pi pi-clock" style="font-size: 12px; margin-right: 4px"></span>
+          <i class="pi pi-clock" aria-hidden="true" style="font-size: 12px; margin-right: 4px"></i>
           We typically respond within one business day.
         </p>
       </div>
