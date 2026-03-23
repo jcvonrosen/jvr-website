@@ -12,32 +12,8 @@
   height: 100%;
 }
 
-.cap-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 18px;
-  flex-shrink: 0;
-}
-
-.cap-title {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 10px;
-}
-
-.cap-desc {
-  font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.8;
-  margin: 0 0 14px;
-  flex: 1;
-}
+/* flex: 1 keeps desc expanding; extra bottom margin before "Best for" */
+.cap-card .cap-desc { flex: 1; margin: 0 0 14px; }
 
 .cap-best-for {
   font-size: 13px;
@@ -111,31 +87,7 @@
   height: 100%;
 }
 
-.engage-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 18px;
-}
-
-.engage-title {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 10px;
-}
-
-.engage-desc {
-  font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.8;
-  margin: 0;
-  flex: 1;
-}
+.engage-card .engage-desc { flex: 1; }
 
 /* ─── HONEST LIMITS ──────────────────────────────────────────── */
 .limits-section {
@@ -182,22 +134,14 @@
   flex-shrink: 0;
 }
 
-/* ─── CTA ────────────────────────────────────────────────────── */
-.services-cta-section {
-  background: var(--gradient-hero-bg);
-  padding: 88px 0;
-}
-
-.services-cta-section .section-title { color: #fff; }
-.services-cta-section .cta-sub       { color: rgba(255, 255, 255, 0.68); }
+/* ─── CTA → global .page-cta-section ────────────────────────── */
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .capabilities-section,
   .stack-section,
   .engagement-section,
-  .limits-section,
-  .services-cta-section { padding: 60px 0; }
+  .limits-section { padding: 60px 0; }
 
   .limits-inner {
     grid-template-columns: 1fr;

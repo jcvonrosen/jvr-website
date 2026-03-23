@@ -26,11 +26,11 @@
       @for (cap of capabilities; track cap.title) {
         <div class="col-12 md:col-6">
           <div class="cap-card card-light" [id]="cap.id">
-            <div [class]="'cap-icon accent-' + cap.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass">
               <i [class]="'pi ' + cap.icon"></i>
             </div>
-            <h3 class="cap-title">{{ cap.title }}</h3>
-            <p class="cap-desc">{{ cap.description }}</p>
+            <h3 class="card-title">{{ cap.title }}</h3>
+            <p class="card-desc cap-desc">{{ cap.description }}</p>
             <p class="cap-best-for"><strong>Best for:</strong> {{ cap.bestFor }}</p>
             <div class="flex flex-wrap gap-2 mt-3">
               @for (tag of cap.tags; track tag) {
@@ -86,11 +86,11 @@
       @for (model of engagementModels; track model.title) {
         <div class="col-12 md:col-4">
           <div class="card-light engage-card">
-            <div [class]="'engage-icon accent-' + model.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + model.colorClass">
               <i [class]="'pi ' + model.icon"></i>
             </div>
-            <h3 class="engage-title">{{ model.title }}</h3>
-            <p class="engage-desc">{{ model.description }}</p>
+            <h3 class="card-title">{{ model.title }}</h3>
+            <p class="card-desc engage-desc">{{ model.description }}</p>
           </div>
         </div>
       }
@@ -128,7 +128,7 @@
 </section>
 
 <!-- ─── CTA ───────────────────────────────────────────────────── -->
-<section class="services-cta-section">
+<section class="page-cta-section">
   <div class="section-inner text-center">
     <span class="section-label light">Get Started</span>
     <h2 class="section-title cta-heading">

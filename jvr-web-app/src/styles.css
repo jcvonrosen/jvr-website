@@ -252,6 +252,34 @@ h4 {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SHARED CARD CONTENT
+   Reusable title / description / link patterns for all card types.
+   ═══════════════════════════════════════════════════════════════ */
+.card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.card-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  margin-top: 14px;
+  transition: color 0.2s;
+}
+.card-link:hover { color: var(--blue-dark); }
+
+/* ═══════════════════════════════════════════════════════════════
    SHARED CARDS
    Use these base classes in HTML; add component-specific classes
    alongside them for any personalised overrides.
@@ -301,20 +329,33 @@ h4 {
   flex-shrink: 0;
 }
 
+/* Standard 48px icon box used on cards across all pages */
+.icon-box-md {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    ACCENT ICON BACKGROUND UTILITIES
    Tinted containers for icons / badges — pair with .icon-box
    or any sized element.
    ═══════════════════════════════════════════════════════════════ */
-.accent-blue {
-  background: var(--light-2);
+.accent-blue   { background: var(--light-2); color: var(--blue); }
+.accent-purple { background: #f3edff;        color: var(--purple); }
+.accent-orange { background: #fff4ec;        color: var(--orange); }
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK GRADIENT CTA SECTION
+   Use on any section with the hero-bg gradient (dark pages).
+   ═══════════════════════════════════════════════════════════════ */
+.page-cta-section {
+  background: var(--gradient-hero-bg);
+  padding: 88px 0;
 }
-.accent-purple {
-  background: #f3edff;
-}
-.accent-orange {
-  background: #fff4ec;
-}
+.page-cta-section .section-title { color: #fff; }
+.page-cta-section .cta-sub       { color: rgba(255, 255, 255, 0.68); }
 
 /* ═══════════════════════════════════════════════════════════════
    PRIMENG BUTTON OVERRIDES
@@ -349,6 +390,7 @@ h4 {
   .page-hero {
     padding: 60px 0 52px;
   }
+  .page-cta-section { padding: 60px 0; }
   .page-hero .hero-heading {
     font-size: 40px;
   }

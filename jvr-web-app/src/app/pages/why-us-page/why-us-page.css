@@ -98,22 +98,6 @@
   padding: 80px 0;
 }
 
-/* .scenario-card → global .card-light */
-.scenario-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 18px;
-}
-
-.scenario-title { font-size: 19px; font-weight: 700; color: var(--text); margin: 0 0 10px; }
-
-.scenario-desc { font-size: 14px; color: var(--text-light); line-height: 1.8; margin: 0; }
-
 /* ─── WHAT WE BRING ──────────────────────────────────────────── */
 .wwd-section {
   background: var(--bg-light);
@@ -126,42 +110,8 @@
   height: 100%;
 }
 
-.wwd-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 18px;
-  flex-shrink: 0;
-}
-
-.wwd-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 10px;
-}
-
-.wwd-desc {
-  font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.8;
-  margin: 0;
-  flex: 1;
-}
-
-.wwd-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--blue);
-  text-decoration: none;
-  margin-top: 14px;
-  transition: color 0.2s;
-}
-.wwd-link:hover { color: var(--blue-dark); }
+/* flex: 1 keeps the desc expanding so the link stays at the bottom */
+.wwd-card .wwd-desc { flex: 1; }
 
 /* ─── RESULTS IN PRACTICE ────────────────────────────────────── */
 .results-section {
@@ -267,23 +217,13 @@
 }
 .mini-study-link:hover { color: #93c5fd; }
 
-/* ─── CTA ───────────────────────────────────────────────────── */
-/* .btn-primary-cta → global styles.css                         */
-/* .btn-ghost-light  → global styles.css                        */
-.why-cta-section {
-  background: var(--gradient-hero-bg);
-  padding: 88px 0;
-}
-
-/* Dark-background text overrides */
-.why-cta-section .section-title { color: #fff; }
-.why-cta-section .cta-sub       { color: rgba(255, 255, 255, 0.68); }
+/* ─── CTA → global .page-cta-section ────────────────────────── */
 
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .engage-section,
   .process-section,
   .scenarios-section,
-  .outcomes-section,
-  .why-cta-section { padding: 60px 0; }
+  .wwd-section,
+  .results-section { padding: 60px 0; }
 }

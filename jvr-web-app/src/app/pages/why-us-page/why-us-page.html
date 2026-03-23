@@ -110,9 +110,9 @@
       @for (scenario of scenarios; track scenario.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'scenario-icon accent-' + scenario.colorClass"><i [class]="'pi ' + scenario.icon"></i></div>
-            <h3 class="scenario-title">{{ scenario.title }}</h3>
-            <p class="scenario-desc">{{ scenario.description }}</p>
+            <div [class]="'icon-box icon-box-md accent-' + scenario.colorClass"><i [class]="'pi ' + scenario.icon"></i></div>
+            <h3 class="card-title">{{ scenario.title }}</h3>
+            <p class="card-desc">{{ scenario.description }}</p>
           </div>
         </div>
       }
@@ -134,12 +134,12 @@
       @for (cap of capabilities; track cap.title) {
         <div class="col-12 md:col-6 lg:col-4">
           <div class="card-light wwd-card">
-            <div [class]="'wwd-icon accent-' + cap.colorClass">
+            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass">
               <i [class]="'pi ' + cap.icon"></i>
             </div>
-            <h3 class="wwd-title">{{ cap.title }}</h3>
-            <p class="wwd-desc">{{ cap.description }}</p>
-            <a [routerLink]="'/services'" [fragment]="cap.fragment" class="wwd-link">Learn more →</a>
+            <h3 class="card-title">{{ cap.title }}</h3>
+            <p class="card-desc wwd-desc">{{ cap.description }}</p>
+            <a [routerLink]="'/services'" [fragment]="cap.fragment" class="card-link">Learn more →</a>
           </div>
         </div>
       }
@@ -192,7 +192,7 @@
 </section>
 
 <!-- ─── CTA ──────────────────────────────────────────────────── -->
-<section class="why-cta-section">
+<section class="page-cta-section">
   <div class="section-inner text-center">
     <span class="section-label light">Get Started</span>
     <h2 class="section-title cta-heading">

@@ -83,9 +83,9 @@
       @for (value of values; track value.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'value-icon accent-' + value.colorClass"><i [class]="'pi ' + value.icon"></i></div>
-            <h3 class="value-title">{{ value.title }}</h3>
-            <p class="value-desc">{{ value.description }}</p>
+            <div [class]="'icon-box icon-box-md accent-' + value.colorClass"><i [class]="'pi ' + value.icon"></i></div>
+            <h3 class="card-title">{{ value.title }}</h3>
+            <p class="card-desc">{{ value.description }}</p>
           </div>
         </div>
       }

@@ -12,14 +12,15 @@
 export const electricDuskTheme = {
   semantic: {
     // Maps PrimeNG's "primary" action scale to blue→indigo→violet
+    // 500 anchors to brand blue (#1D6FE8 ≈ blue.600 in Tailwind scale)
     primary: {
-      50: '{blue.50}',
+      50:  '{blue.50}',
       100: '{blue.100}',
-      200: '{indigo.200}',
-      300: '{indigo.300}',
-      400: '{indigo.400}',
-      500: '{indigo.500}',
-      600: '{violet.600}',
+      200: '{blue.200}',
+      300: '{blue.300}',
+      400: '{blue.400}',
+      500: '{blue.600}',   // ≈ #1D6FE8 — brand blue
+      600: '{indigo.600}',
       700: '{violet.700}',
       800: '{violet.800}',
       900: '{violet.900}',
@@ -41,11 +42,11 @@ export const electricDuskTheme = {
           color: '#9A3412',
           focusColor: '#7C2D12',
         },
-        // Surfaces: white → light grays (direct hex, no broken self-references)
+        // Surfaces: aligned to brand --bg-white / --bg-light / --bg-light-2
         surface: {
-          0: '#FFFFFF',
-          50: '#F8F9FC',
-          100: '#F1F5F9',
+          0: '#FFFFFF',   // --bg-white
+          50: '#F8F9FC',  // --bg-light
+          100: '#EEF2FF', // --bg-light-2
           200: '#E2E8F0',
           300: '#CBD5E1',
           400: '#94A3B8',

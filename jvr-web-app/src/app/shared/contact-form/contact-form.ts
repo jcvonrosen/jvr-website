@@ -32,7 +32,7 @@ const EMPTY_FORM: ContactFormModel = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const NAME_RE  = /^[a-zA-Z\-]+$/;
+const NAME_RE = /^[a-zA-Z\-]+$/;
 
 @Component({
   selector: 'app-contact-form',
@@ -52,16 +52,20 @@ export class ContactForm implements OnInit {
     // ── firstName ────────────────────────────────────────────────
     validate(schema.firstName, ({ value }) => {
       const v = value().trim();
-      if (!v) return this.submitted() ? { kind: 'required', message: 'First name is required.' } : null;
-      if (!NAME_RE.test(v)) return { kind: 'invalid', message: 'First name may only contain letters and hyphens.' };
+      if (!v)
+        return this.submitted() ? { kind: 'required', message: 'First name is required.' } : null;
+      if (!NAME_RE.test(v))
+        return { kind: 'invalid', message: 'First name may only contain letters and hyphens.' };
       return null;
     });
 
     // ── lastName ─────────────────────────────────────────────────
     validate(schema.lastName, ({ value }) => {
       const v = value().trim();
-      if (!v) return this.submitted() ? { kind: 'required', message: 'Last name is required.' } : null;
-      if (!NAME_RE.test(v)) return { kind: 'invalid', message: 'Last name may only contain letters and hyphens.' };
+      if (!v)
+        return this.submitted() ? { kind: 'required', message: 'Last name is required.' } : null;
+      if (!NAME_RE.test(v))
+        return { kind: 'invalid', message: 'Last name may only contain letters and hyphens.' };
       return null;
     });
 
@@ -69,7 +73,8 @@ export class ContactForm implements OnInit {
     validate(schema.email, ({ value }) => {
       const v = value().trim();
       if (!v) return this.submitted() ? { kind: 'required', message: 'Email is required.' } : null;
-      if (!EMAIL_RE.test(v)) return { kind: 'email', message: 'Please enter a valid email address.' };
+      if (!EMAIL_RE.test(v))
+        return { kind: 'email', message: 'Please enter a valid email address.' };
       return null;
     });
 
@@ -83,13 +88,15 @@ export class ContactForm implements OnInit {
 
     // ── inquiryType ──────────────────────────────────────────────
     validate(schema.inquiryType, ({ value }) => {
-      if (!value() && this.submitted()) return { kind: 'required', message: 'Please select an inquiry type.' };
+      if (!value() && this.submitted())
+        return { kind: 'required', message: 'Please select an inquiry type.' };
       return null;
     });
 
     // ── message ──────────────────────────────────────────────────
     validate(schema.message, ({ value }) => {
-      if (!value().trim() && this.submitted()) return { kind: 'required', message: 'Message is required.' };
+      if (!value().trim() && this.submitted())
+        return { kind: 'required', message: 'Message is required.' };
       return null;
     });
   });
@@ -105,44 +112,51 @@ export class ContactForm implements OnInit {
 
   // ── Inquiry type options ───────────────────────────────────────
   readonly inquiryOptions: InquiryOption[] = [
-    { label: 'Full-Stack Development',       value: 'full-stack' },
+    { label: 'Full-Stack Development', value: 'full-stack' },
     { label: 'Cloud Architecture & Migration', value: 'cloud' },
-    { label: 'ETL & Data Pipelines',         value: 'etl' },
-    { label: 'Automated Testing & QA',       value: 'testing' },
-    { label: 'AI Workflow Integration',      value: 'ai' },
-    { label: 'Team Augmentation',            value: 'team' },
-    { label: 'General Inquiry',              value: 'general' },
-    { label: 'Careers',                      value: 'careers' },
-    { label: 'Billing',                      value: 'billing' },
+    { label: 'ETL & Data Pipelines', value: 'etl' },
+    { label: 'Automated Testing & QA', value: 'testing' },
+    { label: 'AI Workflow Integration', value: 'ai' },
+    { label: 'Team Augmentation', value: 'team' },
+    { label: 'General Inquiry', value: 'general' },
+    { label: 'Careers', value: 'careers' },
+    { label: 'Billing', value: 'billing' },
   ];
 
   // ── Whether the form has been touched at all ──────────────────
-  readonly formTouched = computed(() =>
-    this.submitted() ||
-    this.contactForm.firstName().touched() ||
-    this.contactForm.lastName().touched() ||
-    this.contactForm.email().touched() ||
-    this.phoneTouched() ||
-    this.contactForm.inquiryType().touched() ||
-    this.messageTouched(),
+  readonly formTouched = computed(
+    () =>
+      this.submitted() ||
+      this.contactForm.firstName().touched() ||
+      this.contactForm.lastName().touched() ||
+      this.contactForm.email().touched() ||
+      this.phoneTouched() ||
+      this.contactForm.inquiryType().touched() ||
+      this.messageTouched(),
   );
 
   // ── Per-field invalid state ────────────────────────────────────
   // Required errors: only after submit.  Format errors: after touch.
   readonly firstNameInvalid = computed(
-    () => (this.contactForm.firstName().touched() || this.submitted()) && this.contactForm.firstName().invalid(),
+    () =>
+      (this.contactForm.firstName().touched() || this.submitted()) &&
+      this.contactForm.firstName().invalid(),
   );
   readonly lastNameInvalid = computed(
-    () => (this.contactForm.lastName().touched() || this.submitted()) && this.contactForm.lastName().invalid(),
+    () =>
+      (this.contactForm.lastName().touched() || this.submitted()) &&
+      this.contactForm.lastName().invalid(),
   );
   readonly emailInvalid = computed(
-    () => (this.contactForm.email().touched() || this.submitted()) && this.contactForm.email().invalid(),
+    () =>
+      (this.contactForm.email().touched() || this.submitted()) &&
+      this.contactForm.email().invalid(),
   );
-  readonly phoneInvalid = computed(
-    () => this.phoneTouched() && this.contactForm.phone().invalid(),
-  );
+  readonly phoneInvalid = computed(() => this.phoneTouched() && this.contactForm.phone().invalid());
   readonly inquiryTypeInvalid = computed(
-    () => (this.contactForm.inquiryType().touched() || this.submitted()) && this.contactForm.inquiryType().invalid(),
+    () =>
+      (this.contactForm.inquiryType().touched() || this.submitted()) &&
+      this.contactForm.inquiryType().invalid(),
   );
   readonly messageInvalid = computed(
     () => (this.messageTouched() || this.submitted()) && this.contactForm.message().invalid(),
@@ -157,7 +171,7 @@ export class ContactForm implements OnInit {
 
   // ── Submit ─────────────────────────────────────────────────────
   async onSubmit(): Promise<void> {
-    this.submitted.set(true);   // triggers required validators reactively
+    this.submitted.set(true); // triggers required validators reactively
     this.submitError.set(null);
 
     if (!this.contactForm().valid()) return;
