@@ -87,20 +87,6 @@
   margin: 0 0 36px;
 }
 
-/* Actions — flex layout handled inline via PrimeFlex */
-.btn-primary {
-  background: var(--gradient-brand);
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.btn-primary:hover { opacity: 0.88; }
-
 .btn-secondary {
   color: var(--blue);
   font-weight: 600;
@@ -163,8 +149,8 @@
 .stat-badge {
   display: inline-flex;
   align-items: center;
-  background: #dcfce7;
-  color: #166534;
+  background: var(--success-bg);
+  color: var(--success-color);
   font-size: 11px;
   font-weight: 600;
   padding: 3px 10px;

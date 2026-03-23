@@ -57,6 +57,11 @@
   --blue-on-dark:   #60a5fa;
   --purple-on-dark: #a78bfa;
   --orange-on-dark: #fb923c;
+
+  /* ── Status colours ───────────────────────────────────────── */
+  --error:        #dc2626;
+  --success-bg:   #dcfce7;
+  --success-color: #166534;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -530,6 +535,10 @@ body.dark-mode {
   /* ── Gradients — full-saturation brand colours for dark mode ─ */
   --gradient-brand:  linear-gradient(135deg, #1D6FE8 0%, #9333ea 100%);
   --gradient-accent: linear-gradient(90deg,  #1D6FE8, #9333ea, #f97316);
+
+  /* ── Status colours ───────────────────────────────────────── */
+  --success-bg:    rgba(22, 163, 74, 0.18);
+  --success-color: #86efac;
 }
 
 /* ── Cards ─────────────────────────────────────────────────── */
@@ -558,8 +567,8 @@ body.dark-mode .stat-card {
   border-color: rgba(255, 255, 255, 0.09);
 }
 body.dark-mode .stat-badge {
-  background: rgba(22, 163, 74, 0.18);
-  color: #86efac;
+  background: var(--success-bg);
+  color: var(--success-color);
 }
 
 /* ── Engagement mode cards (Why Us) ────────────────────────── */
@@ -569,9 +578,9 @@ body.dark-mode .mode-card {
 }
 
 /* ── Industry / stat tags (Case Studies) ───────────────────── */
-body.dark-mode .industry-blue   { background: rgba(29,  111, 232, 0.2); color: #5b9bf5; }
-body.dark-mode .industry-purple { background: rgba(124,  58, 237, 0.2); color: #a78bfa; }
-body.dark-mode .industry-orange { background: rgba(249, 115,  22, 0.2); color: #fb923c; }
+body.dark-mode .industry-blue   { background: rgba(29,  111, 232, 0.2); color: var(--blue); }
+body.dark-mode .industry-purple { background: rgba(124,  58, 237, 0.2); color: var(--purple-on-dark); }
+body.dark-mode .industry-orange { background: rgba(249, 115,  22, 0.2); color: var(--orange-on-dark); }
 body.dark-mode .stat-blue   { background: rgba(29,  111, 232, 0.1); }
 body.dark-mode .stat-purple { background: rgba(124,  58, 237, 0.1); }
 body.dark-mode .stat-orange { background: rgba(249, 115,  22, 0.1); }
@@ -581,7 +590,7 @@ body.dark-mode .stat-value  { color: var(--text); }
 body.dark-mode .tech-tag {
   background: rgba(29, 111, 232, 0.12);
   border-color: rgba(29, 111, 232, 0.25);
-  color: #5b9bf5;
+  color: var(--blue);
 }
 
 /* ── "Best for" callout box (Services page) ────────────────── */
