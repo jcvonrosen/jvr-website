@@ -1,9 +1,9 @@
 :host { display: block; }
 
 .cta-section {
-  background: linear-gradient(135deg, var(--light-2) 0%, var(--light) 100%);
+  background: var(--gradient-hero-bg);
   padding: 96px 24px;
-  border-top: 1px solid var(--border);
+  border-top-color: transparent;
 }
 
 .cta-inner {
@@ -15,7 +15,7 @@
 .cta-heading {
   font-size: 42px;
   font-weight: 800;
-  color: var(--text);
+  color: #fff;
   line-height: 1.15;
   margin: 12px 0 20px;
 }
@@ -30,7 +30,7 @@
 
 .cta-sub {
   font-size: 16px;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.68);
   line-height: 1.7;
   max-width: 540px;
 }
@@ -52,57 +52,38 @@
 
 /* ── Secondary text link ───────────────── */
 .cta-link-secondary {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--blue);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.cta-link-secondary:hover { color: var(--blue-dark); }
-
-/* ── Detail line ───────────────────────── */
-.cta-details {
-  font-size: 13px;
-  color: var(--text-light);
-}
-
-.cta-detail-link {
-  color: var(--text-light);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.cta-detail-link:hover { color: var(--blue); }
-
-/* ── Dark mode ─────────────────────────── */
-:host-context(body.dark-mode) .cta-section {
-  background: var(--gradient-hero-bg);
-  border-top-color: transparent;
-}
-
-/* Text — match page-cta-section style */
-:host-context(body.dark-mode) .section-label    { color: rgba(255, 255, 255, 0.7); }
-:host-context(body.dark-mode) .cta-heading      { color: #fff; }
-:host-context(body.dark-mode) .cta-heading em   { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-:host-context(body.dark-mode) .cta-sub          { color: rgba(255, 255, 255, 0.68); }
-:host-context(body.dark-mode) .cta-details      { color: rgba(255, 255, 255, 0.45); }
-:host-context(body.dark-mode) .cta-detail-link  { color: rgba(255, 255, 255, 0.55); }
-:host-context(body.dark-mode) .cta-detail-link:hover { color: #fff; }
-
-/* Secondary link → matches global .btn-clear dark style */
-:host-context(body.dark-mode) .cta-link-secondary {
   display: inline-flex;
   align-items: center;
   padding: 13px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
   border: 1.5px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-sm);
-  color: #fff;
-  font-size: 15px;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
-:host-context(body.dark-mode) .cta-link-secondary:hover {
+.cta-link-secondary:hover {
   border-color: rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
+
+/* ── Detail line ───────────────────────── */
+.cta-details {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.cta-detail-link {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-detail-link:hover { color: #fff; }
+
+/* ── section-label on dark gradient ───── */
+.section-label { color: rgba(255, 255, 255, 0.7); }
 
 @media (max-width: 768px) {
   .cta-section  { padding: 64px 20px; }

@@ -1,7 +1,7 @@
 :host { display: block; }
 
 .services-section {
-  background: var(--light);
+  background: var(--bg-light-2);
   padding: 80px 0;
 }
 
