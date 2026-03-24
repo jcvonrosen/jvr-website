@@ -12,11 +12,12 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   height: 100%;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .step-card:hover {
   box-shadow: 0 8px 24px rgba(29, 111, 232, 0.1);
+  transform: translateY(-4px);
 }
 
 /* ── Step number badge ─────────────────── */
