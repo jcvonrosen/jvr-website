@@ -47,9 +47,45 @@
   padding-right: 0;
 }
 
+@keyframes icon-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes icon-bounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.88); }
+  70%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes nav-nudge-right {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
 @media (min-width: 961px) {
   :host ::ng-deep .p-menubar-root-list {
     margin-left: auto;
+  }
+
+  /* Desktop — whole item container jumps up on hover, text shadow boldens */
+  :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {
+    transition: transform 0.2s ease-out;
+  }
+  :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
+    transform: translateY(-3px);
+  }
+  :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover .p-menubar-item-link {
+    text-shadow: 0 0 0.5px currentColor;
+  }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    text-shadow: 0 0 0.5px currentColor;
+  }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
+    background: var(--purple-tint) !important;
+    border-radius: var(--radius-sm);
   }
 }
 
@@ -96,12 +132,19 @@
   color: var(--text-light);
   font-size: 15px;
   flex-shrink: 0;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s ease-out;
 }
 .theme-toggle:hover {
   color: var(--blue);
   border-color: var(--blue);
   background: var(--bg-light-2);
+  transform: scale(1.12);
+}
+.theme-toggle:hover i {
+  animation: icon-spin 0.45s ease-out forwards;
+}
+.theme-toggle:active {
+  transform: scale(0.9);
 }
 .theme-toggle:focus-visible {
   outline: 3px solid var(--blue);
@@ -159,13 +202,36 @@
     border: 1.5px solid var(--border);
     color: var(--text-light);
     font-size: 15px;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s ease-out;
   }
   /* Orange hover — mirrors .theme-toggle:hover with orange instead of blue */
   :host ::ng-deep .p-menubar-mobile .p-menubar-button:hover {
     color: var(--orange) !important;
     border-color: var(--orange) !important;
     background: var(--orange-tint) !important;
+    transform: scale(1.12);
+  }
+  :host ::ng-deep .p-menubar-mobile .p-menubar-button:active {
+    transform: scale(0.9);
+  }
+  :host ::ng-deep .p-menubar-mobile .p-menubar-button[aria-expanded="true"] {
+    animation: icon-bounce 0.35s ease-out forwards;
+  }
+
+  /* Mobile — nav items nudge right + bold on hover, bold stays on active route */
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content .p-menubar-item-link {
+    transition: transform 0.3s ease-in-out;
+  }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+    animation: nav-nudge-right 0.55s ease-in-out forwards;
+    text-shadow: 0 0 0.5px currentColor;
+  }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    text-shadow: 0 0 0.5px currentColor;
+  }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
+    background: var(--purple-tint) !important;
+    border-radius: var(--radius-sm);
   }
 
   :host ::ng-deep .mobile-cta-item {
@@ -204,17 +270,22 @@
 }
 
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover,
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-focus > .p-menubar-item-content,
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-menubar-item-active > .p-menubar-item-content,
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item[aria-expanded="true"] > .p-menubar-item-content {
   background: rgba(255, 255, 255, 0.06) !important;
 }
 
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover .p-menubar-item-link,
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-focus > .p-menubar-item-content .p-menubar-item-link,
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item.p-menubar-item-active > .p-menubar-item-content .p-menubar-item-link,
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item[aria-expanded="true"] > .p-menubar-item-content .p-menubar-item-link {
   color: var(--text) !important;
+}
+
+/* Prevent p-focus (set by PrimeNG JS on mouse hover) from keeping hover styles after cursor leaves.
+   Exclude active-route items so their purple background is never cleared. */
+:host ::ng-deep .p-menubar-item.p-focus:not(:hover):not(:has(.p-menubar-item-link-active)) > .p-menubar-item-content {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 /* Dropdown submenu panel */

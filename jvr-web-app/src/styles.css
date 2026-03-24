@@ -226,6 +226,21 @@ h4 {
    SHARED BUTTONS
    ═══════════════════════════════════════════════════════════════ */
 
+/* CTA button animations */
+@keyframes cta-wiggle {
+  0%   { transform: scale(1)    rotate(0deg); }
+  15%  { transform: scale(1.04) rotate(-1.2deg); }
+  30%  { transform: scale(1.05) rotate(1.2deg); }
+  50%  { transform: scale(1.05) rotate(-0.7deg); }
+  70%  { transform: scale(1.05) rotate(0.5deg); }
+  100% { transform: scale(1.05) rotate(0deg); }
+}
+@keyframes cta-press {
+  0%   { transform: scale(1.05); }
+  40%  { transform: scale(0.96); }
+  100% { transform: scale(1.02); }
+}
+
 /* Primary — gradient fill, white text */
 .btn-primary-cta {
   display: inline-flex;
@@ -239,12 +254,18 @@ h4 {
   text-decoration: none;
   transition:
     opacity 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    transform 0.25s ease-out;
   box-shadow: var(--shadow-btn);
 }
 .btn-primary-cta:hover {
   opacity: 0.88;
   box-shadow: var(--shadow-btn-hover);
+  animation: cta-wiggle 0.4s ease-out forwards;
+}
+.btn-primary-cta:active {
+  animation: cta-press 0.18s ease-out forwards;
+  opacity: 1;
 }
 .btn-primary-cta:focus-visible {
   outline: 3px solid var(--blue);
@@ -456,10 +477,15 @@ h4 {
   box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
   transition:
     box-shadow 0.2s,
-    opacity 0.2s !important;
+    opacity 0.2s,
+    transform 0.25s ease-out !important;
 }
 .btn-orange .p-button:hover {
   box-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+  animation: cta-wiggle 0.4s ease-out forwards;
+}
+.btn-orange .p-button:active {
+  animation: cta-press 0.18s ease-out forwards;
 }
 
 /* ═══════════════════════════════════════════════════════════════
