@@ -140,8 +140,8 @@
   background: var(--bg-light-2);
   transform: scale(1.12);
 }
-.theme-toggle:hover i {
-  animation: icon-spin 0.45s ease-out forwards;
+@media (prefers-reduced-motion: no-preference) {
+  .theme-toggle:hover i { animation: icon-spin 0.45s ease-out forwards; }
 }
 .theme-toggle:active {
   transform: scale(0.9);
@@ -214,16 +214,22 @@
   :host ::ng-deep .p-menubar-mobile .p-menubar-button:active {
     transform: scale(0.9);
   }
-  :host ::ng-deep .p-menubar-mobile .p-menubar-button[aria-expanded="true"] {
-    animation: icon-bounce 0.35s ease-out forwards;
+  @media (prefers-reduced-motion: no-preference) {
+    :host ::ng-deep .p-menubar-mobile .p-menubar-button[aria-expanded="true"] {
+      animation: icon-bounce 0.35s ease-out forwards;
+    }
   }
 
   /* Mobile — nav items nudge right + bold on hover, bold stays on active route */
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content .p-menubar-item-link {
     transition: transform 0.3s ease-in-out;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+      animation: nav-nudge-right 0.55s ease-in-out forwards;
+    }
+  }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
-    animation: nav-nudge-right 0.55s ease-in-out forwards;
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {

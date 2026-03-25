@@ -139,7 +139,9 @@
             </div>
             <h3 class="card-title">{{ cap.title }}</h3>
             <p class="card-desc wwd-desc">{{ cap.description }}</p>
-            <a [routerLink]="'/services'" [fragment]="cap.fragment" class="card-link">Learn more →</a>
+            <a [routerLink]="'/services'" [fragment]="cap.fragment" class="card-link">
+              Learn more<span class="sr-only"> about {{ cap.title }}</span><span aria-hidden="true"> →</span>
+            </a>
           </div>
         </div>
       }

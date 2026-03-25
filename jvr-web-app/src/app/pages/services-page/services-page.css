@@ -29,7 +29,7 @@
 .tech-tag {
   font-size: 11px;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--blue-dark);
   background: var(--light-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);

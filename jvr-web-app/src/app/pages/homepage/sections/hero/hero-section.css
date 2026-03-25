@@ -84,8 +84,8 @@
   display: inline-block;
   cursor: default;
 }
-.hero-heading em:hover {
-  animation: hero-em-jiggle 0.5s ease-in-out forwards;
+@media (prefers-reduced-motion: no-preference) {
+  .hero-heading em:hover { animation: hero-em-jiggle 0.5s ease-in-out forwards; }
 }
 
 @keyframes hero-em-jiggle {

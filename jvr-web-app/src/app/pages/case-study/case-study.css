@@ -73,9 +73,9 @@
   margin-bottom: 12px;
 }
 
-.industry-blue   { background: var(--blue-tint);   color: var(--blue); }
+.industry-blue   { background: var(--blue-tint);   color: var(--blue-dark); }
 .industry-purple { background: var(--purple-tint); color: var(--purple); }
-.industry-orange { background: var(--orange-tint); color: var(--orange); }
+.industry-orange { background: var(--orange-tint); color: var(--orange-text); }
 
 .study-title {
   font-size: 22px;
@@ -98,7 +98,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--blue);
+  color: var(--blue-dark);
   margin-bottom: 5px;
 }
 
@@ -228,6 +228,10 @@
   color: var(--text-light);
   font-style: normal;
 }
+
+/* ─── Dark mode restores ─────────────────────────────────────── */
+:host-context(body.dark-mode) .study-block-label { color: var(--blue); }
+:host-context(body.dark-mode) .industry-blue { color: var(--blue-on-dark); }
 
 /* ─── CTA → global .page-cta-light ──────────────────────────── */
 

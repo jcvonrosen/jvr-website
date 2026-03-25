@@ -120,8 +120,9 @@ a.detail-value:hover { color: var(--blue); }
 
 .community-blurb { font-size: 13.5px; color: var(--text-mid); line-height: 1.75; margin: 0; }
 
-.inline-link { color: var(--blue); font-weight: 600; text-decoration: none; }
+.inline-link { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
 .inline-link:hover { text-decoration: underline; }
+body.dark-mode .inline-link { color: var(--blue); }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 960px) {

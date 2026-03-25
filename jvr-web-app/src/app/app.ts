@@ -1,5 +1,6 @@
-import { afterNextRender, Component, computed, inject } from '@angular/core';
+import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 import { TopMenubar } from './shared/top-menubar/top-menubar';
@@ -15,6 +16,9 @@ import { SmoothScrollService } from './services/smooth-scroll.service';
 export class App {
   private router = inject(Router);
   private smoothScroll = inject(SmoothScrollService);
+  private titleService = inject(Title);
+
+  readonly navAnnouncement = signal('');
 
   private url = toSignal(
     this.router.events.pipe(
@@ -32,7 +36,16 @@ export class App {
 
       this.router.events
         .pipe(filter(e => e instanceof NavigationEnd))
-        .subscribe(() => this.smoothScroll.scrollToTop());
+        .subscribe(() => {
+          this.smoothScroll.scrollToTop();
+          // Announce navigation to screen readers via live region
+          const title = this.titleService.getTitle();
+          this.navAnnouncement.set('');
+          setTimeout(() => this.navAnnouncement.set(`Navigated to ${title}`), 50);
+          // Move focus to main content area
+          const main = document.getElementById('main-content');
+          if (main) main.focus();
+        });
     });
   }
 }

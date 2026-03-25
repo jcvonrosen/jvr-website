@@ -51,7 +51,7 @@
 .timeline-year {
   font-size: 13px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--blue-dark);
   letter-spacing: 0.06em;
   margin-bottom: 5px;
   text-align: center;
@@ -99,6 +99,8 @@
   color: var(--purple);
   text-shadow: 0 0 0.6px var(--purple);
 }
+
+:host-context(body.dark-mode) .timeline-year { color: var(--blue); }
 
 :host-context(body.dark-mode) .timeline-item:hover .timeline-content p {
   color: #ffffff;
@@ -149,7 +151,7 @@
 .member-role {
   font-size: 11px;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--blue-on-dark);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   margin: 0 0 14px;

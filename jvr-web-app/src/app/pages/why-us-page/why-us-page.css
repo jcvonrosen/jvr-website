@@ -97,7 +97,7 @@
 
 .process-note {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.50);
   line-height: 1.7;
   max-width: 680px;
   margin-left: auto;
@@ -196,7 +196,7 @@
   margin-bottom: 16px;
 }
 
-.mini-industry-blue   { background: var(--blue-tint);   color: var(--blue); }
+.mini-industry-blue   { background: var(--blue-tint);   color: var(--blue-dark); }
 .mini-industry-purple { background: var(--purple-tint); color: var(--purple); }
 .mini-industry-orange { background: var(--orange-tint); color: var(--orange-deep); }
 
@@ -230,6 +230,15 @@
 }
 .mini-study-link:hover { color: var(--blue-dark); }
 
+/* ─── PROCESS STEP BADGES — dark mode ────────────────────────── */
+/* In dark mode the brand tokens are brightened for text-on-dark use,
+   but white text on bright colours fails 4.5:1. Restore the original
+   saturated values so white text on filled badges passes WCAG AA. */
+:host-context(body.dark-mode) .step-blue   { background: #1d6fe8; box-shadow: 0 4px 16px rgba(29,  111, 232, 0.5); }
+:host-context(body.dark-mode) .step-purple { background: #7c3aed; box-shadow: 0 4px 16px rgba(124,  58, 237, 0.5); }
+:host-context(body.dark-mode) .step-orange { background: #b84d08; box-shadow: 0 4px 16px rgba(184,  77,   8, 0.5); }
+/* contrast checks: white on #1d6fe8 = 4.68:1 ✅  white on #7c3aed = 5.70:1 ✅  white on #b84d08 = 5.12:1 ✅ */
+
 /* ─── RESULTS — dark mode restore ────────────────────────────── */
 :host-context(body.dark-mode) .results-section {
   background: var(--bg-dark);
@@ -253,7 +262,7 @@
 :host-context(body.dark-mode) .mini-industry-blue   { background: rgba(29,  111, 232, 0.2); color: var(--blue-on-dark); }
 :host-context(body.dark-mode) .mini-industry-purple { background: rgba(124,  58, 237, 0.2); color: var(--purple-on-dark); }
 :host-context(body.dark-mode) .mini-industry-orange { background: rgba(249, 115,  22, 0.2); color: var(--orange-on-dark); }
-:host-context(body.dark-mode) .mini-block-label { color: rgba(255, 255, 255, 0.4); }
+:host-context(body.dark-mode) .mini-block-label { color: rgba(255, 255, 255, 0.55); }
 :host-context(body.dark-mode) .mini-block-text  { color: rgba(255, 255, 255, 0.65); }
 :host-context(body.dark-mode) .mini-study-link  { color: var(--blue-on-dark); }
 :host-context(body.dark-mode) .mini-study-link:hover { color: #fff; }
