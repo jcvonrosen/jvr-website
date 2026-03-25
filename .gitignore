@@ -1,3 +1,9 @@
 # Sensitive / private — never commit these
 /private/
 /environment/
+
+# Claude / AI skills — downloaded files, regenerate with: npx skills add angular/skills
+# Keep: skills-lock.json (version tracking)
+.agents/
+.claude/
+CLAUDE.md
