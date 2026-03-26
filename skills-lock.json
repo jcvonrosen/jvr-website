@@ -10,6 +10,16 @@
       "source": "angular/skills",
       "sourceType": "github",
       "computedHash": "8f955e71e38ae6f804ca677d441a811bfb0be638fa33a7210ae573d8e9e49de3"
+    },
+    "improve-codebase-architecture": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "computedHash": "92ffd85a803661d754221f7aba260ee2065d3402eadf78872e227146fe1d6fbf"
+    },
+    "tdd": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "computedHash": "e4453d2f51a009f6b49876cc4d46ce452194c54ea931d4a552a0eb0e9dd24c27"
     }
   }
 }
