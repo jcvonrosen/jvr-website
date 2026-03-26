@@ -29,7 +29,7 @@
           type="button"
           [class]="'industry-chip chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
           [attr.aria-pressed]="isSelected(ind.label)"
-          (click)="toggleIndustry(ind.label)"
+          (click)="toggleIndustryAndScroll(ind.label)"
         >
           <i [class]="'pi ' + ind.icon + ' industry-chip-icon'" aria-hidden="true"></i>
           <span>{{ ind.label }}</span>
@@ -39,9 +39,42 @@
   </div>
 </section>
 
-<!-- ─── CONTEXT NOTE ──────────────────────────────────────────── -->
-<section class="context-section">
+<!-- ─── CASE STUDIES ──────────────────────────────────────────── -->
+<section class="studies-section" id="studies-section">
   <div class="section-inner">
+    <app-section-header
+      label="Selected Work"
+      sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
+    >
+      Work We're Proud Of
+    </app-section-header>
+
+    <!-- Filter icon row — centered, above the context note -->
+    <div class="filter-icon-row" role="group" aria-label="Filter by industry">
+      @for (ind of industries; track ind.label) {
+        <button
+          type="button"
+          [class]="'filter-icon-btn chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
+          [attr.aria-pressed]="isSelected(ind.label)"
+          [title]="ind.label"
+          (click)="toggleIndustry(ind.label)"
+        >
+          <i [class]="'pi ' + ind.icon" aria-hidden="true"></i>
+        </button>
+      }
+      @if (selectedIndustries().length > 0) {
+        <button
+          type="button"
+          class="filter-icon-btn filter-icon-clear"
+          title="Clear filter"
+          (click)="clearFilter()"
+        >
+          <i class="pi pi-filter-slash" aria-hidden="true"></i>
+        </button>
+      }
+    </div>
+
+    <!-- Context note — sits between filter icons and cards -->
     <div class="context-note">
       <i class="pi pi-info-circle context-icon" aria-hidden="true"></i>
       <p>
@@ -50,46 +83,8 @@
         approvals with current clients.
       </p>
     </div>
-  </div>
-</section>
 
-<!-- ─── CASE STUDIES ──────────────────────────────────────────── -->
-<section class="studies-section" id="studies-section">
-  <div class="section-inner">
-    <div class="studies-header-row">
-      <app-section-header
-        label="Selected Work"
-        sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
-      >
-        Work We're Proud Of
-      </app-section-header>
-
-      <div class="filter-icon-row" role="group" aria-label="Filter by industry">
-        @for (ind of industries; track ind.label) {
-          <button
-            type="button"
-            [class]="'filter-icon-btn chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
-            [attr.aria-pressed]="isSelected(ind.label)"
-            [title]="ind.label"
-            (click)="toggleIndustry(ind.label)"
-          >
-            <i [class]="'pi ' + ind.icon" aria-hidden="true"></i>
-          </button>
-        }
-        @if (selectedIndustries().length > 0) {
-          <button
-            type="button"
-            class="filter-icon-btn filter-icon-clear"
-            title="Clear filter"
-            (click)="clearFilter()"
-          >
-            <i class="pi pi-filter-slash" aria-hidden="true"></i>
-          </button>
-        }
-      </div>
-    </div>
-
-    <div class="studies-list mt-5">
+    <div class="studies-list">
       @if (filteredStudies().length === 0) {
         <div class="studies-empty">
           <i class="pi pi-filter-slash studies-empty-icon" aria-hidden="true"></i>

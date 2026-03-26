@@ -20,6 +20,17 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "computedHash": "e4453d2f51a009f6b49876cc4d46ce452194c54ea931d4a552a0eb0e9dd24c27"
+    },
+    "design-for-ai": {
+      "source": "ryanthedev/design-for-ai",
+      "sourceType": "github",
+      "marketplace": "ryanthedev/rtd-claude-inn",
+      "ref": "main"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "ref": "main"
     }
   }
 }
