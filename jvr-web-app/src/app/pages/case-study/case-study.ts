@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SectionHeader } from '../../shared/section-header/section-header';
 
@@ -10,10 +11,36 @@ import { SectionHeader } from '../../shared/section-header/section-header';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CaseStudy {
+  private doc = inject(DOCUMENT);
+
+  selectedIndustries = signal<string[]>([]);
+
+  filteredStudies = computed(() => {
+    const selected = this.selectedIndustries();
+    if (selected.length === 0) return this.caseStudies;
+    return this.caseStudies.filter(study =>
+      study.industries.some(ind => selected.includes(ind))
+    );
+  });
+
+  toggleIndustry(label: string) {
+    this.selectedIndustries.update(current =>
+      current.includes(label)
+        ? current.filter(i => i !== label)
+        : [...current, label]
+    );
+    this.doc.getElementById('studies-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  isSelected(label: string): boolean {
+    return this.selectedIndustries().includes(label);
+  }
+
   caseStudies = [
     {
       id: 'forecasting-pipeline',
       industry: 'Retail / Manufacturing',
+      industries: ['Retail', 'Manufacturing'],
       colorClass: 'blue',
       title: 'Forecasting Pipeline Redesign',
       challenge:
@@ -28,6 +55,7 @@ export class CaseStudy {
     {
       id: 'enrollment-rules-engine',
       industry: 'Education',
+      industries: ['Education'],
       colorClass: 'purple',
       title: 'Student Enrollment Rules Engine',
       challenge:
@@ -42,6 +70,7 @@ export class CaseStudy {
     {
       id: 'payment-cloud-migration',
       industry: 'Retail',
+      industries: ['Retail'],
       colorClass: 'orange',
       title: 'Payment Platform & Cloud Migration',
       challenge:
@@ -56,6 +85,7 @@ export class CaseStudy {
     {
       id: 'legacy-data-migration',
       industry: 'Enterprise',
+      industries: [],
       colorClass: 'blue',
       title: 'Large-Scale Legacy Data Migration',
       challenge:
@@ -70,6 +100,7 @@ export class CaseStudy {
     {
       id: 'automated-testing',
       industry: 'Manufacturing · Energy · Retail',
+      industries: ['Manufacturing', 'Energy', 'Retail'],
       colorClass: 'purple',
       title: 'Enterprise Automated Testing Programs',
       challenge:
@@ -84,6 +115,7 @@ export class CaseStudy {
     {
       id: 'workforce-scheduling',
       industry: 'Energy / Utilities',
+      industries: ['Energy', 'Utilities'],
       colorClass: 'orange',
       title: 'Long-Term Workforce Scheduling Platform',
       challenge:

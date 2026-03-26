@@ -171,7 +171,9 @@
   font-size: 14px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.78);
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .industry-chip:hover {
@@ -182,6 +184,32 @@
 .industry-chip-icon {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.45);
+  transition: color 0.2s;
+}
+
+/* Active states per color */
+.industry-chip.active.chip-blue   { background: var(--blue);   border-color: var(--blue);   color: #fff; }
+.industry-chip.active.chip-purple { background: var(--purple); border-color: var(--purple); color: #fff; }
+.industry-chip.active.chip-orange { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+.industry-chip.active .industry-chip-icon { color: rgba(255, 255, 255, 0.85); }
+
+/* Empty state */
+.studies-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+.studies-empty p { margin: 0; }
+
+.studies-empty-icon {
+  font-size: 28px;
+  color: var(--border);
 }
 
 /* ─── LESSON LEARNED ─────────────────────────────────────────── */
