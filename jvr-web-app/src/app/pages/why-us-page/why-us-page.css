@@ -141,12 +141,22 @@
   background: var(--bg-white);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
 }
 
-.mini-study-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-3px);
+.mini-study-card:hover { transform: translateY(-3px); }
+
+.mini-study-card-blue:hover {
+  border-color: rgba(29, 111, 232, 0.35);
+  box-shadow: 0 0 0 1px rgba(29, 111, 232, 0.15), 0 12px 36px rgba(29, 111, 232, 0.2);
+}
+.mini-study-card-purple:hover {
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.15), 0 12px 36px rgba(124, 58, 237, 0.2);
+}
+.mini-study-card-orange:hover {
+  border-color: rgba(249, 115, 22, 0.35);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.15), 0 12px 36px rgba(249, 115, 22, 0.2);
 }
 
 /* Stat band */
