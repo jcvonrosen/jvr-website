@@ -187,6 +187,18 @@
   }
 
   .hero-heading { font-size: 40px; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  .hero-actions .btn-primary-cta,
+  .hero-actions .btn-ghost-cta {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
 }
 
 /* ── Dark mode ─────────────────────────── */
