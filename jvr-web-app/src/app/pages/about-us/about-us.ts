@@ -90,7 +90,7 @@ export class AboutUs {
       initials: 'KN',
       colorClass: 'orange',
       bio: 'Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master\'s in Applied Computer Science from Grand Valley State University and has been with JvR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development for a large employee scheduling platform.',
-      bio2: 'Outside work, he tends a garden monitored by a personal IoT system he built himself, and enjoys cooking, leatherwork, pottery, and woodworking.',
+      bio2: 'Outside work, he tends a garden monitored by a personal IoT system he built — with an Angular dashboard, Semantic Kernel AI backend, and multi-cloud integration. He also enjoys cooking, leatherwork, pottery, and woodworking.',
       tags: ['Angular', 'TypeScript / JavaScript', '.NET / C#', 'AI / Semantic Kernel'],
     },
   ];
