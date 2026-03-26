@@ -147,16 +147,16 @@
 .mini-study-card:hover { transform: translateY(-3px); }
 
 .mini-study-card-blue:hover {
-  border-color: rgba(29, 111, 232, 0.35);
-  box-shadow: 0 0 0 1px rgba(29, 111, 232, 0.15), 0 12px 36px rgba(29, 111, 232, 0.2);
+  border-color: rgba(29, 111, 232, 0.4);
+  box-shadow: 0 0 0 1px rgba(29, 111, 232, 0.2), 0 12px 36px rgba(29, 111, 232, 0.28);
 }
 .mini-study-card-purple:hover {
-  border-color: rgba(124, 58, 237, 0.35);
-  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.15), 0 12px 36px rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.2), 0 12px 36px rgba(124, 58, 237, 0.28);
 }
 .mini-study-card-orange:hover {
-  border-color: rgba(249, 115, 22, 0.35);
-  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.15), 0 12px 36px rgba(249, 115, 22, 0.2);
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.2), 0 12px 36px rgba(249, 115, 22, 0.28);
 }
 
 /* Stat band */
@@ -261,7 +261,18 @@
 }
 :host-context(body.dark-mode) .mini-study-card:hover {
   background: rgba(255, 255, 255, 0.07);
-  box-shadow: none;
+}
+:host-context(body.dark-mode) .mini-study-card-blue:hover {
+  border-color: rgba(29, 111, 232, 0.45);
+  box-shadow: 0 0 0 1px rgba(29, 111, 232, 0.25), 0 12px 36px rgba(29, 111, 232, 0.35);
+}
+:host-context(body.dark-mode) .mini-study-card-purple:hover {
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.25), 0 12px 36px rgba(124, 58, 237, 0.35);
+}
+:host-context(body.dark-mode) .mini-study-card-orange:hover {
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.25), 0 12px 36px rgba(249, 115, 22, 0.35);
 }
 :host-context(body.dark-mode) .mini-band-blue   { background: rgba(29,  111, 232, 0.15); }
 :host-context(body.dark-mode) .mini-band-purple { background: rgba(124,  58, 237, 0.15); }
