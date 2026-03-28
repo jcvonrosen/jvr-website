@@ -2,7 +2,9 @@
 <p-menubar [model]="items">
 
   <ng-template #start>
-    <a routerLink="/" class="logo-link flex align-items-center gap-2 no-underline">
+    <a href="#hero" class="logo-link flex align-items-center gap-2 no-underline"
+       (click)="$event.preventDefault(); smoothScroll.scrollTo('hero')"
+       aria-label="JvR Enterprises — back to top">
       <img src="logos/jvr-logo.png" alt="JvR Enterprises logo" class="logo-img" width="40" height="40" />
       <div class="flex flex-column">
         <span class="logo-name">JvR Enterprises</span>
@@ -22,7 +24,7 @@
         <i [class]="'pi ' + (themeService.isDark() ? 'pi-sun' : 'pi-moon')" aria-hidden="true"></i>
       </button>
       <div class="cta-btn-wrapper pr-3">
-        <p-button label="Get Started" routerLink="/contact" class="btn-orange" />
+        <p-button label="Get Started" (onClick)="scrollToContact()" class="btn-orange" />
       </div>
     </div>
   </ng-template>

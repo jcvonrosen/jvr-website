@@ -1,10 +1,8 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="page-hero">
+<section class="section-hero">
   <div class="section-inner">
     <span class="section-label light">About Us</span>
-    <h1 class="hero-heading">
-      People Who Love<br /><em>What They Build</em>
-    </h1>
+    <h1 class="hero-heading">People Who Love<br /><em>What They Build</em></h1>
     <p class="hero-sub">
       JvR Enterprises is a Grand Rapids-based software consultancy. We work alongside enterprise
       teams as trusted partners — embedded, accountable, and genuinely invested in getting it right.
@@ -16,7 +14,6 @@
 <section class="story-section">
   <div class="section-inner">
     <div class="grid">
-
       <!-- Left: Narrative -->
       <div class="col-12 lg:col-5">
         <app-section-header
@@ -28,15 +25,16 @@
         </app-section-header>
 
         <blockquote class="founder-quote">
-          "The client has the vision. I am their trusted partner who will make that vision a reality."
+          "The client has the vision. I am their trusted partner who will make that vision a
+          reality."
           <cite>— Jay von Rosen, Founder</cite>
         </blockquote>
 
         <p class="story-body">
-          After years at software firms that gradually shifted their focus from solving real problems
-          to building their own reputations, Jay wanted something different — a place where the
-          client's vision comes first, developers are valued for their craft, and the work speaks
-          for itself.
+          After years at software firms that gradually shifted their focus from solving real
+          problems to building their own reputations, Jay wanted something different — a place where
+          the client's vision comes first, developers are valued for their craft, and the work
+          speaks for itself.
         </p>
         <p class="story-body mt-3">
           The company name is a fitting reflection of that mindset. Jay spent weeks searching for
@@ -64,7 +62,6 @@
           }
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -83,7 +80,9 @@
       @for (value of values; track value.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'icon-box icon-box-md accent-' + value.colorClass" aria-hidden="true"><i [class]="'pi ' + value.icon"></i></div>
+            <div [class]="'icon-box icon-box-md accent-' + value.colorClass" aria-hidden="true">
+              <i [class]="'pi ' + value.icon"></i>
+            </div>
             <h3 class="card-title">{{ value.title }}</h3>
             <p class="card-desc">{{ value.description }}</p>
           </div>
@@ -131,7 +130,6 @@
 <section class="community-section">
   <div class="section-inner">
     <div class="grid align-items-center">
-
       <!-- Left: Narrative -->
       <div class="col-12 lg:col-5">
         <app-section-header
@@ -142,25 +140,26 @@
           A Community Worth Investing In
         </app-section-header>
         <p class="community-body">
-          Grand Rapids drew Jay in for a few reasons: the variety of strong industries here, a
-          tech community that genuinely supports one another, and a regional culture that values doing
-          good work over putting on a show. We are proud to be part of it, and we try to give
-          back where we can.
+          Grand Rapids drew Jay in for a few reasons: the variety of strong industries here, a tech
+          community that genuinely supports one another, and a regional culture that values doing
+          good work over putting on a show. We are proud to be part of it, and we try to give back
+          where we can.
         </p>
       </div>
 
       <!-- Right: Involvement cards -->
       <div class="col-12 lg:col-7 mt-4 lg:mt-0 pl-0 lg:pl-5">
         <div class="involvement-list flex flex-column gap-4">
-
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-blue" aria-hidden="true"><i class="pi pi-microphone"></i></div>
+            <div class="inv-icon accent-blue" aria-hidden="true">
+              <i class="pi pi-microphone"></i>
+            </div>
             <div>
               <h3 class="inv-title">Beer City Code</h3>
               <p class="inv-desc">
-                Jay is an organizer for one of the Midwest's premier developer conferences —
-                37 speakers, approximately 500 attendees, and two days of world-class technical
-                content in Grand Rapids.
+                Jay is an organizer for one of the Midwest's premier developer conferences — 37
+                speakers, approximately 500 attendees, and two days of world-class technical content
+                in Grand Rapids.
               </p>
             </div>
           </div>
@@ -170,27 +169,27 @@
             <div>
               <h3 class="inv-title">West Michigan Azure Users Group</h3>
               <p class="inv-desc">
-                Monthly meetups where local practitioners share knowledge, tackle real
-                problems, and support each other's growth in Microsoft's cloud platform.
+                Monthly meetups where local practitioners share knowledge, tackle real problems, and
+                support each other's growth in Microsoft's cloud platform.
               </p>
             </div>
           </div>
 
           <div class="involvement-item flex gap-3 align-items-start">
-            <div class="inv-icon accent-orange" aria-hidden="true"><i class="pi pi-graduation-cap"></i></div>
+            <div class="inv-icon accent-orange" aria-hidden="true">
+              <i class="pi pi-graduation-cap"></i>
+            </div>
             <div>
               <h3 class="inv-title">Hour of Code</h3>
               <p class="inv-desc">
-                Jay has presented at area schools through the Hour of Code initiative,
-                helping introduce the next generation to software development and the
-                opportunities it can create.
+                Jay has presented at area schools through the Hour of Code initiative, helping
+                introduce the next generation to software development and the opportunities it can
+                create.
               </p>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>

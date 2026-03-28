@@ -1,10 +1,8 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="page-hero">
+<section class="section-hero">
   <div class="section-inner">
     <span class="section-label light">Services</span>
-    <h1 class="hero-heading">
-      Proven Capabilities,<br /><em>Applied to Your Problems</em>
-    </h1>
+    <h1 class="hero-heading">Proven Capabilities,<br /><em>Applied to Your Problems</em></h1>
     <p class="hero-sub">
       We do not offer a laundry list of services. Every capability here reflects years of real
       enterprise work — built on specific tools, real projects, and hard-won expertise.
@@ -59,7 +57,9 @@
       @for (group of techStack; track group.category) {
         <div class="col-12 sm:col-6 lg:col-4">
           <div class="stack-group">
-            <span [class]="'stack-cat-label stack-cat-' + group.colorClass">{{ group.category }}</span>
+            <span [class]="'stack-cat-label stack-cat-' + group.colorClass">{{
+              group.category
+            }}</span>
             <div class="flex flex-wrap gap-2 mt-3">
               @for (item of group.items; track item) {
                 <span class="stack-tag">{{ item }}</span>
@@ -102,15 +102,14 @@
 <section class="limits-section">
   <div class="section-inner">
     <div class="limits-inner">
-
       <div class="limits-text">
         <span class="section-label">Our Focus</span>
         <h2 class="section-title">What We Don't Do</h2>
         <p class="limits-body">
-          We focus on enterprise software — internal systems, B2B integrations, and large-scale cloud
-          and data work. Knowing where we are not the right fit is as important as knowing where we
-          are. If your project falls into any of these areas, we are happy to point you toward
-          someone better suited.
+          We focus on enterprise software — internal systems, B2B integrations, and large-scale
+          cloud and data work. Knowing where we are not the right fit is as important as knowing
+          where we are. If your project falls into any of these areas, we are happy to point you
+          toward someone better suited.
         </p>
       </div>
 
@@ -122,7 +121,6 @@
           </li>
         }
       </ul>
-
     </div>
   </div>
 </section>

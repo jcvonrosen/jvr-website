@@ -1,9 +1,27 @@
 :host {
   display: block;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* Hidden / receding state */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  /* Exit (recede): slightly slower, ease-in feels like it's pulling away */
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 1, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 1, 1);
+}
+
+:host(.nav-visible) {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  /* Enter: snappier ease-out so it feels responsive */
+  transition: opacity 0.55s cubic-bezier(0, 0, 0.2, 1),
+              transform 0.55s cubic-bezier(0, 0, 0.2, 1);
 }
 
 :host::after {

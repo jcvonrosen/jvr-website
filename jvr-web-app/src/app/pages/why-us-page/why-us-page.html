@@ -1,13 +1,11 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="page-hero">
+<section class="section-hero">
   <div class="section-inner">
     <span class="section-label light">Why JvR</span>
-    <h1 class="hero-heading">
-      A Partner,<br /><em>Not a Vendor</em>
-    </h1>
+    <h1 class="hero-heading">A Partner,<br /><em>Not a Vendor</em></h1>
     <p class="hero-sub">
-      Most consultants deliver a scope of work and move on. We embed directly with your team,
-      learn your systems, and deliver alongside your people — as one unified group.
+      Most consultants deliver a scope of work and move on. We embed directly with your team, learn
+      your systems, and deliver alongside your people — as one unified group.
     </p>
   </div>
 </section>
@@ -16,7 +14,6 @@
 <section class="engage-section">
   <div class="section-inner">
     <div class="grid align-items-center">
-
       <!-- Left: Narrative -->
       <div class="col-12 lg:col-5">
         <app-section-header
@@ -29,15 +26,14 @@
         <p class="engage-body">
           Jay founded JvR on the belief that the best outcomes happen when the boundary between
           client and consultant disappears. When we take on an engagement, we are not a separate
-          vendor managing a ticket queue — we are part of your team, sharing the same goals,
-          the same accountability, and the same definition of success.
+          vendor managing a ticket queue — we are part of your team, sharing the same goals, the
+          same accountability, and the same definition of success.
         </p>
       </div>
 
       <!-- Right: Engagement modes -->
       <div class="col-12 lg:col-7 pl-0 lg:pl-6 mt-4 lg:mt-0">
         <div class="engage-modes flex flex-column gap-4">
-
           <div class="mode-card">
             <div class="mode-label accent-blue">Integration Approach</div>
             <h3 class="mode-title">Working Within Your Team</h3>
@@ -52,15 +48,13 @@
             <div class="mode-label accent-purple">Full Ownership Approach</div>
             <h3 class="mode-title">Owning the Full Process</h3>
             <p class="mode-desc">
-              When you need a team to drive an initiative end-to-end, we take full ownership —
-              from discovery and planning through implementation, QA, and post-launch support —
-              while keeping your stakeholders informed and involved throughout.
+              When you need a team to drive an initiative end-to-end, we take full ownership — from
+              discovery and planning through implementation, QA, and post-launch support — while
+              keeping your stakeholders informed and involved throughout.
             </p>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -90,8 +84,8 @@
 
     <p class="process-note text-center mt-5">
       These phases are iterative. A project may cycle through planning, implementation, and QA
-      multiple times across different feature sets — the process adapts to the project,
-      not the other way around.
+      multiple times across different feature sets — the process adapts to the project, not the
+      other way around.
     </p>
   </div>
 </section>
@@ -110,7 +104,9 @@
       @for (scenario of scenarios; track scenario.title) {
         <div class="col-12 md:col-4">
           <div class="card-light">
-            <div [class]="'icon-box icon-box-md accent-' + scenario.colorClass" aria-hidden="true"><i [class]="'pi ' + scenario.icon"></i></div>
+            <div [class]="'icon-box icon-box-md accent-' + scenario.colorClass" aria-hidden="true">
+              <i [class]="'pi ' + scenario.icon"></i>
+            </div>
             <h3 class="card-title">{{ scenario.title }}</h3>
             <p class="card-desc">{{ scenario.description }}</p>
           </div>
@@ -140,7 +136,8 @@
             <h3 class="card-title">{{ cap.title }}</h3>
             <p class="card-desc wwd-desc">{{ cap.description }}</p>
             <a [routerLink]="'/services'" [fragment]="cap.fragment" class="card-link">
-              Learn more<span class="sr-only"> about {{ cap.title }}</span><span aria-hidden="true"> →</span>
+              Learn more<span class="sr-only"> about {{ cap.title }}</span
+              ><span aria-hidden="true"> →</span>
             </a>
           </div>
         </div>
@@ -164,14 +161,15 @@
       @for (study of miniCaseStudies; track study.stat) {
         <div class="col-12 md:col-4">
           <div [class]="'mini-study-card mini-study-card-' + study.colorClass">
-
             <div [class]="'mini-study-band mini-band-' + study.colorClass">
               <div [class]="'mini-stat-value mini-stat-' + study.colorClass">{{ study.stat }}</div>
               <div class="mini-stat-label">{{ study.statLabel }}</div>
             </div>
 
             <div class="mini-study-body">
-              <span [class]="'mini-industry mini-industry-' + study.colorClass">{{ study.industry }}</span>
+              <span [class]="'mini-industry mini-industry-' + study.colorClass">{{
+                study.industry
+              }}</span>
 
               <div class="mini-block">
                 <span class="mini-block-label">Challenge</span>
@@ -183,9 +181,10 @@
                 <p class="mini-block-text">{{ study.outcome }}</p>
               </div>
 
-              <a [routerLink]="'/case-studies'" [fragment]="study.fragment" class="mini-study-link">Read the full story →</a>
+              <a [routerLink]="'/case-studies'" [fragment]="study.fragment" class="mini-study-link"
+                >Read the full story →</a
+              >
             </div>
-
           </div>
         </div>
       }
@@ -201,8 +200,8 @@
       Ready to Work<br /><em class="cta-em">Differently?</em>
     </h2>
     <p class="section-sub mx-auto cta-sub">
-      If you have a project that needs the right team — not just available contractors —
-      we'd like to hear about it.
+      If you have a project that needs the right team — not just available contractors — we'd like
+      to hear about it.
     </p>
     <div class="cta-actions flex justify-content-center gap-3 mt-5 flex-wrap">
       <a routerLink="/contact" class="btn-primary-cta">Start a Conversation</a>

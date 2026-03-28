@@ -76,10 +76,7 @@
   font-size: 28px;
   font-weight: 800;
   font-family: 'Playfair Display', serif;
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--blue);
   line-height: 1.1;
   margin-bottom: 4px;
 }

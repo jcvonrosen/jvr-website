@@ -1,13 +1,9 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <span aria-live="polite" aria-atomic="true" class="sr-only">{{ navAnnouncement() }}</span>
-@if (showShell()) {
-  <header>
-    <app-top-menubar />
-  </header>
-}
-<main id="main-content" tabindex="-1" [class]="showShell() ? 'page-content' : ''">
+<header>
+  <app-top-menubar />
+</header>
+<main id="main-content" tabindex="-1" class="page-content">
   <router-outlet />
 </main>
-@if (showShell()) {
-  <app-footer />
-}
+<app-footer />

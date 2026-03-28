@@ -1,52 +1,62 @@
-<footer class="site-footer px-5 pt-8 pb-5">
-  <div class="footer-inner mx-auto">
+<footer class="site-footer">
+  <div class="footer-inner">
 
     <!-- Top grid -->
-    <div class="grid pb-5 mb-3 border-bottom-1 border-solid border-white-alpha-10">
+    <div class="footer-grid">
 
       <!-- Brand column -->
-      <div class="col-12 lg:col-6 mb-3">
-        <div class="footer-logo-text text-white text-lg font-bold mb-1">JvR Enterprises</div>
-        <div class="footer-logo-sub uppercase font-bold text-xs mb-3">LLC &middot; Software Consulting</div>
-        <p class="text-sm line-height-3 text-white-alpha-50 max-w-15rem">
-          Full-stack software consulting based in Grand Rapids, MI — serving enterprise clients across the Midwest and beyond.
+      <div class="footer-brand-col">
+        <button type="button" class="footer-logo-btn" (click)="smoothScroll.scrollTo('hero')" aria-label="Back to top">
+          <span class="footer-logo-name">JvR Enterprises</span>
+          <span class="footer-logo-sub">LLC &middot; Software Consulting</span>
+        </button>
+        <p class="footer-brand-desc">
+          Full-stack software consulting based in Grand Rapids, MI — serving enterprise clients
+          across the Midwest and beyond.
         </p>
       </div>
 
       <!-- Services column -->
-      <nav aria-label="Services links" class="col-12 md:col-4 lg:col-2">
-        <h5 class="footer-col-heading text-white uppercase font-bold text-xs mb-3">Services</h5>
-        <a routerLink="/services" fragment="full-stack" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Full-Stack Development</a>
-        <a routerLink="/services" fragment="cloud" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Cloud Architecture</a>
-        <a routerLink="/services" fragment="etl" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">ETL &amp; Data Pipelines</a>
-        <a routerLink="/services" fragment="testing" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Automated Testing &amp; QA</a>
-        <a routerLink="/services" fragment="ai" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">AI Workflow Integration</a>
-        <a routerLink="/services" fragment="team" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Team Augmentation</a>
+      <nav aria-label="Services links" class="footer-nav-col">
+        <h5 class="footer-col-heading">Services</h5>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Full-Stack Development</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Cloud Architecture</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">ETL &amp; Data Pipelines</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Automated Testing &amp; QA</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">AI Workflow Integration</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Team Augmentation</button>
       </nav>
 
       <!-- Company column -->
-      <nav aria-label="Company links" class="col-12 md:col-4 lg:col-2">
-        <h5 class="footer-col-heading text-white uppercase font-bold text-xs mb-3">Company</h5>
-        <a routerLink="/home" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Home</a>
-        <a routerLink="/about" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">About JvR</a>
-        <a routerLink="/about" fragment="team" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Our Team</a>
-        <a routerLink="/case-studies" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Case Studies</a>
-        <a routerLink="/why-us" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Why JvR</a>
+      <nav aria-label="Company links" class="footer-nav-col">
+        <h5 class="footer-col-heading">Company</h5>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('hero')">Home</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('why-us')">Why JvR</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('case-studies')">Case Studies</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">About JvR</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">Our Team</button>
       </nav>
 
       <!-- Contact column -->
-      <nav aria-label="Contact links" class="col-12 md:col-4 lg:col-2">
-        <h5 class="footer-col-heading text-white uppercase font-bold text-xs mb-3">Contact</h5>
-        <a routerLink="/contact" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Start a Conversation</a>
-        <a href="mailto:info@jvrcomputing.com" class="footer-link block text-xs text-white-alpha-70 no-underline mb-2">Email Us</a>
+      <nav aria-label="Contact links" class="footer-nav-col">
+        <h5 class="footer-col-heading">Contact</h5>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('contact')">Start a Conversation</button>
+        <a href="mailto:info@jvrcomputing.com" class="footer-link">Email Us</a>
       </nav>
 
     </div>
 
     <!-- Bottom bar -->
-    <div class="flex justify-content-between align-items-center flex-wrap gap-2 text-xs text-white-alpha-50 mt-3">
-      <div>&copy; {{ year }} JvR Enterprises LLC. All rights reserved.</div>
-      <div><a href="https://maps.google.com/?q=15+Ionia+SW+Suite+410+Grand+Rapids+MI+49503" target="_blank" rel="noopener" aria-label="Office address: 15 Ionia SW Suite 410, Grand Rapids MI 49503 (opens in new tab)" class="footer-bottom-link no-underline text-white-alpha-60">15 Ionia SW, Suite 410, Grand Rapids, MI 49503</a> &middot; <a href="mailto:info@jvrcomputing.com" class="footer-bottom-link no-underline text-white-alpha-60">info&#64;jvrcomputing.com</a></div>
+    <div class="footer-bottom">
+      <span class="footer-legal">&copy; {{ year }} JvR Enterprises LLC. All rights reserved.</span>
+      <span class="footer-legal">
+        <a href="https://maps.google.com/?q=15+Ionia+SW+Suite+410+Grand+Rapids+MI+49503"
+           target="_blank" rel="noopener"
+           aria-label="Office address (opens in new tab)"
+           class="footer-bottom-link">15 Ionia SW, Suite 410, Grand Rapids, MI 49503</a>
+        &middot;
+        <a href="mailto:info@jvrcomputing.com" class="footer-bottom-link">info&#64;jvrcomputing.com</a>
+      </span>
     </div>
 
   </div>

@@ -50,10 +50,7 @@
 }
 
 .hero-wordmark-accent {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--orange);
 }
 
 .hero-wordmark-sub {
@@ -77,10 +74,7 @@
 
 .hero-heading em {
   font-style: normal;
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--blue);
   display: inline-block;
   cursor: default;
 }

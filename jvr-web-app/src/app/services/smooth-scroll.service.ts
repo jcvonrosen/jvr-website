@@ -28,6 +28,25 @@ export class SmoothScrollService implements OnDestroy {
     this.lenis?.scrollTo(0, { immediate: true });
   }
 
+  scrollTo(id: string): void {
+    this.ngZone.runOutsideAngular(() => {
+      // If a divider-full <hr> immediately precedes the section, scroll to
+      // that element so the viewport lands with the divider right below the nav.
+      const section = document.getElementById(id);
+      const prev = section?.previousElementSibling;
+      const target =
+        prev instanceof HTMLHRElement && prev.classList.contains('divider-full')
+          ? prev
+          : `#${id}`;
+
+      this.lenis?.scrollTo(target as HTMLElement | string, {
+        duration: 1.4,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        offset: -57, // nav height — divider top sits flush with nav bottom
+      });
+    });
+  }
+
   ngOnDestroy(): void {
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
     this.lenis?.destroy();

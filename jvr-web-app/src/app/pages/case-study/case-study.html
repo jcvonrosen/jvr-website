@@ -1,10 +1,8 @@
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="page-hero">
+<section class="section-hero">
   <div class="section-inner">
     <span class="section-label light">Case Studies</span>
-    <h1 class="hero-heading">
-      Problems Solved,<br /><em>Outcomes Delivered</em>
-    </h1>
+    <h1 class="hero-heading">Problems Solved,<br /><em>Outcomes Delivered</em></h1>
     <p class="hero-sub">
       Real projects. Measurable results. A selection of the challenges we have helped enterprise
       teams navigate — from pipeline performance to complex system migrations.
@@ -27,7 +25,9 @@
       @for (ind of industries; track ind.label) {
         <button
           type="button"
-          [class]="'industry-chip chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
+          [class]="
+            'industry-chip chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')
+          "
           [attr.aria-pressed]="isSelected(ind.label)"
           (click)="toggleIndustryAndScroll(ind.label)"
         >
@@ -54,7 +54,9 @@
       @for (ind of industries; track ind.label) {
         <button
           type="button"
-          [class]="'filter-icon-btn chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
+          [class]="
+            'filter-icon-btn chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')
+          "
           [attr.aria-pressed]="isSelected(ind.label)"
           [title]="ind.label"
           (click)="toggleIndustry(ind.label)"
@@ -93,10 +95,11 @@
       }
       @for (study of filteredStudies(); track study.title; let i = $index) {
         <div class="study-card" [id]="study.id" [class.study-alt]="i % 2 !== 0">
-
           <div class="study-body">
             <div class="study-header">
-              <span [class]="'study-industry-tag industry-' + study.colorClass">{{ study.industry }}</span>
+              <span [class]="'study-industry-tag industry-' + study.colorClass">{{
+                study.industry
+              }}</span>
               <h3 class="study-title">{{ study.title }}</h3>
             </div>
 
@@ -126,7 +129,6 @@
               <div class="stat-label">{{ study.stat.label }}</div>
             </div>
           }
-
         </div>
       }
     </div>
