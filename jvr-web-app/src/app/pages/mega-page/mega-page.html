@@ -338,7 +338,11 @@
       <div class="cap-tab-carousel mt-5" role="tablist" aria-label="Capabilities" #capCarousel>
         @for (cap of capabilities; track cap.id; let i = $index) {
           <button
-            [class]="'cap-tab-btn cap-tab-btn--' + cap.colorClass + (selectedCapability() === i ? ' cap-tab-btn--active' : '')"
+            [class]="
+              'cap-tab-btn cap-tab-btn--' +
+              cap.colorClass +
+              (selectedCapability() === i ? ' cap-tab-btn--active' : '')
+            "
             role="tab"
             [attr.aria-selected]="selectedCapability() === i"
             (click)="selectCapability(i)"
@@ -655,7 +659,7 @@
   <hr class="divider-sub" />
 
   <!-- ── Our Story ─────────────────────────────────────────────── -->
-  <div class="subsection">
+  <!-- <div class="subsection">
     <div class="section-inner">
       <div class="grid">
         <div class="col-12 lg:col-5">
@@ -708,7 +712,7 @@
     </div>
   </div>
 
-  <hr class="divider-sub" />
+  <hr class="divider-sub" /> -->
 
   <!-- ── Core Values ────────────────────────────────────────────── -->
   <div class="subsection">
@@ -854,7 +858,7 @@
   <div class="section-hero">
     <div class="section-inner">
       <p class="section-label">Contact</p>
-      <h2 class="hero-heading">Let's Start a <em>Conversation</em></h2>
+      <h2 class="hero-heading">Let's Start a Conversation</h2>
       <p class="hero-sub">
         Tell us about your project, your team, or what you're trying to solve. We'll get back to you
         within one business day.
