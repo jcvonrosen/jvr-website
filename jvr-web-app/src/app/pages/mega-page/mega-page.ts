@@ -118,19 +118,38 @@ export class MegaPage {
           heroObs.observe(heroEl);
         }
 
-        // Active section — drives background colour shift
+        // Active section — drives background colour shift.
+        //
+        // We maintain a Set of sections currently inside the observer zone so
+        // that we can always resolve to the topmost one in DOM order.
+        // Using forEach + last-write-wins was unreliable: on resize the browser
+        // fires multiple entries simultaneously and their order is not
+        // guaranteed to match DOM order, causing the wrong section to win.
+        const sectionOrder = ['hero', 'why-us', 'services', 'case-studies', 'about', 'contact'];
+        const intersectingIds = new Set<string>();
+
+        const resolveActive = () => {
+          const active = sectionOrder.find(id => intersectingIds.has(id));
+          if (active) {
+            this.ngZone.run(() => this.scrollState.activeSection.set(active));
+          }
+        };
+
         const sectionObs = new IntersectionObserver(
           entries => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                this.ngZone.run(() => this.scrollState.activeSection.set(entry.target.id));
+                intersectingIds.add(entry.target.id);
+              } else {
+                intersectingIds.delete(entry.target.id);
               }
             });
+            resolveActive();
           },
           { rootMargin: '-10% 0px -50% 0px', threshold: 0 }
         );
 
-        ['hero', 'why-us', 'services', 'case-studies', 'about', 'contact'].forEach(id => {
+        sectionOrder.forEach(id => {
           const el = this.doc.getElementById(id);
           if (el) sectionObs.observe(el);
         });
