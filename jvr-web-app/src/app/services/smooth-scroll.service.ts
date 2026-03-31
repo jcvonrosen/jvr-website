@@ -47,6 +47,22 @@ export class SmoothScrollService implements OnDestroy {
     });
   }
 
+  scrollToInstant(id: string): void {
+    this.ngZone.runOutsideAngular(() => {
+      const section = document.getElementById(id);
+      const prev = section?.previousElementSibling;
+      const target =
+        prev instanceof HTMLHRElement && prev.classList.contains('divider-full')
+          ? prev
+          : `#${id}`;
+
+      this.lenis?.scrollTo(target as HTMLElement | string, {
+        immediate: true,
+        offset: -57,
+      });
+    });
+  }
+
   ngOnDestroy(): void {
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
     this.lenis?.destroy();

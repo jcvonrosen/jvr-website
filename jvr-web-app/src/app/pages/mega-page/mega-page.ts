@@ -120,38 +120,64 @@ export class MegaPage {
 
         // Active section — drives background colour shift.
         //
-        // We maintain a Set of sections currently inside the observer zone so
-        // that we can always resolve to the topmost one in DOM order.
-        // Using forEach + last-write-wins was unreliable: on resize the browser
-        // fires multiple entries simultaneously and their order is not
-        // guaranteed to match DOM order, causing the wrong section to win.
+        // A section is "selected" when its top divider has crossed 35% of the
+        // effective viewport (below the nav bar).  The "effective viewport" is the
+        // visible area below the fixed nav: (innerHeight - NAV_HEIGHT).
+        //
+        //   triggerLine = NAV_HEIGHT + (innerHeight - NAV_HEIGHT) * 0.35
+        //
+        // We walk sections in DOM order and keep the last one whose top rect ≤
+        // triggerLine — that is the section the user is currently "in".  This is
+        // equivalent to saying both:
+        //   • the section's top divider is ≤ 35 % from the top (below nav), AND
+        //   • the next section's top divider hasn't crossed that line yet (so the
+        //     current section still owns the viewport from 35 % downward).
+        const NAV_HEIGHT = 57;
         const sectionOrder = ['hero', 'why-us', 'services', 'case-studies', 'about', 'contact'];
-        const intersectingIds = new Set<string>();
 
-        const resolveActive = () => {
-          const active = sectionOrder.find(id => intersectingIds.has(id));
-          if (active) {
-            this.ngZone.run(() => this.scrollState.activeSection.set(active));
+        const resolveActiveByScroll = () => {
+          const triggerLine = NAV_HEIGHT + (window.innerHeight - NAV_HEIGHT) * 0.35;
+          let newActive = sectionOrder[0];
+          for (const id of sectionOrder) {
+            const el = this.doc.getElementById(id);
+            if (!el) continue;
+            if (el.getBoundingClientRect().top <= triggerLine) {
+              newActive = id;
+            }
           }
+          this.ngZone.run(() => this.scrollState.activeSection.set(newActive));
         };
 
-        const sectionObs = new IntersectionObserver(
-          entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                intersectingIds.add(entry.target.id);
-              } else {
-                intersectingIds.delete(entry.target.id);
-              }
-            });
-            resolveActive();
+        // Run once on load, then on every scroll frame.
+        resolveActiveByScroll();
+        let scrollRaf = 0;
+        window.addEventListener(
+          'scroll',
+          () => {
+            cancelAnimationFrame(scrollRaf);
+            scrollRaf = requestAnimationFrame(resolveActiveByScroll);
           },
-          { rootMargin: '-10% 0px -50% 0px', threshold: 0 }
+          { passive: true }
         );
 
-        sectionOrder.forEach(id => {
-          const el = this.doc.getElementById(id);
-          if (el) sectionObs.observe(el);
+        // On viewport resize, re-anchor to whichever section was active before
+        // the resize began, so the user doesn't lose their place.
+        let resizeTimer: ReturnType<typeof setTimeout> | null = null;
+        let sectionBeforeResize: string | null = null;
+
+        window.addEventListener('resize', () => {
+          if (resizeTimer === null) {
+            // Capture the active section at the start of the resize gesture.
+            sectionBeforeResize = this.scrollState.activeSection();
+          }
+          clearTimeout(resizeTimer!);
+          resizeTimer = setTimeout(() => {
+            resizeTimer = null;
+            if (sectionBeforeResize) {
+              this.smoothScroll.scrollToInstant(sectionBeforeResize);
+              sectionBeforeResize = null;
+            }
+          }, 150);
         });
 
         // Re-center active carousel button when carousel width changes (viewport resize)
