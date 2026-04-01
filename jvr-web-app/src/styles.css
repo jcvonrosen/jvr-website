@@ -131,6 +131,20 @@
   /* ── Menubar ──────────────────────────────────────────────── */
   --menubar-height: 57px;
 
+  /* ══════════════════════════════════════════════════════════
+     SPACING SCALE — 8-step system based on 4px
+     Use these for consistent spacing throughout the site
+     ══════════════════════════════════════════════════════════ */
+  --space-1: 4px;    /* Micro spacing (icon-text gap) */
+  --space-2: 8px;    /* Tight (related items) */
+  --space-3: 12px;   /* Close (form fields, labels) */
+  --space-4: 16px;   /* Default (card content, margins) */
+  --space-6: 24px;   /* Comfortable (section padding, gaps) */
+  --space-8: 32px;   /* Generous (card padding, column gaps) */
+  --space-12: 48px;  /* Spacious (large gaps, section spacing) */
+  --space-16: 64px;  /* Luxurious (hero sections, major spacing) */
+  --space-20: 80px;  /* Extra large (page sections) */
+
   /* ── Section backgrounds (legacy aliases) ─────────────────── */
   --bg-dark: var(--color-surface-dark);
   --bg-light: var(--color-surface-raised);
@@ -745,6 +759,8 @@ body.dark-mode {
   --brand-purple: #9d6bff;
   --brand-purple-light: #a78bfa;
 
+  --brand-orange: #fb923c;        /* Lighter orange for dark bg */
+  --brand-orange-hover: #f97316;  /* Saturated orange for hovers */
   --brand-orange-light: #fb923c;
 
   /* ── Neutrals (dark surfaces with blue tint) ────────────────────── */
@@ -757,9 +773,14 @@ body.dark-mode {
   --neutral-900: #060d18;
 
   /* ── Tint backgrounds (semi-transparent for dark surfaces) ──────── */
-  --tint-blue: rgba(29, 111, 232, 0.18);
-  --tint-purple: rgba(124, 58, 237, 0.18);
-  --tint-orange: rgba(249, 115, 22, 0.18);
+  --tint-blue: rgba(91, 155, 245, 0.12);   /* Use dark mode blue RGB */
+  --tint-purple: rgba(157, 107, 255, 0.12);  /* Use dark mode purple RGB */
+  --tint-orange: rgba(251, 146, 60, 0.12);   /* Use dark mode orange RGB */
+
+  /* ── Explicit tint token overrides for dark mode ────────────────── */
+  --color-tint-blue: var(--tint-blue);
+  --color-tint-purple: var(--tint-purple);
+  --color-tint-orange: var(--tint-orange);
 
   /* ══════════════════════════════════════════════════════════════════
      DARK MODE — Semantic token overrides

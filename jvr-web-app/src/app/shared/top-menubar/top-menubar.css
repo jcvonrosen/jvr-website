@@ -143,8 +143,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
   border: 1.5px solid var(--border);
   background: transparent;
@@ -214,9 +214,9 @@
 
   /* Hamburger base — same dimensions and border as .theme-toggle */
   :host ::ng-deep .p-menubar-mobile .p-menubar-button {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     padding: 0;
     border-radius: var(--radius-sm);
     border: 1.5px solid var(--border);
@@ -226,18 +226,23 @@
     transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s ease-out;
   }
 
-  /* Small viewports (≤360px): reduce button sizes to prevent cramping */
+  /* Small viewports (≤360px): maintain 44px minimum touch targets */
   @media (max-width: 360px) {
     .theme-toggle,
     :host ::ng-deep .p-menubar-mobile .p-menubar-button {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
       font-size: 14px;
     }
 
     :host ::ng-deep .p-menubar-mobile .p-menubar-button {
       margin-right: 0.375rem;
+    }
+
+    .logo-img {
+      width: 36px;
+      height: 36px;
     }
   }
   /* Orange hover — mirrors .theme-toggle:hover with orange instead of blue */
@@ -271,16 +276,16 @@
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
     text-shadow: 0 0 0.5px currentColor;
   }
-  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active):not(.mobile-cta-item > .p-menubar-item-content) {
     background: var(--purple-tint) !important;
     border-radius: var(--radius-sm);
   }
-  /* Active nav item — based on scroll position (mobile) */
-  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+  /* Active nav item — based on scroll position (mobile) - EXCLUDE mobile CTA button */
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active:not(.mobile-cta-item) > .p-menubar-item-content {
     background: var(--purple-tint) !important;
     border-radius: var(--radius-sm);
   }
-  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active:not(.mobile-cta-item) > .p-menubar-item-content .p-menubar-item-link {
     text-shadow: 0 0 0.5px currentColor;
   }
 
@@ -291,7 +296,7 @@
   :host ::ng-deep .mobile-cta-item > .p-menubar-item-content {
     background-color: var(--orange);
     border-radius: 6px;
-    margin: 4px 8px;
+    margin: 8px 12px;
     box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
     transition: box-shadow 0.2s, background-color 0.2s;
   }
@@ -349,6 +354,12 @@
 :host-context(body.dark-mode) ::ng-deep .mobile-cta-item > .p-menubar-item-content:hover {
   background-color: rgba(249, 115, 22, 0.82) !important;
   box-shadow: 0 0 16px rgba(249, 115, 22, 0.35) !important;
+}
+
+/* Theme toggle hover — explicit dark mode background for WCAG compliance */
+:host-context(body.dark-mode) .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);  /* Sufficient contrast with icon color */
+  border-color: var(--blue);
 }
 
 /* Mobile hamburger button */
