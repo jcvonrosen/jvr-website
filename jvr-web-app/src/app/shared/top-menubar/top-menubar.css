@@ -88,6 +88,14 @@
     background: var(--purple-tint) !important;
     border-radius: var(--radius-sm);
   }
+  /* Active nav item — based on scroll position */
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: var(--purple-tint) !important;
+    border-radius: var(--radius-sm);
+  }
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    text-shadow: 0 0 0.5px currentColor;
+  }
 }
 
 .logo-link {
@@ -240,6 +248,14 @@
     background: var(--purple-tint) !important;
     border-radius: var(--radius-sm);
   }
+  /* Active nav item — based on scroll position (mobile) */
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: var(--purple-tint) !important;
+    border-radius: var(--radius-sm);
+  }
+  :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    text-shadow: 0 0 0.5px currentColor;
+  }
 
   :host ::ng-deep .mobile-cta-item {
     display: block;
@@ -290,7 +306,7 @@
 
 /* Prevent p-focus (set by PrimeNG JS on mouse hover) from keeping hover styles after cursor leaves.
    Exclude active-route items and the mobile CTA so their backgrounds are never cleared. */
-:host ::ng-deep .p-menubar-item.p-focus:not(:hover):not(:has(.p-menubar-item-link-active)):not(.mobile-cta-item) > .p-menubar-item-content {
+:host ::ng-deep .p-menubar-item.p-focus:not(:hover):not(:has(.p-menubar-item-link-active)):not(.mobile-cta-item):not(.nav-item-active) > .p-menubar-item-content {
   background: transparent !important;
   color: inherit !important;
 }
