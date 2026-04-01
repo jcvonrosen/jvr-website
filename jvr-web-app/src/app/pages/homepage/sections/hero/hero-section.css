@@ -5,33 +5,20 @@
   padding: 80px 24px 64px;
 }
 
-/* ── Two-column layout (desktop) ───────── */
+/* ── Centered single-column layout ───────── */
 .hero-inner {
-  max-width: 1100px;
+  max-width: 720px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 48px;
+  text-align: center;
 }
 
 .hero-content {
-  flex: 1 1 0;
-  min-width: 0;
-  text-align: left;
-}
-
-.stat-grid {
-  flex: 0 0 380px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  text-align: left;
+  width: 100%;
 }
 
 /* Wordmark group */
 .hero-wordmark-group {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .hero-wordmark {
@@ -41,7 +28,7 @@
   color: var(--text);
   letter-spacing: 0.01em;
   display: inline-block;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   transition: transform 0.25s ease-out;
   cursor: default;
 }
@@ -54,11 +41,11 @@
 }
 
 .hero-wordmark-sub {
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
   margin: 0;
 }
 
@@ -84,103 +71,31 @@
 
 /* Sub */
 .hero-sub {
-  font-size: 17px;
+  font-size: 18px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+
+/* Location */
+.hero-location {
+  font-size: 14px;
   color: var(--text-light);
-  line-height: 1.65;
-  max-width: 520px;
-  margin: 0 0 36px;
+  font-style: italic;
+  margin: 0 auto 36px;
 }
 
-/* Stat cards */
-.stat-card {
-  flex: 0 0 calc(50% - 7px);
-  background: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.stat-card.wide {
-  flex: 0 0 100%;
-}
-
-.stat-icon {
-  font-size: 20px;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
+/* Hero actions (CTAs) */
+.hero-actions {
   justify-content: center;
-  margin-bottom: 4px;
 }
 
-/* Stat icon colours come from global .accent-blue/purple/orange */
-
-.stat-main {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--text);
-  font-family: 'Playfair Display', serif;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.stat-badge {
-  display: inline-flex;
-  align-items: center;
-  background: var(--success-bg);
-  color: var(--success-color);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-top: 4px;
-  width: fit-content;
-}
-
-.stat-desc {
-  font-size: 12px;
-  color: var(--text-light);
-  margin-top: 4px;
-  line-height: 1.4;
-}
-
-/* ── Tablet: stack into rows ───────────── */
+/* ── Tablet ───────────── */
 @media (max-width: 960px) {
-  .hero-inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 40px;
+  .hero-heading {
+    font-size: 40px;
   }
-
-  .hero-content {
-    text-align: center;
-  }
-
-  .hero-sub {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .stat-grid {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  .hero-heading { font-size: 40px; }
 
   .hero-actions {
     flex-direction: column;
@@ -202,8 +117,15 @@
 
 /* ── Mobile ────────────────────────────── */
 @media (max-width: 480px) {
-  .hero          { padding: 48px 16px 40px; }
-  .hero-heading  { font-size: 30px; }
-  .stat-card,
-  .stat-card.wide { flex: 0 0 100%; }
+  .hero {
+    padding: 48px 16px 40px;
+  }
+
+  .hero-heading {
+    font-size: 30px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
 }

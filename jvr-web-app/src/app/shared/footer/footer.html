@@ -46,6 +46,37 @@
 
     </div>
 
+    <!-- Social media links -->
+    <div class="footer-social">
+      <span class="footer-social-label">Follow Us</span>
+      <div class="footer-social-links">
+        <a href="https://www.linkedin.com/company/jvr-enterprises-llc"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn (opens in new tab)"
+           class="footer-social-link">
+          <i class="pi pi-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/JvrEnterprises"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Facebook (opens in new tab)"
+           class="footer-social-link">
+          <i class="pi pi-facebook" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Memorable closer -->
+    <div class="footer-closer">
+      <p class="footer-closer-text">
+        Ready to transform your enterprise?
+      </p>
+      <button type="button" class="footer-closer-cta" (click)="smoothScroll.scrollTo('contact')">
+        Let's Talk
+      </button>
+    </div>
+
     <!-- Bottom bar -->
     <div class="footer-bottom">
       <span class="footer-legal">&copy; {{ year }} JvR Enterprises LLC. All rights reserved.</span>

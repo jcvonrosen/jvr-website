@@ -6,29 +6,114 @@
    radii, and spacing used across the application.
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── Palette ──────────────────────────────────────────────── */
-  --white: #ffffff;
-  --light: #f8f9fc;
-  --light-2: #eef2ff;
-  --blue: #1d6fe8;
-  --blue-dark: #0f4baa;
-  --blue-deep: #0a1628;
-  --purple: #7c3aed;
-  --orange: #f97316;
-  --orange-text: #c2570c; /* darkened for text on light backgrounds — 4.6:1 on white */
-  --orange-deep: #c2570c;
-  --text: #0d1e3d;
-  --text-mid: #2d3e5c;
-  --text-light: #536680;
-  --border: #dde3f0;
+  /* ══════════════════════════════════════════════════════════════════
+     BRAND PRIMITIVES — Raw color values
+     Change these to rebrand the entire site
+     ═══════════════════════════════════════════════════════════════ */
 
-  /* ── Menubar ──────────────────────────────────────────────── */
-  --menubar-height: 57px;
+  /* ── Core brand colors (split-complementary: blue, purple, orange) ── */
+  --brand-blue: #1d6fe8;
+  --brand-blue-hover: #0f4baa;
+  --brand-blue-light: #60a5fa;
+  --brand-blue-deep: #0a1628;
+
+  --brand-purple: #7c3aed;
+  --brand-purple-hover: #6b3be6;
+  --brand-purple-light: #a78bfa;
+
+  --brand-orange: #f97316;
+  --brand-orange-hover: #c2570c;
+  --brand-orange-light: #fb923c;
+
+  /* ── Neutral surfaces (blue-tinted, not pure gray) ──────────────── */
+  --neutral-white: #ffffff;
+  --neutral-50: #f8f9fc;
+  --neutral-100: #eef2ff;
+  --neutral-200: #dde3f0;
+  --neutral-700: #2d3e5c;
+  --neutral-800: #0d1e3d;
+  --neutral-900: #0a1628;
+
+  /* ── Tint backgrounds (brand color + transparency) ──────────────── */
+  --tint-blue: #eef2ff;
+  --tint-purple: #f3edff;
+  --tint-orange: #fff4ec;
+
+  /* ══════════════════════════════════════════════════════════════════
+     SEMANTIC TOKENS — Usage context (use these in components)
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* ── Text ─────────────────────────────────────────────────────── */
+  --color-text-primary: var(--neutral-800);
+  --color-text-secondary: var(--neutral-700);
+  --color-text-tertiary: #536680;
+  --color-text-inverse: var(--neutral-white);
+
+  /* ── Interactive (links, buttons, navigation) ─────────────────── */
+  --color-interactive: var(--brand-blue);
+  --color-interactive-hover: var(--brand-purple);
+  --color-interactive-active: var(--brand-purple-hover);
+
+  /* ── CTAs (call-to-action buttons) ────────────────────────────── */
+  --color-cta-primary: var(--brand-orange);
+  --color-cta-primary-hover: var(--brand-orange-hover);
+  --color-cta-text: var(--neutral-white);
+
+  /* ── Surfaces (backgrounds) ───────────────────────────────────── */
+  --color-surface-base: var(--neutral-white);
+  --color-surface-raised: var(--neutral-50);
+  --color-surface-overlay: var(--neutral-100);
+  --color-surface-dark: var(--brand-blue-deep);
+
+  /* ── Cards ─────────────────────────────────────────────────────── */
+  --color-card-bg: var(--neutral-white);
+  --color-card-border: var(--neutral-200);
+  --color-card-hover-border: var(--brand-blue);
+
+  /* ── Tinted backgrounds (for icons, badges, accent areas) ──────── */
+  --color-tint-blue: var(--tint-blue);
+  --color-tint-purple: var(--tint-purple);
+  --color-tint-orange: var(--tint-orange);
+
+  /* ── Status / semantic ─────────────────────────────────────────── */
+  --color-success: #16a34a;
+  --color-success-bg: #dcfce7;
+  --color-error: #dc2626;
+  --color-warning: var(--brand-orange);
+  --color-info: var(--brand-blue);
+
+  /* ══════════════════════════════════════════════════════════════════
+     LEGACY ALIASES — Deprecated, will be removed in future
+     Kept temporarily for backward compatibility
+     ═══════════════════════════════════════════════════════════════ */
+  --white: var(--neutral-white);
+  --light: var(--neutral-50);
+  --light-2: var(--neutral-100);
+  --blue: var(--brand-blue);
+  --blue-dark: var(--brand-blue-hover);
+  --blue-deep: var(--brand-blue-deep);
+  --purple: var(--brand-purple);
+  --orange: var(--brand-orange);
+  --orange-text: var(--brand-orange-hover);
+  --orange-deep: var(--brand-orange-hover);
+  --text: var(--color-text-primary);
+  --text-mid: var(--color-text-secondary);
+  --text-light: var(--color-text-tertiary);
+  --border: var(--neutral-200);
+  --blue-on-dark: var(--brand-blue-light);
+  --purple-on-dark: var(--brand-purple-light);
+  --orange-on-dark: var(--brand-orange-light);
+  --blue-tint: var(--color-tint-blue);
+  --purple-tint: var(--color-tint-purple);
+  --orange-tint: var(--color-tint-orange);
+  --error: var(--color-error);
+  --success-bg: var(--color-success-bg);
+  --success-color: var(--color-success);
 
   /* ── Gradients ────────────────────────────────────────────── */
-  --gradient-brand: linear-gradient(135deg, var(--blue), var(--purple));
-  --gradient-hero-bg: linear-gradient(135deg, var(--blue-deep) 0%, #0f1f3d 55%, #1a0a2e 100%);
-  --gradient-accent: linear-gradient(90deg, var(--blue), var(--purple), var(--orange));
+  --gradient-brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+  --gradient-hero-bg: linear-gradient(135deg, var(--brand-blue-deep) 0%, #0f1f3d 55%, #1a0a2e 100%);
+  --gradient-accent: linear-gradient(90deg, var(--brand-blue), var(--brand-purple), var(--brand-orange));
 
   /* ── Shadows ──────────────────────────────────────────────── */
   --shadow-card: 0 4px 24px rgba(13, 30, 61, 0.06);
@@ -43,26 +128,14 @@
   --radius-xl: 16px;
   --radius-pill: 20px;
 
-  /* ── Section backgrounds ──────────────────────────────────── */
-  --bg-dark: var(--blue-deep);
-  --bg-light: var(--light);
-  --bg-light-2: var(--light-2);
-  --bg-white: var(--white);
+  /* ── Menubar ──────────────────────────────────────────────── */
+  --menubar-height: 57px;
 
-  /* ── Tinted icon/badge backgrounds (light-mode base) ─────── */
-  --blue-tint: var(--light-2); /* adapts via --light-2 dark override */
-  --purple-tint: #f3edff;
-  --orange-tint: #fff4ec;
-
-  /* ── Vivid accent colours for permanently dark sections ───── */
-  --blue-on-dark: #60a5fa;
-  --purple-on-dark: #a78bfa;
-  --orange-on-dark: #fb923c;
-
-  /* ── Status colours ───────────────────────────────────────── */
-  --error: #dc2626;
-  --success-bg: #dcfce7;
-  --success-color: #166534;
+  /* ── Section backgrounds (legacy aliases) ─────────────────── */
+  --bg-dark: var(--color-surface-dark);
+  --bg-light: var(--color-surface-raised);
+  --bg-light-2: var(--color-surface-overlay);
+  --bg-white: var(--color-surface-base);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -559,12 +632,12 @@ body.dark-mode .section-label {
 .page-cta-section .btn-primary-cta,
 .page-cta-light .btn-primary-cta {
   background: var(--orange);
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
 }
 .page-cta-section .btn-primary-cta:hover,
 .page-cta-light .btn-primary-cta:hover {
   background: var(--orange-deep);
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.35);
   opacity: 1;
 }
 
@@ -598,14 +671,14 @@ body.dark-mode .section-label {
   --p-button-primary-active-color: #ffffff;
 }
 .btn-orange .p-button {
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
   transition:
     box-shadow 0.2s,
     opacity 0.2s,
     transform 0.25s ease-out !important;
 }
 .btn-orange .p-button:hover {
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.35);
 }
 @media (prefers-reduced-motion: no-preference) {
   .btn-orange .p-button:hover {
@@ -660,45 +733,94 @@ body.dark-mode .section-label {
    PrimeNG components switch automatically via darkModeSelector.
    ═══════════════════════════════════════════════════════════════ */
 body.dark-mode {
-  /* ── Base palette overrides (propagates to --bg-* aliases
-        and any component using --white/--light/--light-2 directly) */
-  --white: #0d1829;
-  --light: #111f35;
-  --light-2: #152239;
+  /* ══════════════════════════════════════════════════════════════════
+     DARK MODE — Brand primitives adjustments
+     ═══════════════════════════════════════════════════════════════ */
 
-  /* ── Section backgrounds (also override aliases explicitly) ── */
-  --bg-white: #0d1829;
-  --bg-light: #111f35;
-  --bg-light-2: #152239;
-  --bg-dark: #060d18;
+  /* ── Brand colors (brighter for dark bg contrast) ──────────────── */
+  --brand-blue: #5b9bf5;
+  --brand-blue-hover: #3a7fe8;
+  --brand-blue-light: #60a5fa;
 
-  /* ── Text ─────────────────────────────────────────────────── */
-  --text: #eef2ff;
-  --text-mid: #b8c7e0;
-  --text-light: #8099b8; /* bumped from #7a92b0 — passes WCAG AA (4.5:1) on card composites */
+  --brand-purple: #9d6bff;
+  --brand-purple-light: #a78bfa;
 
-  /* ── Borders & shadows ────────────────────────────────────── */
-  --border: rgba(255, 255, 255, 0.1);
+  --brand-orange-light: #fb923c;
+
+  /* ── Neutrals (dark surfaces with blue tint) ────────────────────── */
+  --neutral-white: #0d1829;
+  --neutral-50: #111f35;
+  --neutral-100: #152239;
+  --neutral-200: rgba(255, 255, 255, 0.1);
+  --neutral-700: #b8c7e0;
+  --neutral-800: #eef2ff;
+  --neutral-900: #060d18;
+
+  /* ── Tint backgrounds (semi-transparent for dark surfaces) ──────── */
+  --tint-blue: rgba(29, 111, 232, 0.18);
+  --tint-purple: rgba(124, 58, 237, 0.18);
+  --tint-orange: rgba(249, 115, 22, 0.18);
+
+  /* ══════════════════════════════════════════════════════════════════
+     DARK MODE — Semantic token overrides
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* ── Text (bright on dark) ──────────────────────────────────────── */
+  --color-text-primary: var(--neutral-800);     /* #eef2ff */
+  --color-text-secondary: var(--neutral-700);   /* #b8c7e0 */
+  --color-text-tertiary: #8099b8;               /* WCAG AA 4.5:1 */
+
+  /* ── Interactive (brighter blues) ───────────────────────────────── */
+  --color-interactive: var(--brand-blue);
+  --color-interactive-hover: var(--brand-blue-light);
+
+  /* ── Surfaces (dark backgrounds) ────────────────────────────────── */
+  --color-surface-base: var(--neutral-white);       /* #0d1829 */
+  --color-surface-raised: var(--neutral-50);        /* #111f35 */
+  --color-surface-overlay: var(--neutral-100);      /* #152239 */
+  --color-surface-dark: var(--neutral-900);         /* #060d18 */
+
+  /* ── Cards (semi-transparent white) ─────────────────────────────── */
+  --color-card-bg: rgba(255, 255, 255, 0.05);
+  --color-card-border: rgba(255, 255, 255, 0.09);
+  --color-card-hover-border: var(--brand-blue);
+
+  /* ── Shadows (darker, blue-tinted) ──────────────────────────────── */
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-card-hover: 0 12px 36px rgba(29, 111, 232, 0.25);
 
-  /* ── Brand colours — slightly brighter for dark bg contrast ─ */
-  --blue: #5b9bf5;
-  --blue-dark: #3a7fe8;
-  --purple: #9d6bff;
-
-  /* ── Tint backgrounds — semi-transparent for dark surfaces ── */
-  --blue-tint: rgba(29, 111, 232, 0.18);
-  --purple-tint: rgba(124, 58, 237, 0.18);
-  --orange-tint: rgba(249, 115, 22, 0.18);
-
-  /* ── Gradients — full-saturation brand colours for dark mode ─ */
+  /* ── Gradients (full-saturation for impact) ─────────────────────── */
   --gradient-brand: linear-gradient(135deg, #1d6fe8 0%, #9333ea 100%);
   --gradient-accent: linear-gradient(90deg, #1d6fe8, #9333ea, #f97316);
 
-  /* ── Status colours ───────────────────────────────────────── */
-  --success-bg: rgba(22, 163, 74, 0.18);
-  --success-color: #86efac;
+  /* ── Status colors ──────────────────────────────────────────────── */
+  --color-success-bg: rgba(22, 163, 74, 0.18);
+  --color-success: #86efac;
+
+  /* ══════════════════════════════════════════════════════════════════
+     DARK MODE — Legacy aliases (auto-update from new primitives)
+     ═══════════════════════════════════════════════════════════════ */
+  --white: var(--neutral-white);
+  --light: var(--neutral-50);
+  --light-2: var(--neutral-100);
+  --blue: var(--brand-blue);
+  --blue-dark: var(--brand-blue-hover);
+  --purple: var(--brand-purple);
+  --text: var(--color-text-primary);
+  --text-mid: var(--color-text-secondary);
+  --text-light: var(--color-text-tertiary);
+  --border: var(--neutral-200);
+  --blue-tint: var(--tint-blue);
+  --purple-tint: var(--tint-purple);
+  --orange-tint: var(--tint-orange);
+  --success-bg: var(--color-success-bg);
+  --success-color: var(--color-success);
+
+  /* ── Section backgrounds ────────────────────────────────────────── */
+  --bg-white: var(--color-surface-base);
+  --bg-light: var(--color-surface-raised);
+  --bg-light-2: var(--color-surface-overlay);
+  --bg-dark: var(--neutral-900);
 }
 
 /* ── Cards ─────────────────────────────────────────────────── */
@@ -721,15 +843,7 @@ body.dark-mode .btn-ghost-cta:hover {
   color: #fff;
 }
 
-/* ── Homepage hero stat cards ──────────────────────────────── */
-body.dark-mode .stat-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.09);
-}
-body.dark-mode .stat-badge {
-  background: var(--success-bg);
-  color: var(--success-color);
-}
+/* ── Homepage hero (stat cards removed per design-critique.md) ──────────────────────────────── */
 
 /* ── Engagement mode cards (Why Us) ────────────────────────── */
 body.dark-mode .mode-card {

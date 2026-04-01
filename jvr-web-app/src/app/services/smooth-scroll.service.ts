@@ -6,6 +6,7 @@ export class SmoothScrollService implements OnDestroy {
   private lenis: Lenis | null = null;
   private rafId: number | null = null;
   private ngZone = inject(NgZone);
+  private popStateListener: (() => void) | null = null;
 
   init(): void {
     this.ngZone.runOutsideAngular(() => {
@@ -21,6 +22,15 @@ export class SmoothScrollService implements OnDestroy {
         this.rafId = requestAnimationFrame(raf);
       };
       this.rafId = requestAnimationFrame(raf);
+
+      // Handle browser back/forward buttons
+      this.popStateListener = () => {
+        const hash = window.location.hash.slice(1); // Remove '#' prefix
+        if (hash) {
+          this.scrollToInstant(hash);
+        }
+      };
+      window.addEventListener('popstate', this.popStateListener);
     });
   }
 
@@ -38,6 +48,12 @@ export class SmoothScrollService implements OnDestroy {
         prev instanceof HTMLHRElement && prev.classList.contains('divider-full')
           ? prev
           : `#${id}`;
+
+      // Update URL hash to enable browser back button navigation
+      // Use replaceState for smooth scroll to avoid creating duplicate history entries
+      if (window.location.hash !== `#${id}`) {
+        window.history.pushState(null, '', `#${id}`);
+      }
 
       this.lenis?.scrollTo(target as HTMLElement | string, {
         duration: 1.4,
@@ -65,6 +81,9 @@ export class SmoothScrollService implements OnDestroy {
 
   ngOnDestroy(): void {
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+    if (this.popStateListener) {
+      window.removeEventListener('popstate', this.popStateListener);
+    }
     this.lenis?.destroy();
     this.lenis = null;
   }

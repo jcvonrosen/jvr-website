@@ -1,25 +1,30 @@
 /**
- * Electric Dusk — Royal blue / violet-purple / amber-orange
+ * Electric Dusk Theme — Synced with styles.css tokens
  *
- * Color role mapping:
- *   Primary (surfaces/neutrals) → white/light grays  →  zinc/slate scale
- *   Secondary (interactive)     → royal blue + violet →  indigo→violet scale
- *   Accent (highlights/CTAs)    → amber-orange        →  orange scale
+ * Brand Palette (Split-Complementary):
+ *   Primary:   Royal Blue #1D6FE8 (--brand-blue)
+ *   Secondary: Violet-Purple #7C3AED (--brand-purple)
+ *   Accent:    Amber-Orange #F97316 (--brand-orange)
  *
- * Uses Aura's built-in primitive palettes (blue, indigo, violet, orange, zinc)
- * so all token references are valid and resolvable.
+ * Color Roles:
+ *   Primary (interactive) → Blue + Purple (buttons, links, active states)
+ *   Accent (CTAs)         → Orange (highlights, call-to-actions)
+ *   Surface (backgrounds) → Blue-tinted neutrals (not pure gray)
+ *
+ * NOTE: PrimeNG preset files don't support CSS variable references.
+ * Keep these values synced with styles.css primitives manually.
  */
 export const electricDuskTheme = {
   semantic: {
-    // Maps PrimeNG's "primary" action scale to blue→indigo→violet
-    // 500 anchors to brand blue (#1D6FE8 ≈ blue.600 in Tailwind scale)
+    // Maps PrimeNG's "primary" scale to our brand blue→purple gradient
+    // 500 = brand blue, darker values shift toward purple
     primary: {
       50:  '{blue.50}',
       100: '{blue.100}',
       200: '{blue.200}',
       300: '{blue.300}',
       400: '{blue.400}',
-      500: '{blue.600}',   // ≈ #1D6FE8 — brand blue
+      500: '{blue.600}',   // #1D6FE8 (--brand-blue)
       600: '{indigo.600}',
       700: '{violet.700}',
       800: '{violet.800}',
@@ -28,25 +33,25 @@ export const electricDuskTheme = {
     },
     colorScheme: {
       light: {
-        // Interactive primary: royal blue → shifts to violet on hover
+        // Interactive primary: matches --color-interactive tokens
         primary: {
-          color: '#1D6FE8',
-          contrastColor: '#FFFFFF',
-          hoverColor: '#7C3AED',
-          activeColor: '#6B3BE6',
+          color: '#1D6FE8',           // --brand-blue
+          contrastColor: '#FFFFFF',   // --color-cta-text
+          hoverColor: '#7C3AED',      // --brand-purple
+          activeColor: '#6B3BE6',     // --brand-purple-hover
         },
-        // Accent: amber-orange for selected/highlighted states
+        // Accent/highlight: orange tints for selection states
         highlight: {
-          background: '#FFEDD5',
-          focusBackground: '#FED7AA',
-          color: '#9A3412',
-          focusColor: '#7C2D12',
+          background: '#FFEDD5',      // light orange tint
+          focusBackground: '#FED7AA', // darker orange tint
+          color: '#9A3412',           // dark orange text
+          focusColor: '#7C2D12',      // darker focus text
         },
-        // Surfaces: aligned to brand --bg-white / --bg-light / --bg-light-2
+        // Surfaces: matches --neutral-* scale
         surface: {
-          0: '#FFFFFF',   // --bg-white
-          50: '#F8F9FC',  // --bg-light
-          100: '#EEF2FF', // --bg-light-2
+          0: '#FFFFFF',    // --neutral-white
+          50: '#F8F9FC',   // --neutral-50
+          100: '#EEF2FF',  // --neutral-100
           200: '#E2E8F0',
           300: '#CBD5E1',
           400: '#94A3B8',
@@ -59,25 +64,25 @@ export const electricDuskTheme = {
         },
       },
       dark: {
-        // Interactive primary: lighter indigo for dark backgrounds
+        // Interactive primary: brighter blues for dark mode
         primary: {
-          color: '#818CF8',
-          contrastColor: '#0A1628',
-          hoverColor: '#A5B4FC',
-          activeColor: '#C7D2FE',
+          color: '#5B9BF5',           // --brand-blue (dark mode)
+          contrastColor: '#0A1628',   // --brand-blue-deep
+          hoverColor: '#60A5FA',      // --brand-blue-light
+          activeColor: '#A5B4FC',     // lighter active state
         },
-        // Accent: orange with transparency for dark mode
+        // Accent: semi-transparent orange for dark mode
         highlight: {
           background: 'color-mix(in srgb, #F97316, transparent 84%)',
           focusBackground: 'color-mix(in srgb, #F97316, transparent 76%)',
           color: 'rgba(255,255,255,0.87)',
           focusColor: 'rgba(255,255,255,0.87)',
         },
-        // Surfaces: dark navy matched to --bg-white / --bg-light / --bg-light-2
+        // Surfaces: matches dark mode --neutral-* overrides
         surface: {
-          0: '#0d1829',   // --bg-white (dark)
-          50: '#111f35',  // --bg-light (dark)
-          100: '#152239',  // matches --bg-light-2 in dark mode
+          0: '#0d1829',    // --neutral-white (dark)
+          50: '#111f35',   // --neutral-50 (dark)
+          100: '#152239',  // --neutral-100 (dark)
           200: '#16202E',
           300: '#121A28',
           400: '#0E1520',

@@ -54,7 +54,7 @@ export class TopMenubar {
       command: e => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('contact'); },
     },
     {
-      label: 'Get Started',
+      label: 'Message Us',
       url: '#contact',
       section: 'contact',
       styleClass: 'mobile-cta-item',

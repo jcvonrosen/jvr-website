@@ -300,13 +300,13 @@ body.dark-mode .mega-section.mega-section--active {
   flex-shrink: 0;
 }
 .dot-blue {
-  background: var(--blue);
+  background: var(--brand-blue);
 }
 .dot-purple {
-  background: var(--purple);
+  background: var(--brand-purple);
 }
 .dot-orange {
-  background: var(--orange);
+  background: var(--brand-orange);
 }
 
 .feature-title {
@@ -322,12 +322,20 @@ body.dark-mode .mega-section.mega-section--active {
   margin: 0;
 }
 
-/* Metrics panel */
+/* Metrics panel — intentionally dark in both modes (terminal aesthetic) */
 .metrics-panel {
-  background: var(--bg-dark);
+  background: var(--neutral-900);  /* Dark terminal background (intentional in both modes) */
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-lg);
   padding: 28px;
+  /* Light mode: add shadow to make dark panel feel intentional */
+  box-shadow: 0 4px 16px rgba(13, 24, 41, 0.15);
+}
+
+/* Dark mode: stronger shadow, blends with page */
+body.dark-mode .metrics-panel {
+  background: var(--neutral-900);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .panel-dots {
@@ -452,18 +460,18 @@ body.dark-mode .mega-section.mega-section--active {
 
 .step-s1-bg,
 .step-blue {
-  background: var(--step-s1-bg, rgba(29, 111, 232, 0.1));
-  color: var(--blue);
+  background: var(--step-s1-bg, var(--color-tint-blue));
+  color: var(--brand-blue);
 }
 .step-s2-bg,
 .step-purple {
-  background: var(--step-s2-bg, rgba(124, 58, 237, 0.1));
-  color: var(--purple);
+  background: var(--step-s2-bg, var(--color-tint-purple));
+  color: var(--brand-purple);
 }
 .step-s3-bg,
 .step-orange {
-  background: var(--step-s3-bg, rgba(249, 115, 22, 0.1));
-  color: var(--orange);
+  background: var(--step-s3-bg, var(--color-tint-orange));
+  color: var(--brand-orange);
 }
 
 .step-title {
@@ -499,13 +507,13 @@ body.dark-mode .mega-section.mega-section--active {
   text-align: center;
 }
 .mini-band-blue {
-  background: rgba(29, 111, 232, 0.1);
+  background: var(--color-tint-blue);
 }
 .mini-band-purple {
-  background: rgba(124, 58, 237, 0.1);
+  background: var(--color-tint-purple);
 }
 .mini-band-orange {
-  background: rgba(249, 115, 22, 0.1);
+  background: var(--color-tint-orange);
 }
 
 .mini-stat-value {
@@ -542,16 +550,16 @@ body.dark-mode .mega-section.mega-section--active {
   border-radius: var(--radius-pill);
 }
 .mini-industry-blue {
-  color: var(--blue);
-  background: rgba(29, 111, 232, 0.08);
+  color: var(--brand-blue);
+  background: var(--color-tint-blue);
 }
 .mini-industry-purple {
-  color: var(--purple);
-  background: rgba(124, 58, 237, 0.08);
+  color: var(--brand-purple);
+  background: var(--color-tint-purple);
 }
 .mini-industry-orange {
-  color: var(--orange);
-  background: rgba(249, 115, 22, 0.08);
+  color: var(--brand-orange);
+  background: var(--color-tint-orange);
 }
 
 .mini-block {
@@ -1451,8 +1459,8 @@ body.dark-mode .mega-section.mega-section--active {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--blue);
-  color: #fff; /* intentional: white on blue */
+  background: var(--brand-blue);
+  color: var(--color-cta-text);
   font-size: 12px;
   font-weight: 700;
   display: flex;
@@ -1614,19 +1622,18 @@ body.dark-mode .pill-brand:hover {
   color: #fff;
 }
 
-/* Process step badges — restore saturated colours so white text passes AA */
-/* contrast checks: white on #1d6fe8 = 4.68:1 ✅  #7c3aed = 5.70:1 ✅  #b84d08 = 5.12:1 ✅ */
+/* Process step badges — saturated brand colors for dark mode (white text passes WCAG AA) */
 body.dark-mode .step-blue {
-  background: #1d6fe8;
+  background: #1d6fe8;  /* Full saturation --brand-blue for contrast */
   box-shadow: 0 4px 16px rgba(29, 111, 232, 0.5);
 }
 body.dark-mode .step-purple {
-  background: #7c3aed;
+  background: #7c3aed;  /* Full saturation --brand-purple for contrast */
   box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
 }
 body.dark-mode .step-orange {
-  background: #b84d08;
-  box-shadow: 0 4px 16px rgba(184, 77, 8, 0.5);
+  background: var(--brand-orange-hover);  /* Darkened orange for contrast */
+  box-shadow: 0 4px 16px rgba(194, 87, 12, 0.5);
 }
 
 /* Mini case study cards (Why Us — Results) */
@@ -1657,37 +1664,37 @@ body.dark-mode .mini-study-card-orange:hover {
     0 12px 36px rgba(249, 115, 22, 0.35);
 }
 body.dark-mode .mini-band-blue {
-  background: rgba(29, 111, 232, 0.15);
+  background: var(--color-tint-blue);  /* Dark mode tint auto-updated */
 }
 body.dark-mode .mini-band-purple {
-  background: rgba(124, 58, 237, 0.15);
+  background: var(--color-tint-purple);
 }
 body.dark-mode .mini-band-orange {
-  background: rgba(249, 115, 22, 0.15);
+  background: var(--color-tint-orange);
 }
 body.dark-mode .mini-stat-blue {
-  color: var(--blue-on-dark);
+  color: var(--brand-blue-light);
 }
 body.dark-mode .mini-stat-purple {
-  color: var(--purple-on-dark);
+  color: var(--brand-purple-light);
 }
 body.dark-mode .mini-stat-orange {
-  color: var(--orange-on-dark);
+  color: var(--brand-orange-light);
 }
 body.dark-mode .mini-stat-label {
   color: rgba(255, 255, 255, 0.45);
 }
 body.dark-mode .mini-industry-blue {
-  background: rgba(29, 111, 232, 0.2);
-  color: var(--blue-on-dark);
+  background: var(--color-tint-blue);
+  color: var(--brand-blue-light);
 }
 body.dark-mode .mini-industry-purple {
-  background: rgba(124, 58, 237, 0.2);
-  color: var(--purple-on-dark);
+  background: var(--color-tint-purple);
+  color: var(--brand-purple-light);
 }
 body.dark-mode .mini-industry-orange {
-  background: rgba(249, 115, 22, 0.2);
-  color: var(--orange-on-dark);
+  background: var(--color-tint-orange);
+  color: var(--brand-orange-light);
 }
 body.dark-mode .mini-block-label {
   color: rgba(255, 255, 255, 0.55);
