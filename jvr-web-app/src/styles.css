@@ -113,7 +113,12 @@
   /* ── Gradients ────────────────────────────────────────────── */
   --gradient-brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
   --gradient-hero-bg: linear-gradient(135deg, var(--brand-blue-deep) 0%, #0f1f3d 55%, #1a0a2e 100%);
-  --gradient-accent: linear-gradient(90deg, var(--brand-blue), var(--brand-purple), var(--brand-orange));
+  --gradient-accent: linear-gradient(
+    90deg,
+    var(--brand-blue),
+    var(--brand-purple),
+    var(--brand-orange)
+  );
 
   /* ── Shadows ──────────────────────────────────────────────── */
   --shadow-card: 0 4px 24px rgba(13, 30, 61, 0.06);
@@ -135,21 +140,44 @@
      SPACING SCALE — 8-step system based on 4px
      Use these for consistent spacing throughout the site
      ══════════════════════════════════════════════════════════ */
-  --space-1: 4px;    /* Micro spacing (icon-text gap) */
-  --space-2: 8px;    /* Tight (related items) */
-  --space-3: 12px;   /* Close (form fields, labels) */
-  --space-4: 16px;   /* Default (card content, margins) */
-  --space-6: 24px;   /* Comfortable (section padding, gaps) */
-  --space-8: 32px;   /* Generous (card padding, column gaps) */
-  --space-12: 48px;  /* Spacious (large gaps, section spacing) */
-  --space-16: 64px;  /* Luxurious (hero sections, major spacing) */
-  --space-20: 80px;  /* Extra large (page sections) */
+  --space-1: 4px; /* Micro spacing (icon-text gap) */
+  --space-2: 8px; /* Tight (related items) */
+  --space-3: 12px; /* Close (form fields, labels) */
+  --space-4: 16px; /* Default (card content, margins) */
+  --space-6: 24px; /* Comfortable (section padding, gaps) */
+  --space-8: 32px; /* Generous (card padding, column gaps) */
+  --space-12: 48px; /* Spacious (large gaps, section spacing) */
+  --space-16: 64px; /* Luxurious (hero sections, major spacing) */
+  --space-20: 80px; /* Extra large (page sections) */
 
   /* ── Section backgrounds (legacy aliases) ─────────────────── */
   --bg-dark: var(--color-surface-dark);
   --bg-light: var(--color-surface-raised);
   --bg-light-2: var(--color-surface-overlay);
   --bg-white: var(--color-surface-base);
+
+  /* ══════════════════════════════════════════════════════════
+     CARD HOVER SYSTEM — Professional with impact
+     ══════════════════════════════════════════════════════════ */
+
+  /* ── Timing & Easing ────────────────────────────────────── */
+  --card-transition-duration: 0.4s;
+  --card-transition-easing: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* ── Border styling ──────────────────────────────────────── */
+  --card-border-width: 1px;
+  --card-border-width-hover: 1px;
+  --card-border-opacity-base: 0.15; /* Resting state */
+  --card-border-opacity-hover: 0.45; /* Visible but refined on hover */
+
+  /* ── Elevation (shadow-based, professional depth) ───────── */
+  --card-shadow-hover-y: 12px;
+  --card-shadow-hover-blur: 32px;
+  --card-shadow-hover-spread: -4px;
+  --card-shadow-hover-opacity: 0.12;
+  --card-shadow-accent-y: 4px;
+  --card-shadow-accent-blur: 16px;
+  --card-shadow-accent-opacity: 0.06;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -213,7 +241,10 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: Trebuchet MS, Arial, sans-serif;
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
 }
 
 .page-content {
@@ -540,40 +571,48 @@ body.dark-mode .section-label {
 /* Light card — for light / light-2 section backgrounds */
 .card-light {
   background: var(--bg-white);
-  border: 1px solid var(--border);
+  border: var(--card-border-width) solid rgba(13, 30, 61, var(--card-border-opacity-base));
   border-radius: var(--radius-lg);
   padding: 32px 28px;
   height: 100%;
   box-shadow: var(--shadow-card);
   transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
 }
 .card-light:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
+  transform: translateY(-3px);
 }
 
 /* Dark card — for blue-deep / dark section backgrounds */
 .card-dark {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: var(--card-border-width) solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-lg);
   padding: 32px 28px;
   height: 100%;
   transition:
-    background 0.2s,
-    border-color 0.2s,
-    box-shadow 0.2s,
-    transform 0.2s;
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
 }
 .card-dark:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(29, 111, 232, 0.4);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
   box-shadow:
-    0 0 0 1px rgba(29, 111, 232, 0.25),
-    0 12px 40px rgba(29, 111, 232, 0.3),
-    0 4px 16px rgba(124, 58, 237, 0.15);
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, 0.08);
   transform: translateY(-3px);
 }
 
@@ -740,8 +779,8 @@ body.dark-mode {
   --brand-purple: #9d6bff;
   --brand-purple-light: #a78bfa;
 
-  --brand-orange: #fb923c;        /* Lighter orange for dark bg */
-  --brand-orange-hover: #f97316;  /* Saturated orange for hovers */
+  --brand-orange: #fb923c; /* Lighter orange for dark bg */
+  --brand-orange-hover: #f97316; /* Saturated orange for hovers */
   --brand-orange-light: #fb923c;
 
   /* ── Neutrals (dark surfaces with blue tint) ────────────────────── */
@@ -754,9 +793,9 @@ body.dark-mode {
   --neutral-900: #060d18;
 
   /* ── Tint backgrounds (semi-transparent for dark surfaces) ──────── */
-  --tint-blue: rgba(91, 155, 245, 0.12);   /* Use dark mode blue RGB */
-  --tint-purple: rgba(157, 107, 255, 0.12);  /* Use dark mode purple RGB */
-  --tint-orange: rgba(251, 146, 60, 0.12);   /* Use dark mode orange RGB */
+  --tint-blue: rgba(91, 155, 245, 0.12); /* Use dark mode blue RGB */
+  --tint-purple: rgba(157, 107, 255, 0.12); /* Use dark mode purple RGB */
+  --tint-orange: rgba(251, 146, 60, 0.12); /* Use dark mode orange RGB */
 
   /* ── Explicit tint token overrides for dark mode ────────────────── */
   --color-tint-blue: var(--tint-blue);
@@ -768,19 +807,19 @@ body.dark-mode {
      ═══════════════════════════════════════════════════════════════ */
 
   /* ── Text (bright on dark) ──────────────────────────────────────── */
-  --color-text-primary: var(--neutral-800);     /* #eef2ff */
-  --color-text-secondary: var(--neutral-700);   /* #b8c7e0 */
-  --color-text-tertiary: #8099b8;               /* WCAG AA 4.5:1 */
+  --color-text-primary: var(--neutral-800); /* #eef2ff */
+  --color-text-secondary: var(--neutral-700); /* #b8c7e0 */
+  --color-text-tertiary: #8099b8; /* WCAG AA 4.5:1 */
 
   /* ── Interactive (brighter blues) ───────────────────────────────── */
   --color-interactive: var(--brand-blue);
   --color-interactive-hover: var(--brand-blue-light);
 
   /* ── Surfaces (dark backgrounds) ────────────────────────────────── */
-  --color-surface-base: var(--neutral-white);       /* #0d1829 */
-  --color-surface-raised: var(--neutral-50);        /* #111f35 */
-  --color-surface-overlay: var(--neutral-100);      /* #152239 */
-  --color-surface-dark: var(--neutral-900);         /* #060d18 */
+  --color-surface-base: var(--neutral-white); /* #0d1829 */
+  --color-surface-raised: var(--neutral-50); /* #111f35 */
+  --color-surface-overlay: var(--neutral-100); /* #152239 */
+  --color-surface-dark: var(--neutral-900); /* #060d18 */
 
   /* ── Cards (semi-transparent white) ─────────────────────────────── */
   --color-card-bg: rgba(255, 255, 255, 0.05);
@@ -831,7 +870,13 @@ body.dark-mode .card-light {
   border-color: rgba(255, 255, 255, 0.09);
 }
 body.dark-mode .card-light:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, 0.08);
 }
 
 /* ── Ghost button (on what is now a dark surface) ──────────── */

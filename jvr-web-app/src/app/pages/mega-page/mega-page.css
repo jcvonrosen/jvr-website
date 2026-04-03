@@ -1131,16 +1131,24 @@ body.dark-mode .info-tag {
   display: grid;
   grid-template-columns: 1fr auto;
   background: var(--bg-light);
-  border: 1px solid var(--border);
+  border: var(--card-border-width) solid var(--border);
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition:
-    box-shadow 0.2s,
-    transform 0.2s;
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    border-width var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
 }
 .study-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
+  transform: translateY(-3px);
 }
 .study-alt {
   background: var(--bg-white);
@@ -1226,15 +1234,17 @@ body.dark-mode .info-tag {
   justify-content: center;
   padding: 32px 28px;
   text-align: center;
-  border-left: 1px solid var(--border);
+  border-left: var(--card-border-width) solid var(--border);
 }
 
 .stat-blue {
   background: var(--blue-tint);
 }
+
 .stat-purple {
   background: var(--purple-tint);
 }
+
 .stat-orange {
   background: var(--orange-tint);
 }
@@ -1668,27 +1678,38 @@ body.dark-mode .mini-study-card {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: none;
+  transition:
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    border-width var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing);
 }
 body.dark-mode .mini-study-card:hover {
   background: rgba(255, 255, 255, 0.07);
 }
 body.dark-mode .mini-study-card-blue:hover {
-  border-color: rgba(29, 111, 232, 0.45);
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
   box-shadow:
-    0 0 0 1px rgba(29, 111, 232, 0.25),
-    0 12px 36px rgba(29, 111, 232, 0.35);
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, 0.12);
 }
 body.dark-mode .mini-study-card-purple:hover {
-  border-color: rgba(124, 58, 237, 0.45);
+  border-color: rgba(124, 58, 237, var(--card-border-opacity-hover));
   box-shadow:
-    0 0 0 1px rgba(124, 58, 237, 0.25),
-    0 12px 36px rgba(124, 58, 237, 0.35);
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(124, 58, 237, 0.12);
 }
 body.dark-mode .mini-study-card-orange:hover {
-  border-color: rgba(249, 115, 22, 0.45);
+  border-color: rgba(249, 115, 22, var(--card-border-opacity-hover));
   box-shadow:
-    0 0 0 1px rgba(249, 115, 22, 0.25),
-    0 12px 36px rgba(249, 115, 22, 0.35);
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(249, 115, 22, 0.12);
 }
 
 /* CRITICAL: Band backgrounds need explicit dark tints, stat/industry colors need explicit light variants */
@@ -1760,6 +1781,14 @@ body.dark-mode .study-alt {
 }
 body.dark-mode .study-impact {
   background: rgba(255, 255, 255, 0.04);
+}
+body.dark-mode .study-card:hover {
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.4),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, 0.08);
 }
 body.dark-mode .lesson-quote-mark {
   color: rgba(255, 255, 255, 0.15);
@@ -1843,6 +1872,7 @@ body.dark-mode .inline-link {
     gap: 16px;
     min-width: unset;
   }
+
   .study-stat-panel .stat-value {
     font-size: 20px;
     margin-bottom: 0;
