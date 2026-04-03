@@ -714,7 +714,17 @@ body.dark-mode .info-tag {
   transform: translateY(10px);
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+  background: var(--bg-light);
+  border: var(--card-border-width) solid var(--border);
+  border-radius: var(--radius-xl);
+  transition:
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0s linear 0.4s,
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    border-width var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing);
 }
 
 .cap-card-display--visible {
@@ -722,7 +732,24 @@ body.dark-mode .info-tag {
   transform: translateY(0);
   pointer-events: auto;
   visibility: visible;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+  transition:
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0s linear 0s,
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    border-width var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing);
+}
+
+.cap-card-display--visible:hover {
+  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
+      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
+  transform: translateY(-3px);
 }
 
 .cap-card-desc {
@@ -1142,6 +1169,7 @@ body.dark-mode .info-tag {
     transform var(--card-transition-duration) var(--card-transition-easing);
 }
 .study-card:hover {
+  background: var(--bg-white);
   border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
@@ -1783,6 +1811,7 @@ body.dark-mode .study-impact {
   background: rgba(255, 255, 255, 0.04);
 }
 body.dark-mode .study-card:hover {
+  background: rgba(255, 255, 255, 0.07);
   border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
