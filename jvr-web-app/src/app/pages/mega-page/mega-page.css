@@ -118,7 +118,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .wordmark {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   font-size: 40px;
   font-weight: 800;
   color: var(--text);
@@ -132,7 +132,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .wordmark-sub {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -141,7 +141,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .hero-heading {
-  font-size: 60px;
+  font-size: clamp(32px, 6vw + 1rem, 60px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -181,7 +181,7 @@ body.dark-mode .mega-section--active .section-hero {
   background: var(--bg-light-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-mid);
   text-decoration: none;
@@ -263,7 +263,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .section-hero .hero-heading {
-  font-size: 52px;
+  font-size: clamp(32px, 5vw + 1rem, 52px);
   margin-bottom: 20px;
   text-align: center;
 }
@@ -274,9 +274,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 @media (max-width: 960px) {
-  .section-hero .hero-heading {
-    font-size: 40px;
-  }
+  /* Fluid sizing handles responsive scaling automatically */
   .mega-section .section-hero {
     min-height: 220px;
     padding: 52px 24px;
@@ -284,9 +282,7 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 @media (max-width: 480px) {
-  .section-hero .hero-heading {
-    font-size: 32px;
-  }
+  /* Fluid sizing handles responsive scaling automatically */
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -395,7 +391,7 @@ body.dark-mode .info-tag {
 }
 
 .panel-section-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -430,7 +426,7 @@ body.dark-mode .info-tag {
 }
 
 .mode-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -556,7 +552,7 @@ body.dark-mode .info-tag {
   padding: 20px 24px;
 }
 .mini-industry {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -582,14 +578,14 @@ body.dark-mode .info-tag {
   margin-bottom: 12px;
 }
 .mini-block-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-light);
 }
 .mini-block-text {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-mid);
   line-height: 1.65;
   margin: 4px 0 0;
@@ -758,7 +754,7 @@ body.dark-mode .info-tag {
 }
 
 .stack-cat-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -901,7 +897,7 @@ body.dark-mode .info-tag {
   justify-content: center;
   font-size: 16px;
   font-weight: 800;
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   margin-bottom: 16px;
   color: #fff;
 }
@@ -1159,7 +1155,7 @@ body.dark-mode .info-tag {
 
 .study-industry-tag {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1197,7 +1193,7 @@ body.dark-mode .info-tag {
 
 .study-block-label {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1244,7 +1240,7 @@ body.dark-mode .info-tag {
 }
 
 .study-stat-panel .stat-value {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   font-size: 22px;
   font-weight: 800;
   color: var(--text);
@@ -1252,7 +1248,7 @@ body.dark-mode .info-tag {
   margin-bottom: 8px;
 }
 .study-stat-panel .stat-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1287,7 +1283,7 @@ body.dark-mode .info-tag {
 }
 
 .lesson-quote-mark {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   font-size: 80px;
   line-height: 0.6;
   color: var(--border);
@@ -1295,7 +1291,7 @@ body.dark-mode .info-tag {
 }
 
 .lesson-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS,Arial,sans-serif; 
   font-size: 24px;
   font-style: italic;
   color: var(--text);
@@ -1541,7 +1537,7 @@ body.dark-mode .info-tag {
 
 .detail-label {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;

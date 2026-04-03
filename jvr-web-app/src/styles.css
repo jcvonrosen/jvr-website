@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
 
 /* ═══════════════════════════════════════════════════════════════
    DESIGN TOKENS
@@ -213,7 +213,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS, Arial, sans-serif;
 }
 
 .page-content {
@@ -234,7 +234,7 @@ h4 {
    ═══════════════════════════════════════════════════════════════ */
 .section-label {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -253,7 +253,7 @@ body.dark-mode .section-label {
 }
 
 .section-title {
-  font-size: 36px;
+  font-size: clamp(28px, 4vw + 1rem, 36px);
   font-weight: 800;
   line-height: 1.2;
   color: var(--text);
@@ -278,7 +278,7 @@ body.dark-mode .section-label {
 }
 
 .section-hero .hero-heading {
-  font-size: 52px;
+  font-size: clamp(32px, 5vw + 1rem, 52px);
   font-weight: 800;
   line-height: 1.1;
   color: #fff;
@@ -527,7 +527,7 @@ body.dark-mode .section-label {
 }
 
 .card-link {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--blue);
   text-decoration: none;
@@ -714,21 +714,14 @@ body.dark-mode .section-label {
   .page-cta-light {
     padding: 60px 0;
   }
-  .section-hero .hero-heading {
-    font-size: 40px;
-  }
-  .section-title {
-    font-size: 28px;
-  }
+  /* Fluid sizing handles responsive scaling automatically */
   .section-sub {
     font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .section-hero .hero-heading {
-    font-size: 32px;
-  }
+  /* Fluid sizing handles responsive scaling automatically */
   .cta-actions {
     flex-direction: column;
     align-items: center;

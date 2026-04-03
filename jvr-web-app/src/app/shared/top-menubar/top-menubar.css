@@ -122,7 +122,7 @@
 }
 
 .logo-name {
-  font-family: 'Playfair Display', serif;
+  font-family: Trebuchet MS, Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: var(--text);
@@ -131,7 +131,7 @@
 }
 
 .logo-tagline {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--text-light);
   letter-spacing: 0.18em;
