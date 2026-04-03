@@ -384,24 +384,12 @@ body.dark-mode .section-label {
     transform: rotate(0deg);
   }
 }
-@keyframes cta-wiggle {
+@keyframes cta-scale {
   0% {
-    transform: scale(1) rotate(0deg);
-  }
-  15% {
-    transform: scale(1.04) rotate(-1.2deg);
-  }
-  30% {
-    transform: scale(1.05) rotate(1.2deg);
-  }
-  50% {
-    transform: scale(1.05) rotate(-0.7deg);
-  }
-  70% {
-    transform: scale(1.05) rotate(0.5deg);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1.05) rotate(0deg);
+    transform: scale(1.05);
   }
 }
 @keyframes cta-press {
@@ -442,7 +430,7 @@ body.dark-mode .section-label {
 }
 @media (prefers-reduced-motion: no-preference) {
   .btn-primary-cta:hover {
-    animation: cta-wiggle 0.4s ease-out forwards;
+    animation: cta-scale 0.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
   .btn-primary-cta:active {
     animation: cta-press 0.18s ease-out forwards;
@@ -696,7 +684,7 @@ body.dark-mode .section-label {
 }
 @media (prefers-reduced-motion: no-preference) {
   .btn-orange .p-button:hover {
-    animation: cta-wiggle 0.4s ease-out forwards;
+    animation: cta-scale 0.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
   .btn-orange .p-button:active {
     animation: cta-press 0.18s ease-out forwards;

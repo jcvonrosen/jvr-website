@@ -208,7 +208,7 @@ body.dark-mode .mega-section--active .section-hero {
 
 @media (prefers-reduced-motion: no-preference) {
   .pill:hover {
-    animation: cta-wiggle 0.4s ease-out forwards;
+    animation: cta-scale 0.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
   .pill:active {
     animation: cta-press 0.18s ease-out forwards;
