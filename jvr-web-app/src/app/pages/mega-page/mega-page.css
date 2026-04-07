@@ -118,7 +118,10 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .wordmark {
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   font-size: 40px;
   font-weight: 800;
   color: var(--text);
@@ -132,7 +135,10 @@ body.dark-mode .mega-section--active .section-hero {
 }
 
 .wordmark-sub {
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -245,8 +251,9 @@ body.dark-mode .mega-section--active .section-hero {
 .mega-section .section-hero {
   background: inherit;
   border-top: 3px solid transparent;
-  transition: background 0.75s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.75s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -325,7 +332,7 @@ body.dark-mode .mega-section--active .section-hero {
 
 /* Metrics panel — intentionally dark in both modes (terminal aesthetic) */
 .metrics-panel {
-  background: var(--neutral-900);  /* Dark terminal background (intentional in both modes) */
+  background: var(--neutral-900); /* Dark terminal background (intentional in both modes) */
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-lg);
   padding: 28px;
@@ -341,13 +348,13 @@ body.dark-mode .metrics-panel {
 
 /* Metrics panel text — WCAG AAA compliance on dark terminal bg */
 body.dark-mode .panel-filename {
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: 7:1 contrast on #060d18 */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: 7:1 contrast on #060d18 */
 }
 body.dark-mode .panel-section-label {
-  color: rgba(255, 255, 255, 0.90);  /* WCAG AAA: 11px uppercase = large text, 4.5:1 minimum */
+  color: rgba(255, 255, 255, 0.9); /* WCAG AAA: 11px uppercase = large text, 4.5:1 minimum */
 }
 body.dark-mode .info-tag {
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: composite with tag bg requires 7:1 */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: composite with tag bg requires 7:1 */
 }
 
 .panel-dots {
@@ -627,7 +634,9 @@ body.dark-mode .info-tag {
   margin-left: auto;
   margin-right: auto;
 }
-.cap-tab-carousel::-webkit-scrollbar { display: none; }
+.cap-tab-carousel::-webkit-scrollbar {
+  display: none;
+}
 
 /* Mobile / small tablet: show ~3 buttons with fade edges */
 @media (max-width: 768px) {
@@ -669,7 +678,10 @@ body.dark-mode .info-tag {
   font-family: inherit;
   line-height: 1.35;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
 }
 .cap-tab-btn .pi {
   font-size: 16px;
@@ -924,7 +936,10 @@ body.dark-mode .info-tag {
   justify-content: center;
   font-size: 16px;
   font-weight: 800;
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   margin-bottom: 16px;
   color: #fff;
 }
@@ -1092,20 +1107,6 @@ body.dark-mode .info-tag {
     color 0.2s;
 }
 
-/* Mobile/Tablet: Hide labels and make buttons circular */
-@media (max-width: 991px) {
-  .filter-icon-btn {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    border-radius: 50%;
-  }
-
-  .filter-label {
-    display: none;
-  }
-}
-
 .filter-icon-btn:hover {
   border-color: var(--text-mid);
   color: var(--text-mid);
@@ -1128,8 +1129,11 @@ body.dark-mode .info-tag {
 }
 
 .filter-icon-clear {
+  /* Dashed border variant of the Clear control.
+     Width/shape comes from .filter-icon-btn so the label can expand the pill on desktop. */
   border-style: dashed;
 }
+
 .filter-icon-clear:hover {
   border-color: var(--orange);
   color: var(--orange);
@@ -1309,7 +1313,10 @@ body.dark-mode .info-tag {
 }
 
 .study-stat-panel .stat-value {
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   font-size: 22px;
   font-weight: 800;
   color: var(--text);
@@ -1352,7 +1359,10 @@ body.dark-mode .info-tag {
 }
 
 .lesson-quote-mark {
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   font-size: 80px;
   line-height: 0.6;
   color: var(--border);
@@ -1360,7 +1370,10 @@ body.dark-mode .info-tag {
 }
 
 .lesson-quote {
-  font-family: Trebuchet MS,Arial,sans-serif; 
+  font-family:
+    Trebuchet MS,
+    Arial,
+    sans-serif;
   font-size: 24px;
   font-style: italic;
   color: var(--text);
@@ -1688,7 +1701,12 @@ body.dark-mode .mega-hero .hero-sub {
 body.dark-mode .pill {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.22);
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: increased from 0.85 for 7:1+ contrast on composite bg */
+  color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* WCAG AAA: increased from 0.85 for 7:1+ contrast on composite bg */
 }
 body.dark-mode .pill:hover {
   background: rgba(255, 255, 255, 0.32);
@@ -1720,15 +1738,15 @@ body.dark-mode .pill-brand:hover {
 
 /* Process step badges — saturated brand colors for dark mode (white text passes WCAG AA) */
 body.dark-mode .step-blue {
-  background: #1d6fe8;  /* Full saturation --brand-blue for contrast */
+  background: #1d6fe8; /* Full saturation --brand-blue for contrast */
   box-shadow: 0 4px 16px rgba(29, 111, 232, 0.5);
 }
 body.dark-mode .step-purple {
-  background: #7c3aed;  /* Full saturation --brand-purple for contrast */
+  background: #7c3aed; /* Full saturation --brand-purple for contrast */
   box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
 }
 body.dark-mode .step-orange {
-  background: var(--brand-orange-hover);  /* Darkened orange for contrast */
+  background: var(--brand-orange-hover); /* Darkened orange for contrast */
   box-shadow: 0 4px 16px rgba(194, 87, 12, 0.5);
 }
 
@@ -1751,78 +1769,75 @@ body.dark-mode .mini-study-card-blue:hover {
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, 0.12);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.12);
 }
 body.dark-mode .mini-study-card-purple:hover {
   border-color: rgba(124, 58, 237, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(124, 58, 237, 0.12);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(124, 58, 237, 0.12);
 }
 body.dark-mode .mini-study-card-orange:hover {
   border-color: rgba(249, 115, 22, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(249, 115, 22, 0.12);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(249, 115, 22, 0.12);
 }
 
 /* CRITICAL: Band backgrounds need explicit dark tints, stat/industry colors need explicit light variants */
 body.dark-mode .mini-band-blue {
-  background: rgba(91, 155, 245, 0.12);  /* Explicit dark-safe blue tint */
+  background: rgba(91, 155, 245, 0.12); /* Explicit dark-safe blue tint */
 }
 body.dark-mode .mini-band-purple {
-  background: rgba(157, 107, 255, 0.12);  /* Explicit dark-safe purple tint */
+  background: rgba(157, 107, 255, 0.12); /* Explicit dark-safe purple tint */
 }
 body.dark-mode .mini-band-orange {
-  background: rgba(251, 146, 60, 0.12);  /* Explicit dark-safe orange tint */
+  background: rgba(251, 146, 60, 0.12); /* Explicit dark-safe orange tint */
 }
 
 body.dark-mode .mini-stat-value {
-  color: #fff;  /* Explicit white for maximum contrast */
+  color: #fff; /* Explicit white for maximum contrast */
 }
 body.dark-mode .mini-stat-blue {
-  color: #60a5fa;  /* Explicit --brand-blue-light */
+  color: #60a5fa; /* Explicit --brand-blue-light */
 }
 body.dark-mode .mini-stat-purple {
-  color: #a78bfa;  /* Explicit --brand-purple-light */
+  color: #a78bfa; /* Explicit --brand-purple-light */
 }
 body.dark-mode .mini-stat-orange {
-  color: #fb923c;  /* Explicit --brand-orange-light */
+  color: #fb923c; /* Explicit --brand-orange-light */
 }
 body.dark-mode .mini-stat-label {
-  color: rgba(255, 255, 255, 0.98);  /* WCAG AAA: triple-layer composite requires near-white */
+  color: rgba(255, 255, 255, 0.98); /* WCAG AAA: triple-layer composite requires near-white */
 }
 
 body.dark-mode .mini-industry {
-  background: rgba(255, 255, 255, 0.12);  /* Explicit neutral dark tint */
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: 7:1 contrast */
+  background: rgba(255, 255, 255, 0.12); /* Explicit neutral dark tint */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: 7:1 contrast */
 }
 body.dark-mode .mini-industry-blue {
-  background: rgba(91, 155, 245, 0.15);  /* Stronger blue tint for distinction */
-  color: #60a5fa;  /* Explicit --brand-blue-light */
+  background: rgba(91, 155, 245, 0.15); /* Stronger blue tint for distinction */
+  color: #60a5fa; /* Explicit --brand-blue-light */
 }
 body.dark-mode .mini-industry-purple {
-  background: rgba(157, 107, 255, 0.15);  /* Stronger purple tint for distinction */
-  color: #a78bfa;  /* Explicit --brand-purple-light */
+  background: rgba(157, 107, 255, 0.15); /* Stronger purple tint for distinction */
+  color: #a78bfa; /* Explicit --brand-purple-light */
 }
 body.dark-mode .mini-industry-orange {
-  background: rgba(251, 146, 60, 0.15);  /* Stronger orange tint for distinction */
-  color: #fb923c;  /* Explicit --brand-orange-light */
+  background: rgba(251, 146, 60, 0.15); /* Stronger orange tint for distinction */
+  color: #fb923c; /* Explicit --brand-orange-light */
 }
 
 body.dark-mode .mini-block-label {
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: composite bg requires 7:1 contrast */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: composite bg requires 7:1 contrast */
 }
 body.dark-mode .mini-block-text {
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: body copy 7:1 contrast on composite bg */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: body copy 7:1 contrast on composite bg */
 }
 body.dark-mode .mini-study-link {
-  color: #60a5fa;  /* Explicit --brand-blue-light instead of relying on cascade */
+  color: #60a5fa; /* Explicit --brand-blue-light instead of relying on cascade */
 }
 body.dark-mode .mini-study-link:hover {
   color: #fff;
@@ -1847,8 +1862,7 @@ body.dark-mode .study-card:hover {
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, 0.08);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.08);
 }
 body.dark-mode .lesson-quote-mark {
   color: rgba(255, 255, 255, 0.15);
@@ -1894,7 +1908,7 @@ body.dark-mode .timeline-item:hover .timeline-content p {
 
 /* Contact */
 body.dark-mode .community-blurb {
-  color: rgba(255, 255, 255, 0.95);  /* WCAG AAA: composite gradient bg requires 7:1 */
+  color: rgba(255, 255, 255, 0.95); /* WCAG AAA: composite gradient bg requires 7:1 */
 }
 body.dark-mode .inline-link {
   color: var(--blue);
