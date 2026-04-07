@@ -1135,6 +1135,18 @@ body.dark-mode .info-tag {
   color: var(--orange);
 }
 
+.filter-icon-clear:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: var(--border);
+  color: var(--text-light);
+}
+
+.filter-icon-clear:disabled:hover {
+  border-color: var(--border);
+  color: var(--text-light);
+}
+
 /* ══════════════════════════════════════════════════════════════
    CASE STUDIES — CONTEXT NOTE
    ══════════════════════════════════════════════════════════════ */

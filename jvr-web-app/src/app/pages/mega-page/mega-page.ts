@@ -32,6 +32,9 @@ export class MegaPage {
   selectedCapability = signal(0);
   private capCarouselEl = viewChild<ElementRef<HTMLElement>>('capCarousel');
 
+  // ── Industries served carousel (filter) ──────────────────────────
+  private indCarouselEl = viewChild<ElementRef<HTMLElement>>('industryCarousel');
+
   selectCapability(i: number): void {
     this.selectedCapability.set(i);
 
@@ -78,6 +81,32 @@ export class MegaPage {
     this.selectedIndustries.update(current =>
       current.includes(label) ? [] : [label]
     );
+  }
+
+  toggleIndustryAndCenter(label: string): void {
+    this.toggleIndustry(label);
+
+    requestAnimationFrame(() => this.centerActiveIndustryButton('smooth'));
+  }
+
+  private centerActiveIndustryButton(behavior: ScrollBehavior = 'smooth'): void {
+    const carousel = this.indCarouselEl()?.nativeElement;
+    if (!carousel) return;
+
+    const selected = this.selectedIndustries();
+    if (selected.length === 0) return;
+
+    const activeLabel = selected[0];
+    const activeIndex = this.caseStudyIndustries.findIndex(i => i.label === activeLabel);
+    if (activeIndex < 0) return;
+
+    const btn = carousel.children[activeIndex] as HTMLElement;
+    if (!btn) return;
+
+    const scrollLeft =
+      btn.offsetLeft + btn.offsetWidth / 2 - carousel.offsetWidth / 2;
+
+    carousel.scrollTo({ left: Math.max(0, scrollLeft), behavior });
   }
 
   toggleIndustryAndScroll(label: string): void {
@@ -194,6 +223,12 @@ export class MegaPage {
         if (carousel) {
           const ro = new ResizeObserver(() => this.centerActiveButton('instant'));
           ro.observe(carousel);
+        }
+
+        const indCarousel = this.indCarouselEl()?.nativeElement;
+        if (indCarousel) {
+          const ro = new ResizeObserver(() => this.centerActiveIndustryButton('instant'));
+          ro.observe(indCarousel);
         }
       });
     });
