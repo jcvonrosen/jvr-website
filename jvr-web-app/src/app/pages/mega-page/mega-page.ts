@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -24,6 +24,7 @@ import { ScrollStateService } from '../../services/scroll-state.service';
 })
 export class MegaPage {
   private readonly doc = inject(DOCUMENT);
+  private readonly location = inject(Location);
   private readonly ngZone = inject(NgZone);
   readonly scrollState = inject(ScrollStateService);
   readonly smoothScroll = inject(SmoothScrollService);
@@ -183,7 +184,14 @@ export class MegaPage {
               newActive = id;
             }
           }
-          this.ngZone.run(() => this.scrollState.activeSection.set(newActive));
+          const previousActive = this.scrollState.activeSection();
+          this.ngZone.run(() => {
+            this.scrollState.activeSection.set(newActive);
+            // Update URL hash when section changes (without triggering navigation)
+            if (newActive !== previousActive) {
+              this.location.replaceState(`/#${newActive}`);
+            }
+          });
         };
 
         // Run once on load, then on every scroll frame.
