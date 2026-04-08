@@ -870,11 +870,11 @@ body.dark-mode .card-light {
 }
 body.dark-mode .card-light:hover {
   background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
+  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.08);
+      rgba(0, 0, 0, 0.5),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
 }
 
 /* ── Ghost button (on what is now a dark surface) ──────────── */
