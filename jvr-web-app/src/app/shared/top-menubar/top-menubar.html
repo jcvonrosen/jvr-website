@@ -49,4 +49,34 @@
     </div>
   </div>
 
+
+  <!-- Centered Snap Carousel — shown only on ≤560px -->
+  <div class="mobile-nav-carousel-centered" #centeredCarouselContainer>
+    <div class="centered-carousel-track" #centeredTrack>
+      @for (item of carouselItems; track item.section) {
+        <button
+          type="button"
+          class="centered-nav-btn"
+          [class.centered-nav-btn-active]="item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'"
+          (click)="onCenteredCarouselClick(item, $event)"
+          [attr.data-section]="item.section"
+          #centeredBtn
+        >
+          {{ item.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="centered-carousel-dots">
+      @for (item of carouselItems; track item.section; let i = $index) {
+        <span
+          class="centered-dot"
+          [class.centered-dot-active]="i === centeredActiveIndex"
+          (click)="setCenteredActive(i, $event)"
+        ></span>
+      }
+    </div>
+  </div>
+
 </nav>

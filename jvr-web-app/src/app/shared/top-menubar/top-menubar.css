@@ -550,3 +550,182 @@
 }
 
 /* Dark mode overrides for theme toggle and hamburger button */
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CENTERED SNAP CAROUSEL  —  shown at ≤ 560px, hides the scroll carousel
+   ════════════════════════════════════════════════════════════════════════════
+
+   Breakpoint logic:
+     > 960px    → neither carousel is visible (desktop menubar takes over)
+     561–960px  → .mobile-nav-carousel shown   (existing pill scroll row)
+     ≤ 560px    → .mobile-nav-carousel hidden, .mobile-nav-carousel-centered shown
+
+   The centered carousel uses a JS translateX offset (see top-menubar.ts →
+   updateCenteredCarousel) to keep the active button in the exact horizontal
+   centre of the container at all times. Only 3 buttons are comfortably
+   visible; neighbours fade to 30% opacity; far buttons lose pointer-events.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Hidden everywhere by default */
+.mobile-nav-carousel-centered {
+  display: none;
+}
+
+/* ── ≤ 560px: swap carousels ─────────────────────────────────────────────── */
+@media (max-width: 560px) {
+
+  /* Hide the existing horizontal-scroll pill carousel */
+  .mobile-nav-carousel {
+    display: none !important;
+  }
+
+  /* Show the centered snap carousel */
+  .mobile-nav-carousel-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0 8px;
+    background: var(--color-surface-raised);
+    border-bottom: 1px solid var(--border);
+    /* Clip everything outside the 3-button visible window */
+    overflow: hidden;
+  }
+
+  /* ── Track ─────────────────────────────────────────────────────────────────
+     The track is a flex row of ALL nav buttons.
+     JS drives transform: translateX(offset) for snap centering.
+     transition provides the smooth animation on click.             */
+  .centered-carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 12px;                          /* = CENTERED_GAP in top-menubar.ts  */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  /* ── Individual button ────────────────────────────────────────────────────
+     flex: 0 0 110px  →  never shrink or grow; always 110px wide.
+     This value must match CENTERED_BTN_W constant in top-menubar.ts.        */
+  .centered-nav-btn {
+    flex: 0 0 110px;                    /* = CENTERED_BTN_W in top-menubar.ts */
+    height: 44px;                       /* WCAG minimum touch target           */
+    padding: 0 8px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--bg-light-2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    white-space: nowrap;
+    /* JS also sets transform / opacity / pointer-events on individual btns  */
+    transition:
+      background     0.25s ease,
+      border-color   0.25s ease,
+      color          0.25s ease,
+      transform      0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity        0.25s ease;
+    outline: none;
+    user-select: none;
+  }
+
+  .centered-nav-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--text-light);
+    color: var(--text);
+    text-shadow: 0 0 0.5px currentColor;
+  }
+
+  .centered-nav-btn:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+  }
+
+  /* Active state — mirrors .carousel-nav-btn-active from the existing row   */
+  .centered-nav-btn-active {
+    background: var(--purple-tint) !important;
+    border-color: rgba(147, 51, 255, 0.3) !important;
+    color: var(--purple-dark) !important;
+    font-weight: 600;
+    text-shadow: 0 0 0.5px currentColor;
+  }
+
+  .centered-nav-btn-active:hover {
+    border-color: var(--purple) !important;
+    color: var(--purple) !important;
+  }
+
+  /* ── Dot indicators ───────────────────────────────────────────────────────
+     One dot per nav item; the active dot scales up and darkens.             */
+  .centered-carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .centered-dot {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition:
+      background   0.25s ease,
+      transform    0.25s ease;
+  }
+
+  .centered-dot:hover {
+    background: var(--text-light);
+  }
+
+  .centered-dot-active {
+    background: var(--purple-dark);
+    transform: scale(1.5);
+  }
+}
+
+/* ── Dark mode — centered carousel ──────────────────────────────────────── */
+@media (max-width: 560px) {
+  :host-context(body.dark-mode) .mobile-nav-carousel-centered {
+    background: var(--bg-white);
+    border-color: var(--border);
+  }
+
+  :host-context(body.dark-mode) .centered-nav-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  :host-context(body.dark-mode) .centered-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #fff;
+  }
+
+  :host-context(body.dark-mode) .centered-nav-btn-active {
+    background: rgba(147, 51, 255, 0.35) !important;
+    border-color: rgba(147, 51, 255, 0.75) !important;
+    color: #fff !important;
+  }
+
+  :host-context(body.dark-mode) .centered-nav-btn-active:hover {
+    background: rgba(147, 51, 255, 0.55) !important;
+    border-color: rgba(147, 51, 255, 1) !important;
+  }
+
+  :host-context(body.dark-mode) .centered-dot {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  :host-context(body.dark-mode) .centered-dot-active {
+    background: rgba(147, 51, 255, 0.9);
+  }
+}
