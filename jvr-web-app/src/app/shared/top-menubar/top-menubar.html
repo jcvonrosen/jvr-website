@@ -39,7 +39,7 @@
           type="button"
           class="carousel-nav-btn"
           [class.carousel-nav-btn-active]="item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'"
-          (click)="item.command?.({originalEvent: $event})"
+          (click)="onCarouselButtonClick(item, $event)"
           [attr.data-section]="item.section"
           #carouselBtn
         >
