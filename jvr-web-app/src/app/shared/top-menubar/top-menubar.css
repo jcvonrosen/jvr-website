@@ -313,6 +313,79 @@
   }
 }
 
+/* ── Mobile Navigation Carousel (2nd row) ──────────────────── */
+/* Hidden on desktop */
+.mobile-nav-carousel {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .mobile-nav-carousel {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding: 12px 0;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-nav-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px;
+    min-width: min-content;
+  }
+
+  .carousel-nav-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease-out;
+    min-height: 44px; /* WCAG touch target */
+  }
+
+  .carousel-nav-btn:hover {
+    color: var(--text);
+    border-color: var(--blue);
+    background: var(--bg-light-2);
+    transform: translateY(-2px);
+  }
+
+  .carousel-nav-btn:active {
+    transform: translateY(0);
+  }
+
+  .carousel-nav-btn-active {
+    color: var(--text);
+    background: var(--purple-tint);
+    border-color: var(--purple);
+    font-weight: 600;
+    text-shadow: 0 0 0.5px currentColor;
+  }
+
+  .carousel-nav-btn:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+}
+
 /* ── Dark mode ───────────────────────────────────────────── */
 :host-context(body.dark-mode) ::ng-deep .p-menubar,
 :host-context(body.dark-mode) ::ng-deep .p-menubar .p-menubar-inner {
@@ -376,4 +449,27 @@
 :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list {
   background: var(--bg-white);
   border-color: var(--border);
+}
+
+/* Mobile Navigation Carousel — dark mode */
+:host-context(body.dark-mode) .mobile-nav-carousel {
+  background: var(--bg-white);
+  border-color: var(--border);
+}
+
+:host-context(body.dark-mode) .carousel-nav-btn {
+  color: var(--text-mid);
+  border-color: var(--border);
+}
+
+:host-context(body.dark-mode) .carousel-nav-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--blue);
+}
+
+:host-context(body.dark-mode) .carousel-nav-btn-active {
+  color: var(--text);
+  background: var(--purple-tint);
+  border-color: var(--purple);
 }

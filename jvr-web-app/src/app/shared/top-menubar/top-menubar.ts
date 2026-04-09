@@ -1,4 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  inject,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
@@ -16,10 +27,13 @@ import { ScrollStateService } from '../../services/scroll-state.service';
     '[class.nav-visible]': '!scrollState.heroVisible()',
   },
 })
-export class TopMenubar {
+export class TopMenubar implements AfterViewInit {
   readonly themeService = inject(ThemeService);
   readonly scrollState = inject(ScrollStateService);
   readonly smoothScroll = inject(SmoothScrollService);
+
+  @ViewChild('carouselContainer') carouselContainer?: ElementRef<HTMLDivElement>;
+  @ViewChildren('carouselBtn') carouselButtons?: QueryList<ElementRef<HTMLButtonElement>>;
 
   // Base menu items configuration — section IDs match the scrollState tracking
   private readonly baseItems: Array<MenuItem & { section?: string }> = [
@@ -71,6 +85,9 @@ export class TopMenubar {
     }));
   });
 
+  // Carousel items — excludes the mobile CTA "Message Us" button
+  readonly carouselItems = this.baseItems.filter(item => !item.styleClass?.includes('mobile-cta-item'));
+
   private getItemStyleClass(section: string | undefined, baseClass: string | undefined, activeSection: string): string {
     const classes = [baseClass || ''].filter(Boolean);
     // Only apply active class if this item's section matches the current active section
@@ -83,5 +100,51 @@ export class TopMenubar {
 
   scrollToContact(): void {
     this.smoothScroll.scrollTo('contact');
+  }
+
+  constructor() {
+    // Watch for active section changes and center the corresponding carousel button
+    effect(() => {
+      const activeSection = this.scrollState.activeSection();
+      if (activeSection && activeSection !== 'hero') {
+        this.centerActiveCarouselButton(activeSection);
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    // Center the initial active button after view initialization
+    const activeSection = this.scrollState.activeSection();
+    if (activeSection && activeSection !== 'hero') {
+      this.centerActiveCarouselButton(activeSection);
+    }
+  }
+
+  private centerActiveCarouselButton(section: string): void {
+    if (!this.carouselContainer || !this.carouselButtons) return;
+
+    // Use requestAnimationFrame to ensure DOM is updated
+    requestAnimationFrame(() => {
+      const buttonArray = this.carouselButtons?.toArray() || [];
+      const activeButton = buttonArray.find(
+        btn => btn.nativeElement.getAttribute('data-section') === section
+      );
+
+      if (!activeButton) return;
+
+      const container = this.carouselContainer!.nativeElement;
+      const button = activeButton.nativeElement;
+
+      // Calculate scroll position to center the button
+      const containerWidth = container.offsetWidth;
+      const buttonLeft = button.offsetLeft;
+      const buttonWidth = button.offsetWidth;
+      const scrollPosition = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth',
+      });
+    });
   }
 }

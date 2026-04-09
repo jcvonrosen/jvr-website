@@ -30,4 +30,23 @@
   </ng-template>
 
 </p-menubar>
+
+  <!-- Mobile Navigation Carousel (2nd row) -->
+  <div class="mobile-nav-carousel" #carouselContainer>
+    <div class="carousel-track">
+      @for (item of carouselItems; track item.section) {
+        <button
+          type="button"
+          class="carousel-nav-btn"
+          [class.carousel-nav-btn-active]="item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'"
+          (click)="item.command?.({originalEvent: $event})"
+          [attr.data-section]="item.section"
+          #carouselBtn
+        >
+          {{ item.label }}
+        </button>
+      }
+    </div>
+  </div>
+
 </nav>

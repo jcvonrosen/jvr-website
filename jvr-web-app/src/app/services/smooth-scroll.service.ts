@@ -58,7 +58,7 @@ export class SmoothScrollService implements OnDestroy {
       this.lenis?.scrollTo(target as HTMLElement | string, {
         duration: 1.4,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        offset: -57, // nav height — divider top sits flush with nav bottom
+        offset: this.getNavOffset(), // Dynamic nav height based on viewport
       });
     });
   }
@@ -74,9 +74,19 @@ export class SmoothScrollService implements OnDestroy {
 
       this.lenis?.scrollTo(target as HTMLElement | string, {
         immediate: true,
-        offset: -57,
+        offset: this.getNavOffset(),
       });
     });
+  }
+
+  /**
+   * Calculate nav offset based on viewport width
+   * Desktop (>960px): ~57px (main menubar only)
+   * Mobile (≤960px): ~125px (main menubar + carousel row)
+   */
+  private getNavOffset(): number {
+    const isMobile = window.innerWidth <= 960;
+    return isMobile ? -125 : -57;
   }
 
   ngOnDestroy(): void {
