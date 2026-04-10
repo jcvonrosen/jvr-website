@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   computed,
+  effect,
   ElementRef,
   inject,
   NgZone,
@@ -17,13 +18,6 @@ import { MenuItem } from 'primeng/api';
 import { ThemeService } from '../../services/theme.service';
 import { SmoothScrollService } from '../../services/smooth-scroll.service';
 import { ScrollStateService } from '../../services/scroll-state.service';
-
-// ── Centered carousel constants ──────────────────────────────────────────────
-// These mirror the CSS values in .centered-nav-btn so the JS offset maths
-// stays in sync with the layout. Update both places if you change sizing.
-const CENTERED_BTN_W = 110;  // px  — flex: 0 0 110px in CSS
-const CENTERED_GAP   = 12;   // px  — gap: 12px on .centered-carousel-track
-const CENTERED_STEP  = CENTERED_BTN_W + CENTERED_GAP;
 
 @Component({
   selector: 'app-top-menubar',
@@ -112,6 +106,23 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
 
   // ── Lifecycle ──────────────────────────────────────────────────────────────
 
+  constructor() {
+    // Bug fix #2 — scroll-driven sync:
+    // effect() re-runs whenever activeSection signal changes (triggered by
+    // IntersectionObserver in ScrollStateService as the user scrolls).
+    // We map the new section string → carousel index and re-centre the track.
+    effect(() => {
+      const activeSection = this.scrollState.activeSection();
+      const idx = this.carouselItems.findIndex((item) => item.section === activeSection);
+      if (idx !== -1 && idx !== this.centeredActiveIndex) {
+        this.centeredActiveIndex = idx;
+        // rAF ensures the DOM has applied any pending class changes before we measure
+        requestAnimationFrame(() => this.updateCenteredCarousel());
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
     // Initial render once Angular has laid out the DOM
     requestAnimationFrame(() => this.updateCenteredCarousel());
@@ -159,21 +170,19 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
 
   // ── Centered carousel — core update logic ─────────────────────────────────
   //
-  // Offset formula (same maths as the standalone widget):
-  //
-  //   containerWidth = visible width of .mobile-nav-carousel-centered
-  //   centerX        = containerWidth / 2
-  //   activeLeft     = centeredActiveIndex × CENTERED_STEP
-  //
-  //   offset = centerX − activeLeft − (CENTERED_BTN_W / 2)
-  //
-  // Setting transform: translateX(offset) on the track slides the entire
-  // row so the active button's mid-point aligns with the container's mid-point.
+  // Bug fix #1 — pixel-perfect centering:
+  // Instead of computing offset from hardcoded constants (which drifts due to
+  // gap accumulation, sub-pixel rounding, and scale transforms), we:
+  //   1. Temporarily reset the transform so getBoundingClientRect() reports
+  //      the button's natural (untranslated) position in the document.
+  //   2. Read the container's centre in viewport coords.
+  //   3. Read the active button's centre in viewport coords.
+  //   4. The required offset is exactly the difference between them.
   //
   // Visual state rules:
-  //   dist === 0  → active  : scale(1.05), full opacity, purple tint bg
-  //   dist === 1  → adjacent: full opacity, neutral bg
-  //   dist  >  1  → far     : opacity 0.3, pointer-events: none
+  //   dist === 0  → active  : scale(1.05), full opacity
+  //   dist === 1  → adjacent: scale(1),    full opacity
+  //   dist  >  1  → far     : scale(1),    opacity 0.3, pointer-events: none
   //
   private updateCenteredCarousel(): void {
     const trackEl   = this.centeredTrackRef()?.nativeElement;
@@ -182,12 +191,30 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
 
     if (!trackEl || !container || !btnEls.length) return;
 
-    const containerW = container.offsetWidth;
-    const centerX    = containerW / 2;
-    const offset     = centerX - (this.centeredActiveIndex * CENTERED_STEP) - (CENTERED_BTN_W / 2);
+    // 1. Reset transform so rects are measured from the natural layout position
+    trackEl.style.transition = 'none';
+    trackEl.style.transform  = 'translateX(0)';
 
-    trackEl.style.transform = `translateX(${offset}px)`;
+    // 2. Force a reflow so the browser applies the reset before we measure
+    //    (void read is the standard way to flush layout)
+    void trackEl.offsetWidth;
 
+    // 3. Measure natural positions
+    const containerRect = container.getBoundingClientRect();
+    const activeBtn     = btnEls[this.centeredActiveIndex];
+    const activeBtnRect = activeBtn.getBoundingClientRect();
+
+    // 4. Compute offset: how far must the track shift so the active button
+    //    centre aligns with the container centre?
+    const containerCentreX = containerRect.left + containerRect.width / 2;
+    const activeBtnCentreX = activeBtnRect.left  + activeBtnRect.width  / 2;
+    const offset = containerCentreX - activeBtnCentreX;
+
+    // 5. Re-enable transition and apply the precise offset
+    trackEl.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    trackEl.style.transform  = `translateX(${offset}px)`;
+
+    // 6. Apply per-button visual states
     btnEls.forEach((btn, i) => {
       const dist     = Math.abs(i - this.centeredActiveIndex);
       const isActive = dist === 0;
