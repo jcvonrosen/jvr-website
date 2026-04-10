@@ -87,9 +87,14 @@
     > .p-menubar-item
     > .p-menubar-item-content:hover
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
+  :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
+    background: var(--bg-light);
+  }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
@@ -107,6 +112,7 @@
     > .nav-item-active
     > .p-menubar-item-content
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
 }
@@ -294,9 +300,14 @@
     }
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover {
+    background: var(--bg-light);
+  }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
@@ -314,6 +325,7 @@
     > .nav-item-active
     > .p-menubar-item-content
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
 }
@@ -326,33 +338,43 @@
 }
 
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item-link {
-  color: var(--text-mid);
+  color: rgba(255, 255, 255, 0.95);
 }
 
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item.p-menubar-item-active
-  > .p-menubar-item-content,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item[aria-expanded='true']
-  > .p-menubar-item-content {
-  background: rgba(255, 255, 255, 0.06) !important;
+/* Desktop hover (min-width: 961px) */
+@media (min-width: 961px) {
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover .p-menubar-item-link {
+    color: #fff !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active),
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: rgba(147, 51, 255, 0.35) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) .p-menubar-item-link,
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    color: #fff !important;
+  }
 }
 
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover .p-menubar-item-link,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item.p-menubar-item-active
-  > .p-menubar-item-content
-  .p-menubar-item-link,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item[aria-expanded='true']
-  > .p-menubar-item-content
-  .p-menubar-item-link {
-  color: var(--text) !important;
+/* Mobile/Tablet hover (≤960px) */
+@media (max-width: 960px) {
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+    color: #fff !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active),
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: rgba(147, 51, 255, 0.35) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) .p-menubar-item-link,
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    color: #fff !important;
+  }
 }
 
 /* Prevent p-focus (set by PrimeNG JS on mouse hover) from keeping hover styles after cursor leaves.

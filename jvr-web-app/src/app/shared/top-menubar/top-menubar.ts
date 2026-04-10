@@ -100,16 +100,6 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
         this.smoothScroll.scrollTo('contact');
       },
     },
-    {
-      label: 'Message Us',
-      url: '#contact',
-      section: 'contact',
-      styleClass: 'mobile-cta-item',
-      command: (e) => {
-        e.originalEvent?.preventDefault();
-        this.smoothScroll.scrollTo('contact');
-      },
-    },
   ];
 
   readonly items = computed<MenuItem[]>(() => {
