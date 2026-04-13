@@ -249,12 +249,6 @@ export class MegaPage {
   // ── Why JvR (from homepage) ───────────────────────────────────────
   whyFeatures = [
     {
-      dotColor: 'blue',
-      title: 'You Own the Solution',
-      description:
-        'We build within your environment, on your infrastructure. When the engagement ends, the solution is fully yours — documented, understood, and built the way your team works.',
-    },
-    {
       dotColor: 'purple',
       title: 'Your Needs Drive the Technology',
       description:
@@ -314,23 +308,23 @@ export class MegaPage {
     {
       icon: 'pi-building',
       colorClass: 'blue',
-      title: 'Large Initiative, Limited Staff',
+      title: 'Big Initiative, Limited Capacity',
       description:
-        'Your organization has a significant project on the roadmap but does not have the internal capacity to deliver it alone. We integrate with your existing team and deliver as one unified group — no silos, no handoff gaps.',
+        'Your organization has a large project but limited capacity. We integrate quickly with your existing team and deliver as one unified group - accelerating timelines without expanding headcount.',
     },
     {
       icon: 'pi-cog',
       colorClass: 'purple',
       title: 'New Technology, Short Timeline',
       description:
-        'Your team is strong, but the project calls for expertise you have not yet built internally. We bring the depth; your team provides the context.',
+        'Your team is strong, but the project calls for tools that you haven\'t adopted yet. We bring expertise, determine best practices with your team, and fit new technology into your workflow - enabling speed without disruption.',
     },
     {
       icon: 'pi-link',
       colorClass: 'orange',
       title: 'Reliability and Quality at Scale',
       description:
-        'Enterprise systems need to connect reliably and behave predictably under load. We build and integrate automated testing, establish deployment processes, and help teams maintain quality as their systems grow.',
+        'As systems grow, maintaining consistent quality becomes harder without automation. We build and integrate automated testing pipelines and establish deployment processes that ensure quality as you scale.',
     },
   ];
 
@@ -342,8 +336,8 @@ export class MegaPage {
       fragment: 'forecasting-pipeline',
       stat: '6 hrs → 20 min',
       statLabel: 'Pipeline Runtime',
-      challenge: 'A forecasting pipeline analysts could only run once or twice per day was bottlenecking business decisions.',
-      outcome: 'Runtime cut from six hours to twenty minutes — a full week of scenarios completable in a single day. Nearly 20% cost savings in year one.',
+      challenge: 'A long running ETL process created a bottleneck for Industrial Engineers working on annual labor forecasts.',
+      outcome: 'Runtime cut from six hours to twenty minutes — a full week of scenarios completable in a single day.',
     },
     {
       industry: 'Education',
@@ -351,7 +345,7 @@ export class MegaPage {
       fragment: 'enrollment-rules-engine',
       stat: '1 System',
       statLabel: 'Every State. Every School.',
-      challenge: 'A charter school network needed one enrollment system that applied different state-specific acceptance rules per school.',
+      challenge: 'A nationwide charter school needed one enrollment system that applied different state-specific acceptance rules per school.',
       outcome: 'A configurable rules engine handled every state and school variation within a single workflow — no duplicate logic, no separate processes.',
     },
     {
@@ -360,7 +354,7 @@ export class MegaPage {
       fragment: 'payment-cloud-migration',
       stat: 'Zero',
       statLabel: 'Service Disruption',
-      challenge: 'A major retailer needed to simultaneously switch payment providers and migrate analytics infrastructure from on-prem to Azure.',
+      challenge: 'A major retailer needed to simultaneously switch payment providers and migrate analytics infrastructure to Azure.',
       outcome: 'Both initiatives coordinated in parallel and completed without interrupting live operations.',
     },
   ];
@@ -468,14 +462,6 @@ export class MegaPage {
       description:
         'Most of our work is sustained engagement within existing client teams — often spanning months to years. After any project delivery, we offer retainer agreements to stay available for ongoing support and new work.',
     },
-  ];
-
-  // ── Honest limits ─────────────────────────────────────────────────
-  honestLimits = [
-    'Marketing websites and consumer-facing promotional sites',
-    'UI / UX design work — we build systems, not storefronts',
-    'Fixed-scope, fixed-bid project proposals',
-    'Early-stage startups without established infrastructure',
   ];
 
   // ── Case studies ──────────────────────────────────────────────────
