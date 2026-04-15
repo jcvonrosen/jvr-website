@@ -11,7 +11,12 @@
   </div>
 } @else {
   <!-- ── Form ──────────────────────────────────────────────────────── -->
-  <form class="contact-form" (submit)="onSubmit(); $event.preventDefault()" novalidate aria-label="Contact form">
+  <form
+    class="contact-form"
+    (submit)="onSubmit(); $event.preventDefault()"
+    novalidate
+    aria-label="Contact form"
+  >
     <p class="form-required-note"><span aria-hidden="true">* </span>Required fields</p>
     <div class="form-fields">
       <!-- Name row -->
@@ -32,7 +37,9 @@
             [attr.aria-invalid]="firstNameInvalid() ? 'true' : null"
           />
           @if (firstNameInvalid()) {
-            <small id="cf-firstName-error" class="field-error" role="alert">{{ contactForm.firstName().errors()[0].message }}</small>
+            <small id="cf-firstName-error" class="field-error" role="alert">{{
+              contactForm.firstName().errors()[0].message
+            }}</small>
           }
         </div>
 
@@ -52,7 +59,9 @@
             [attr.aria-invalid]="lastNameInvalid() ? 'true' : null"
           />
           @if (lastNameInvalid()) {
-            <small id="cf-lastName-error" class="field-error" role="alert">{{ contactForm.lastName().errors()[0].message }}</small>
+            <small id="cf-lastName-error" class="field-error" role="alert">{{
+              contactForm.lastName().errors()[0].message
+            }}</small>
           }
         </div>
       </div>
@@ -75,7 +84,9 @@
           [attr.aria-invalid]="emailInvalid() ? 'true' : null"
         />
         @if (emailInvalid()) {
-          <small id="cf-email-error" class="field-error" role="alert">{{ contactForm.email().errors()[0].message }}</small>
+          <small id="cf-email-error" class="field-error" role="alert">{{
+            contactForm.email().errors()[0].message
+          }}</small>
         }
       </div>
 
@@ -90,39 +101,43 @@
           [ngModel]="contactForm.phone().value()"
           (ngModelChange)="contactForm.phone().value.set($event ?? '')"
           (onBlur)="phoneTouched.set(true)"
-          [ngModelOptions]="{standalone: true}"
+          [ngModelOptions]="{ standalone: true }"
           placeholder="(999) 999-9999"
           styleClass="w-full"
         />
       </div>
 
-      <!-- Inquiry Type -->
+      <!-- Subject Type -->
       <div class="form-field">
-        <label for="cf-inquiry" class="form-label">
+        <label for="cf-subject" class="form-label">
           How Can We Help? <span class="required" aria-hidden="true">*</span>
         </label>
         <p-select
-          inputId="cf-inquiry"
-          [ngModel]="contactForm.inquiryType().value()"
-          (ngModelChange)="contactForm.inquiryType().value.set($event)"
+          inputId="cf-subject"
+          [ngModel]="contactForm.subject().value()"
+          (ngModelChange)="contactForm.subject().value.set($event)"
           [ngModelOptions]="{ standalone: true }"
-          [options]="inquiryOptions"
+          [options]="subjectOptions"
           optionLabel="label"
           optionValue="value"
-          placeholder="Select an inquiry type"
+          placeholder="Select a subject"
           styleClass="w-full"
           [ariaRequired]="true"
-          [attr.aria-describedby]="inquiryTypeInvalid() ? 'cf-inquiry-error' : null"
-          [attr.aria-invalid]="inquiryTypeInvalid() ? 'true' : null"
+          [attr.aria-describedby]="subjectInvalid() ? 'cf-subject-error' : null"
+          [attr.aria-invalid]="subjectInvalid() ? 'true' : null"
         />
-        @if (inquiryTypeInvalid()) {
-          <small id="cf-inquiry-error" class="field-error" role="alert">{{ contactForm.inquiryType().errors()[0].message }}</small>
+        @if (subjectInvalid()) {
+          <small id="cf-subject-error" class="field-error" role="alert">{{
+            contactForm.subject().errors()[0].message
+          }}</small>
         }
       </div>
 
       <!-- Message -->
       <div class="form-field">
-        <label for="cf-message" class="form-label"> Message <span class="required" aria-hidden="true">*</span> </label>
+        <label for="cf-message" class="form-label">
+          Message <span class="required" aria-hidden="true">*</span>
+        </label>
         <textarea
           id="cf-message"
           pTextarea
@@ -138,7 +153,9 @@
           [attr.aria-invalid]="messageInvalid() ? 'true' : null"
         ></textarea>
         @if (messageInvalid()) {
-          <small id="cf-message-error" class="field-error" role="alert">{{ contactForm.message().errors()[0].message }}</small>
+          <small id="cf-message-error" class="field-error" role="alert">{{
+            contactForm.message().errors()[0].message
+          }}</small>
         }
       </div>
 

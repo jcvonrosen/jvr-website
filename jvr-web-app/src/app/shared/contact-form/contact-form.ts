@@ -8,7 +8,7 @@ import { InputMask } from 'primeng/inputmask';
 import { Button } from 'primeng/button';
 import { Message } from 'primeng/message';
 
-interface InquiryOption {
+interface SubjectOption {
   label: string;
   value: string;
 }
@@ -18,7 +18,7 @@ interface ContactFormModel {
   lastName: string;
   email: string;
   phone: string;
-  inquiryType: string | null;
+  subject: string | null;
   message: string;
 }
 
@@ -27,7 +27,7 @@ const EMPTY_FORM: ContactFormModel = {
   lastName: '',
   email: '',
   phone: '',
-  inquiryType: null,
+  subject: null,
   message: '',
 };
 
@@ -86,8 +86,8 @@ export class ContactForm implements OnInit {
       return null;
     });
 
-    // ── inquiryType ──────────────────────────────────────────────
-    validate(schema.inquiryType, ({ value }) => {
+    // ── subject ──────────────────────────────────────────────
+    validate(schema.subject, ({ value }) => {
       if (!value() && this.submitted())
         return { kind: 'required', message: 'Please select an inquiry type.' };
       return null;
@@ -110,8 +110,8 @@ export class ContactForm implements OnInit {
   submitSuccess = signal(false);
   submitError = signal<string | null>(null);
 
-  // ── Inquiry type options ───────────────────────────────────────
-  readonly inquiryOptions: InquiryOption[] = [
+  // ── Subject type options ───────────────────────────────────────
+  readonly subjectOptions: SubjectOption[] = [
     { label: 'Full-Stack Development', value: 'full-stack' },
     { label: 'Cloud Architecture & Migration', value: 'cloud' },
     { label: 'ETL & Data Pipelines', value: 'etl' },
@@ -126,7 +126,7 @@ export class ContactForm implements OnInit {
   // ── Whether any field has a non-empty value ───────────────────
   readonly formDirty = computed(() => {
     const m = this.contactFormModel();
-    return !!(m.firstName || m.lastName || m.email || m.phone || m.inquiryType || m.message);
+    return !!(m.firstName || m.lastName || m.email || m.phone || m.subject || m.message);
   });
 
   // ── Whether the form has been touched at all ──────────────────
@@ -137,7 +137,7 @@ export class ContactForm implements OnInit {
       this.contactForm.lastName().touched() ||
       this.contactForm.email().touched() ||
       this.phoneTouched() ||
-      this.contactForm.inquiryType().touched() ||
+      this.contactForm.subject().touched() ||
       this.messageTouched(),
   );
 
@@ -159,10 +159,10 @@ export class ContactForm implements OnInit {
       this.contactForm.email().invalid(),
   );
   readonly phoneInvalid = computed(() => this.phoneTouched() && this.contactForm.phone().invalid());
-  readonly inquiryTypeInvalid = computed(
+  readonly subjectInvalid = computed(
     () =>
-      (this.contactForm.inquiryType().touched() || this.submitted()) &&
-      this.contactForm.inquiryType().invalid(),
+      (this.contactForm.subject().touched() || this.submitted()) &&
+      this.contactForm.subject().invalid(),
   );
   readonly messageInvalid = computed(
     () => (this.messageTouched() || this.submitted()) && this.contactForm.message().invalid(),
