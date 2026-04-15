@@ -28,8 +28,6 @@ if (!process.env.FORWARDING_EMAIL) {
 const forwardingEmail = process.env.FORWARDING_EMAIL;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const MAX_LENGTHS = { name: 100, subject: 200, message: 5000 };
-
 app.use(
 	cors({
 		origin: process.env.JVR_DOMAIN_ADDRESS || "*",
@@ -51,9 +49,6 @@ app.post(
 		legacyHeaders: false,
 	}),
 	async (req, res) => {
-		if (!req.is("application/json")) {
-			return res.status(400).send("Expected application/json");
-		}
 
 		const { contactForm } = req.body;
 
