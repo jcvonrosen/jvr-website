@@ -26,66 +26,61 @@ app.use(express.json());
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
-app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`);
-});
 
-app.options("/message", (req, res) => {
-	res.set("Allow", "POST, OPTIONS");
-	res.sendStatus(204);
-});
+app.post(
+	"/message",
+	rateLimit({ windowMs: 60_000, max: 3 }),
+	async (req, res) => {
+		let cleanHTML;
+		const { contactForm } = req.body;
 
-app.post("/message", rateLimit({ windowMs: 60_000, max: 3 }), (req, res) => {
-	let cleanHTML;
-	console.log("Received message:", req.body);
-	const { contactForm } = req.body;
-
-	if (!forwardingEmail) {
-		return res.status(500).send("Forwarding email is not configured");
-	}
-
-	if (!req.is("application/json")) {
-		return res.status(400).send("Expected application/json");
-	}
-
-	if (
-		!contactForm ||
-		!contactForm.name ||
-		!contactForm.email ||
-		!contactForm.subject ||
-		!contactForm.message
-	) {
-		return res
-			.status(400)
-			.send("Missing required fields: name, email, subject, message");
-	}
-
-	if (!validator.isEmail(contactForm.email)) {
-		return res.status(400).send("Invalid email address");
-	}
-
-	cleanHTML = DOMPurify.sanitize(
-		`<strong>${contactForm.name} <${contactForm.email}></strong><br><br><p>${contactForm.message}</p>`,
-	);
-
-	(async () => {
-		const { data, error } = await resend.emails.send({
-			from: `${process.env.RESEND_NAME} <${process.env.RESEND_EMAIL}>`,
-			replyTo: `${contactForm.name} <${contactForm.email}>`,
-			to: [forwardingEmail],
-			subject: contactForm.subject,
-			text: `You have received a new message from ${contactForm.name} (${contactForm.email}):\n\n${contactForm.message}`,
-			html: cleanHTML,
-		});
-
-		if (error) {
-			console.error({ error });
-			res.status(500).send("Failed to send email");
-		} else {
-			console.log("Email sent successfully:", data);
-			res.status(200).send("Email sent successfully");
+		if (!forwardingEmail) {
+			return res.status(500).send("Forwarding email is not configured");
 		}
 
-		console.log({ data });
-	})();
-});
+		if (!req.is("application/json")) {
+			return res.status(400).send("Expected application/json");
+		}
+
+		if (
+			!contactForm ||
+			!contactForm.name ||
+			!contactForm.email ||
+			!contactForm.subject ||
+			!contactForm.message
+		) {
+			return res
+				.status(400)
+				.send("Missing required fields: name, email, subject, message");
+		}
+
+		if (!validator.isEmail(contactForm.email)) {
+			return res.status(400).send("Invalid email address");
+		}
+
+		cleanHTML = DOMPurify.sanitize(
+			`<strong>${contactForm.name} <${contactForm.email}></strong><br><br><p>${contactForm.message}</p>`,
+		);
+
+		try {
+			const { data, error } = await resend.emails.send({
+				from: `${process.env.RESEND_NAME} <${process.env.RESEND_EMAIL}>`,
+				replyTo: `${contactForm.name} <${contactForm.email}>`,
+				to: [forwardingEmail],
+				subject: contactForm.subject,
+				text: `You have received a new message from ${contactForm.name} (${contactForm.email}):\n\n${contactForm.message}`,
+				html: cleanHTML,
+			});
+
+			if (error) {
+				res.status(500).send("Failed to send email");
+			} else {
+				res.status(200).send("Email sent successfully");
+			}
+		} catch (err) {
+			res.status(500).send("An unexpected error occurred");
+		}
+	},
+);
+
+app.listen(port);
