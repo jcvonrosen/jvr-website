@@ -11,7 +11,7 @@ function validateContactForm(req, res, next) {
 		return res.status(400).send("Expected application/json");
 	}
 
-	const { contactForm } = req.body;
+	const contactForm = req.body;
 
 	if (
 		!contactForm ||

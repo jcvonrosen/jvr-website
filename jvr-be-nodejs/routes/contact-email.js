@@ -34,7 +34,7 @@ router.post(
 		legacyHeaders: false,
 	}),
 	async (req, res) => {
-		const { contactForm } = req.body;
+		const contactForm = req.body;
 
 		validateContactForm(req, res, () => {});
 

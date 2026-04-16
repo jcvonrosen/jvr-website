@@ -1,26 +1,15 @@
 import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { form, FormField, validate } from '@angular/forms/signals';
+import { firstValueFrom } from 'rxjs';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 import { Textarea } from 'primeng/textarea';
 import { InputMask } from 'primeng/inputmask';
 import { Button } from 'primeng/button';
 import { Message } from 'primeng/message';
-
-interface SubjectOption {
-  label: string;
-  value: string;
-}
-
-interface ContactFormModel {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  subject: string | null;
-  message: string;
-}
+import { SubjectOption, ContactFormModel } from '../../interfaces/contact-form.interface';
+import { ResendProvider } from '../../provider/contact-email/resend.provider';
 
 const EMPTY_FORM: ContactFormModel = {
   firstName: '',
@@ -42,6 +31,8 @@ const NAME_RE = /^[a-zA-Z\-]+$/;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactForm implements OnInit {
+  constructor(private emailProvider: ResendProvider) {}
+
   // ── Must be declared before contactForm so validators can close over it ──
   readonly submitted = signal(false);
 
@@ -184,9 +175,12 @@ export class ContactForm implements OnInit {
 
     this.isSubmitting.set(true);
     try {
-      // TODO: replace with your backend / API call
-      console.log('Contact form submitted:', this.contactFormModel());
-      this.submitSuccess.set(true);
+      const result = await firstValueFrom(this.emailProvider.sendEmail(this.contactFormModel()));
+      console.log('Email send result:', result.status, result);
+      if (result.status === 200 || result.ok) {
+        console.log('Contact form submitted:', this.contactFormModel());
+        this.submitSuccess.set(true);
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
       this.submitError.set(msg);
