@@ -8,7 +8,7 @@ const MAX_LENGTHS = {
 
 function validateContactForm(req, res, next) {
 	if (!req.is("application/json")) {
-		return res.status(400).send("Expected application/json");
+		return res.status(400).json({ error: "Expected application/json" });
 	}
 
 	const contactForm = req.body;
@@ -22,15 +22,13 @@ function validateContactForm(req, res, next) {
 		!contactForm.subject ||
 		!contactForm.message
 	) {
-		return res
-			.status(400)
-			.send(
-				"Missing required fields: firstName, lastName, email, phone, subject, message",
-			);
+		return res.status(400).json({
+			error: "Missing required fields: firstName, lastName, email, phone, subject, message",
+		});
 	}
 
 	if (!validator.isEmail(contactForm.email)) {
-		return res.status(400).send("Invalid email address");
+		return res.status(400).json({ error: "Invalid email address" });
 	}
 
 	if (
@@ -39,7 +37,9 @@ function validateContactForm(req, res, next) {
 		contactForm.subject.length > MAX_LENGTHS.subject ||
 		contactForm.message.length > MAX_LENGTHS.message
 	) {
-		return res.status(400).send("One or more fields exceed maximum length");
+		return res
+			.status(400)
+			.json({ error: "One or more fields exceed maximum length" });
 	}
 
 	next();
