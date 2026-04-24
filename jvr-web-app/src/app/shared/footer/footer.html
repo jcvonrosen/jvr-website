@@ -1,12 +1,15 @@
 <footer class="site-footer" [class.footer--section-active]="sectionActive()">
   <div class="footer-inner">
-
     <!-- Top grid -->
     <div class="footer-grid">
-
       <!-- Brand column -->
       <div class="footer-brand-col">
-        <button type="button" class="footer-logo-btn" (click)="smoothScroll.scrollTo('hero')" aria-label="Back to top">
+        <button
+          type="button"
+          class="footer-logo-btn"
+          (click)="smoothScroll.scrollTo('hero')"
+          aria-label="Back to top"
+        >
           <span class="footer-logo-name">JvR Enterprises</span>
           <span class="footer-logo-sub">LLC &middot; Software Consulting</span>
         </button>
@@ -19,49 +22,76 @@
       <!-- Services column -->
       <nav aria-label="Services links" class="footer-nav-col">
         <h5 class="footer-col-heading">Services</h5>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Full-Stack Development</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Cloud Architecture</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">ETL &amp; Data Pipelines</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Automated Testing &amp; QA</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">AI Workflow Integration</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">Team Augmentation</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          Full-Stack Development
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          Cloud Architecture
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          ETL &amp; Data Pipelines
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          Automated Testing &amp; QA
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          AI Workflow Integration
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('services')">
+          Team Augmentation
+        </button>
       </nav>
 
       <!-- Company column -->
       <nav aria-label="Company links" class="footer-nav-col">
         <h5 class="footer-col-heading">Company</h5>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('hero')">Home</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('why-us')">Why JvR</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('case-studies')">Case Studies</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">About JvR</button>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">Our Team</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('hero')">
+          Home
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('why-us')">
+          Why JvR
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('case-studies')">
+          Case Studies
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">
+          About JvR
+        </button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('about')">
+          Our Team
+        </button>
       </nav>
 
       <!-- Contact column -->
       <nav aria-label="Contact links" class="footer-nav-col">
         <h5 class="footer-col-heading">Contact</h5>
-        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('contact')">Start a Conversation</button>
+        <button type="button" class="footer-link" (click)="smoothScroll.scrollTo('contact')">
+          Start a Conversation
+        </button>
         <a href="mailto:info@jvrcomputing.com" class="footer-link">Email Us</a>
       </nav>
-
     </div>
 
     <!-- Social media links -->
     <div class="footer-social">
       <span class="footer-social-label">Follow Us</span>
       <div class="footer-social-links">
-        <a href="https://www.linkedin.com/company/jvr-enterprises-llc"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="LinkedIn (opens in new tab)"
-           class="footer-social-link">
+        <a
+          href="https://www.linkedin.com/company/jvr-enterprises-llc"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn (opens in new tab)"
+          class="footer-social-link"
+        >
           <i class="pi pi-linkedin" aria-hidden="true"></i>
         </a>
-        <a href="https://www.facebook.com/JvrEnterprises"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Facebook (opens in new tab)"
-           class="footer-social-link">
+        <a
+          href="https://www.facebook.com/JvrEnterprises"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook (opens in new tab)"
+          class="footer-social-link"
+        >
           <i class="pi pi-facebook" aria-hidden="true"></i>
         </a>
       </div>
@@ -69,9 +99,7 @@
 
     <!-- Memorable closer -->
     <div class="footer-closer">
-      <p class="footer-closer-text">
-        Ready to transform your enterprise?
-      </p>
+      <p class="footer-closer-text">Ready to transform your enterprise?</p>
       <button type="button" class="footer-closer-cta" (click)="smoothScroll.scrollTo('contact')">
         Let's Talk
       </button>
@@ -81,15 +109,20 @@
     <div class="footer-bottom">
       <span class="footer-legal">&copy; {{ year }} JvR Enterprises LLC. All rights reserved.</span>
       <span class="footer-legal">
-        <a href="https://maps.google.com/?q=15+Ionia+SW+Suite+410+Grand+Rapids+MI+49503"
-           target="_blank" rel="noopener"
-           aria-label="Office address (opens in new tab)"
-           class="footer-bottom-link">15 Ionia SW, Suite 410, Grand Rapids, MI 49503</a>
+        <a
+          href="https://maps.google.com/?q=15+Ionia+SW+Suite+410+Grand+Rapids+MI+49503"
+          target="_blank"
+          rel="noopener"
+          aria-label="Office address (opens in new tab)"
+          class="footer-bottom-link"
+          >15 Ionia SW, Suite 410, Grand Rapids, MI 49503</a
+        >
         &middot;
-        <a href="mailto:info@jvrcomputing.com" class="footer-bottom-link">info&#64;jvrcomputing.com</a>
+        <a href="mailto:contact@jvrenterprises.com" class="footer-bottom-link"
+          >contact&#64;jvrenterprises.com</a
+        >
       </span>
     </div>
-
   </div>
 </footer>
 
