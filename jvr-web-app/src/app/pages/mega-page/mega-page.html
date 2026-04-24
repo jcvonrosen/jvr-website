@@ -492,20 +492,6 @@
         }
       </div>
 
-      <div class="filter-clear-container flex justify-content-center mt-2 mb-6">
-        <button
-          type="button"
-          class="filter-icon-btn filter-icon-clear"
-          title="Clear filter"
-          [disabled]="selectedIndustries().length === 0"
-          [attr.aria-disabled]="selectedIndustries().length === 0"
-          (click)="clearFilterNoScroll()"
-        >
-          <i class="pi pi-filter-slash" aria-hidden="true"></i>
-          <span class="filter-label">Clear</span>
-        </button>
-      </div>
-
       <div class="context-note">
         <i class="pi pi-info-circle context-icon" aria-hidden="true"></i>
         <p>
