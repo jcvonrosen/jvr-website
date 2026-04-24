@@ -73,15 +73,13 @@ export class MegaPage {
   filteredStudies = computed(() => {
     const selected = this.selectedIndustries();
     if (selected.length === 0) return this.caseStudies;
-    return this.caseStudies.filter(study =>
-      study.industries.some(ind => selected.includes(ind))
+    return this.caseStudies.filter((study) =>
+      study.industries.some((ind) => selected.includes(ind)),
     );
   });
 
   toggleIndustry(label: string): void {
-    this.selectedIndustries.update(current =>
-      current.includes(label) ? [] : [label]
-    );
+    this.selectedIndustries.update((current) => (current.includes(label) ? [] : [label]));
   }
 
   toggleIndustryAndCenter(label: string): void {
@@ -98,14 +96,13 @@ export class MegaPage {
     if (selected.length === 0) return;
 
     const activeLabel = selected[0];
-    const activeIndex = this.caseStudyIndustries.findIndex(i => i.label === activeLabel);
+    const activeIndex = this.caseStudyIndustries.findIndex((i) => i.label === activeLabel);
     if (activeIndex < 0) return;
 
     const btn = carousel.children[activeIndex] as HTMLElement;
     if (!btn) return;
 
-    const scrollLeft =
-      btn.offsetLeft + btn.offsetWidth / 2 - carousel.offsetWidth / 2;
+    const scrollLeft = btn.offsetLeft + btn.offsetWidth / 2 - carousel.offsetWidth / 2;
 
     carousel.scrollTo({ left: Math.max(0, scrollLeft), behavior });
   }
@@ -152,7 +149,7 @@ export class MegaPage {
             ([entry]) => {
               this.ngZone.run(() => this.scrollState.heroVisible.set(entry.isIntersecting));
             },
-            { threshold: 0.2 }
+            { threshold: 0.2 },
           );
           heroObs.observe(heroEl);
         }
@@ -189,7 +186,7 @@ export class MegaPage {
             this.scrollState.activeSection.set(newActive);
             // Update URL hash when section changes (without triggering navigation)
             if (newActive !== previousActive) {
-              this.location.replaceState(`/#${newActive}`);
+              this.location.replaceState(`./#${newActive}`);
             }
           });
         };
@@ -203,7 +200,7 @@ export class MegaPage {
             cancelAnimationFrame(scrollRaf);
             scrollRaf = requestAnimationFrame(resolveActiveByScroll);
           },
-          { passive: true }
+          { passive: true },
         );
 
         // On viewport resize, re-anchor to whichever section was active before
@@ -317,7 +314,7 @@ export class MegaPage {
       colorClass: 'purple',
       title: 'New Technology, Short Timeline',
       description:
-        'Your team is strong, but the project calls for tools that you haven\'t adopted yet. We bring expertise, determine best practices with your team, and fit new technology into your workflow - enabling speed without disruption.',
+        "Your team is strong, but the project calls for tools that you haven't adopted yet. We bring expertise, determine best practices with your team, and fit new technology into your workflow - enabling speed without disruption.",
     },
     {
       icon: 'pi-link',
@@ -336,8 +333,10 @@ export class MegaPage {
       fragment: 'forecasting-pipeline',
       stat: '6 hrs → 20 min',
       statLabel: 'Pipeline Runtime',
-      challenge: 'A long running ETL process created a bottleneck for Industrial Engineers working on annual labor forecasts.',
-      outcome: 'Runtime cut from six hours to twenty minutes — a full week of scenarios completable in a single day.',
+      challenge:
+        'A long running ETL process created a bottleneck for Industrial Engineers working on annual labor forecasts.',
+      outcome:
+        'Runtime cut from six hours to twenty minutes — a full week of scenarios completable in a single day.',
     },
     {
       industry: 'Education',
@@ -345,8 +344,10 @@ export class MegaPage {
       fragment: 'enrollment-rules-engine',
       stat: '1 System',
       statLabel: 'Every State. Every School.',
-      challenge: 'A nationwide charter school needed one enrollment system that applied different state-specific acceptance rules per school.',
-      outcome: 'A configurable rules engine handled every state and school variation within a single workflow — no duplicate logic, no separate processes.',
+      challenge:
+        'A nationwide charter school needed one enrollment system that applied different state-specific acceptance rules per school.',
+      outcome:
+        'A configurable rules engine handled every state and school variation within a single workflow — no duplicate logic, no separate processes.',
     },
     {
       industry: 'Retail',
@@ -354,8 +355,10 @@ export class MegaPage {
       fragment: 'payment-cloud-migration',
       stat: 'Zero',
       statLabel: 'Service Disruption',
-      challenge: 'A major retailer needed to simultaneously switch payment providers and migrate analytics infrastructure to Azure.',
-      outcome: 'Both initiatives coordinated in parallel and completed without interrupting live operations.',
+      challenge:
+        'A major retailer needed to simultaneously switch payment providers and migrate analytics infrastructure to Azure.',
+      outcome:
+        'Both initiatives coordinated in parallel and completed without interrupting live operations.',
     },
   ];
 
@@ -366,7 +369,8 @@ export class MegaPage {
       icon: 'pi-code',
       colorClass: 'blue',
       title: 'Full-Stack Application Development',
-      preview: 'Enterprise-grade applications built across the full stack — from Angular, React, and Vue on the front end to .NET / C# and Node.js on the back end.',
+      preview:
+        'Enterprise-grade applications built across the full stack — from Angular, React, and Vue on the front end to .NET / C# and Node.js on the back end.',
       description:
         'From Angular, React, and Vue on the front end to .NET / C# and Node.js on the back end — we build enterprise-grade applications that handle complex workflows and scale with your business. We specialize in internal systems and B2B integrations, not consumer-facing marketing sites.',
       tags: ['Angular', 'React', 'Vue', '.NET / C#', 'Node.js', 'TypeScript'],
@@ -377,18 +381,21 @@ export class MegaPage {
       icon: 'pi-cloud',
       colorClass: 'purple',
       title: 'Cloud Architecture & Migration',
-      preview: 'Cloud solutions on Azure and AWS — infrastructure architecture, on-prem to cloud migrations, Azure Data Factory pipelines, and message queue systems.',
+      preview:
+        'Cloud solutions on Azure and AWS — infrastructure architecture, on-prem to cloud migrations, Azure Data Factory pipelines, and message queue systems.',
       description:
         'We design and implement cloud solutions on Azure and AWS — and have been growing our Google Cloud expertise as well. This includes infrastructure architecture, on-prem to cloud migrations, Azure Data Factory pipelines, and message queue systems like Kafka and RabbitMQ.',
       tags: ['Azure', 'AWS', 'Azure Data Factory', 'Kafka', 'RabbitMQ'],
-      bestFor: 'Organizations modernizing legacy infrastructure or moving large workloads to the cloud.',
+      bestFor:
+        'Organizations modernizing legacy infrastructure or moving large workloads to the cloud.',
     },
     {
       id: 'etl',
       icon: 'pi-database',
       colorClass: 'orange',
       title: 'ETL & Data Pipelines',
-      preview: 'Deep expertise in large-scale data movement — complex transformations, phased migrations running two systems in parallel, and reconciliation pipelines.',
+      preview:
+        'Deep expertise in large-scale data movement — complex transformations, phased migrations running two systems in parallel, and reconciliation pipelines.',
       description:
         'We have deep expertise in large-scale data movement — whether for internal system functionality, cloud migrations, or analytics workflows. We have handled complex transformations, phased migrations running two systems in parallel, and built reconciliation pipelines to ensure data integrity throughout.',
       tags: ['Azure Data Factory', 'SQL Server', 'Kafka', 'Data Transformation'],
@@ -399,18 +406,21 @@ export class MegaPage {
       icon: 'pi-check-circle',
       colorClass: 'blue',
       title: 'Automated Testing & QA',
-      preview: 'Automated test suites for UI and API layers using Playwright, integrated into CI/CD pipelines — with AI-assisted generation for broader coverage.',
+      preview:
+        'Automated test suites for UI and API layers using Playwright, integrated into CI/CD pipelines — with AI-assisted generation for broader coverage.',
       description:
         'We build automated test suites for UI and API layers using Playwright and custom frameworks, integrated directly into your CI/CD pipeline. We have also built supporting tooling to track test outcomes against documented test cases — and leveraged AI to generate more comprehensive coverage in significantly less time.',
       tags: ['Playwright', 'CI/CD Integration', 'API Testing', 'AI-Assisted Testing'],
-      bestFor: 'Enterprise teams that need reliable regression coverage without slowing release cycles.',
+      bestFor:
+        'Enterprise teams that need reliable regression coverage without slowing release cycles.',
     },
     {
       id: 'ai',
       icon: 'pi-microchip',
       colorClass: 'purple',
       title: 'AI Workflow Integration',
-      preview: 'Practical AI adoption into development workflows and business processes — Semantic Kernel orchestrations, OpenAI, Claude, and Azure AI Search.',
+      preview:
+        'Practical AI adoption into development workflows and business processes — Semantic Kernel orchestrations, OpenAI, Claude, and Azure AI Search.',
       description:
         'We have integrated AI into our own processes and helped clients do the same — using it as a guide and accelerator, while our team still owns the work. We build orchestrations with Semantic Kernel and OpenAI, and have used Claude and Qwen as active development partners.',
       tags: ['Semantic Kernel', 'OpenAI GPTs', 'Claude', 'Azure AI Search', 'Qwen'],
@@ -421,22 +431,44 @@ export class MegaPage {
       icon: 'pi-users',
       colorClass: 'orange',
       title: 'Team Integration & Augmentation',
-      preview: 'We embed directly with your group — adopting your tools, attending your standups, contributing as a natural extension of your team.',
+      preview:
+        'We embed directly with your group — adopting your tools, attending your standups, contributing as a natural extension of your team.',
       description:
         'When you have the team but need more capacity or specialized skills for a specific initiative, we embed directly with your group. We adopt your tools, attend your standups, and contribute as a natural extension of your team — not a separate vendor managing a separate queue.',
-      tags: ['Embedded Consulting', 'Staff Augmentation', 'Agile / Kanban', 'Long-Term Engagements'],
+      tags: [
+        'Embedded Consulting',
+        'Staff Augmentation',
+        'Agile / Kanban',
+        'Long-Term Engagements',
+      ],
       bestFor: 'Large enterprise initiatives where capacity or specialized skills are the gap.',
     },
   ];
 
   // ── Tech stack ────────────────────────────────────────────────────
   techStack = [
-    { category: 'Languages',           colorClass: 'blue',   items: ['C# / .NET', 'Node.js', 'TypeScript', 'JavaScript'] },
-    { category: 'Front End',           colorClass: 'purple', items: ['Angular', 'React', 'Vue', 'Svelte'] },
-    { category: 'Cloud',               colorClass: 'orange', items: ['Azure', 'AWS', 'Google Cloud'] },
-    { category: 'Data & Integration',  colorClass: 'blue',   items: ['Azure Data Factory', 'Kafka', 'RabbitMQ', 'SQL Server'] },
-    { category: 'AI & Search',         colorClass: 'purple', items: ['Semantic Kernel', 'OpenAI GPTs', 'Azure AI Search', 'Claude'] },
-    { category: 'Quality & Security',  colorClass: 'orange', items: ['Playwright', 'SonarQube', 'Veracode', 'CI/CD Integration'] },
+    {
+      category: 'Languages',
+      colorClass: 'blue',
+      items: ['C# / .NET', 'Node.js', 'TypeScript', 'JavaScript'],
+    },
+    { category: 'Front End', colorClass: 'purple', items: ['Angular', 'React', 'Vue', 'Svelte'] },
+    { category: 'Cloud', colorClass: 'orange', items: ['Azure', 'AWS', 'Google Cloud'] },
+    {
+      category: 'Data & Integration',
+      colorClass: 'blue',
+      items: ['Azure Data Factory', 'Kafka', 'RabbitMQ', 'SQL Server'],
+    },
+    {
+      category: 'AI & Search',
+      colorClass: 'purple',
+      items: ['Semantic Kernel', 'OpenAI GPTs', 'Azure AI Search', 'Claude'],
+    },
+    {
+      category: 'Quality & Security',
+      colorClass: 'orange',
+      items: ['Playwright', 'SonarQube', 'Veracode', 'CI/CD Integration'],
+    },
   ];
 
   // ── Engagement models ─────────────────────────────────────────────
@@ -472,9 +504,12 @@ export class MegaPage {
       industries: ['Retail', 'Manufacturing'],
       colorClass: 'blue',
       title: 'Forecasting Pipeline Redesign',
-      challenge: 'A data gathering process central to "what if" forecasting scenarios took six hours to complete. Analysts could only run it once or twice per day — severely limiting how many scenarios they could model before decisions had to be made.',
-      solution: 'Redesigned the data pipeline architecture, eliminating bottlenecks and optimizing query and transformation logic throughout the process.',
-      outcome: 'Runtime dropped from six hours to twenty minutes. Analysts went from one run per day to completing a full week\'s worth of scenarios in a single session.',
+      challenge:
+        'A data gathering process central to "what if" forecasting scenarios took six hours to complete. Analysts could only run it once or twice per day — severely limiting how many scenarios they could model before decisions had to be made.',
+      solution:
+        'Redesigned the data pipeline architecture, eliminating bottlenecks and optimizing query and transformation logic throughout the process.',
+      outcome:
+        "Runtime dropped from six hours to twenty minutes. Analysts went from one run per day to completing a full week's worth of scenarios in a single session.",
       stat: { value: '6 hrs → 20 min', label: 'Pipeline Runtime' },
       impact: 'Contributed to nearly 20% cost savings in the first year.',
     },
@@ -484,9 +519,12 @@ export class MegaPage {
       industries: ['Education'],
       colorClass: 'purple',
       title: 'Student Enrollment Rules Engine',
-      challenge: 'A charter school network operating across multiple states needed a single student information system where each school could apply its own acceptance criteria based on state-specific requirements.',
-      solution: 'Designed a configurable rules engine that selectively applied state-specific and school-specific acceptance rules conditionally within a single, shared enrollment workflow for National Heritage Academies.',
-      outcome: 'A scalable enrollment system that accommodated each school\'s rules without code duplication — reducing maintenance overhead and making future rule changes straightforward.',
+      challenge:
+        'A charter school network operating across multiple states needed a single student information system where each school could apply its own acceptance criteria based on state-specific requirements.',
+      solution:
+        'Designed a configurable rules engine that selectively applied state-specific and school-specific acceptance rules conditionally within a single, shared enrollment workflow for National Heritage Academies.',
+      outcome:
+        "A scalable enrollment system that accommodated each school's rules without code duplication — reducing maintenance overhead and making future rule changes straightforward.",
       stat: null,
       impact: null,
     },
@@ -496,9 +534,12 @@ export class MegaPage {
       industries: ['Retail'],
       colorClass: 'orange',
       title: 'Payment Platform & Cloud Migration',
-      challenge: 'A major retail client needed to simultaneously switch payment providers and migrate payment acceptance and analytics infrastructure from on-premise servers to Azure — without disrupting live operations.',
-      solution: 'Coordinated a phased migration strategy covering payment pipeline redesign, Azure infrastructure provisioning, and analytics process migration — executed in parallel to keep live systems stable throughout.',
-      outcome: 'Successful migration completed without service interruption. The client transitioned to modern Azure-native infrastructure with updated payment processing and analytics capabilities.',
+      challenge:
+        'A major retail client needed to simultaneously switch payment providers and migrate payment acceptance and analytics infrastructure from on-premise servers to Azure — without disrupting live operations.',
+      solution:
+        'Coordinated a phased migration strategy covering payment pipeline redesign, Azure infrastructure provisioning, and analytics process migration — executed in parallel to keep live systems stable throughout.',
+      outcome:
+        'Successful migration completed without service interruption. The client transitioned to modern Azure-native infrastructure with updated payment processing and analytics capabilities.',
       stat: { value: 'Zero', label: 'Service Disruption' },
       impact: null,
     },
@@ -508,9 +549,12 @@ export class MegaPage {
       industries: [],
       colorClass: 'blue',
       title: 'Large-Scale Legacy Data Migration',
-      challenge: 'A major enterprise needed to migrate large volumes of legacy data to a new cloud architecture. The data involved complex transformations and the migration was phased — requiring both old and new systems to run simultaneously for an extended period.',
-      solution: 'Built the migration pipelines and designed additional reconciliation pipelines that ran continuously while both systems were live, automatically identifying discrepancies in real time.',
-      outcome: 'A clean, validated migration to cloud architecture with full data integrity coverage maintained throughout the entire transition window.',
+      challenge:
+        'A major enterprise needed to migrate large volumes of legacy data to a new cloud architecture. The data involved complex transformations and the migration was phased — requiring both old and new systems to run simultaneously for an extended period.',
+      solution:
+        'Built the migration pipelines and designed additional reconciliation pipelines that ran continuously while both systems were live, automatically identifying discrepancies in real time.',
+      outcome:
+        'A clean, validated migration to cloud architecture with full data integrity coverage maintained throughout the entire transition window.',
       stat: null,
       impact: null,
     },
@@ -520,9 +564,12 @@ export class MegaPage {
       industries: ['Manufacturing', 'Energy', 'Retail'],
       colorClass: 'purple',
       title: 'Enterprise Automated Testing Programs',
-      challenge: 'Multiple enterprise clients had complex, high-stakes systems but lacked the tooling and processes to maintain reliable automated test coverage — especially as deployment cadences increased.',
-      solution: 'Built automated UI and API test suites using Playwright and custom frameworks, integrated directly into CI/CD pipelines. Used AI-assisted generation on select engagements to build more comprehensive coverage in less time.',
-      outcome: 'Reliable, repeatable regression coverage at scale across multiple enterprise clients — reducing manual QA overhead and surfacing defects earlier in the release cycle.',
+      challenge:
+        'Multiple enterprise clients had complex, high-stakes systems but lacked the tooling and processes to maintain reliable automated test coverage — especially as deployment cadences increased.',
+      solution:
+        'Built automated UI and API test suites using Playwright and custom frameworks, integrated directly into CI/CD pipelines. Used AI-assisted generation on select engagements to build more comprehensive coverage in less time.',
+      outcome:
+        'Reliable, repeatable regression coverage at scale across multiple enterprise clients — reducing manual QA overhead and surfacing defects earlier in the release cycle.',
       stat: null,
       impact: null,
     },
@@ -532,32 +579,57 @@ export class MegaPage {
       industries: ['Energy', 'Utilities'],
       colorClass: 'orange',
       title: 'Long-Term Workforce Scheduling Platform',
-      challenge: 'A regional energy utility had an active workforce scheduling application used daily by schedulers and field technicians. The platform needed continuous feature development but lacked onboarding documentation and a long-term development partner.',
-      solution: 'Embedded directly within the client\'s development team for three years. Delivered ongoing Angular UI enhancements, extended the .NET REST API, and built a custom usage analytics tool. Authored an 80-page internal environment setup guide and assisted with onboarding the client\'s own new engineers.',
-      outcome: 'The platform grew steadily throughout the engagement — expanded admin workflows, new operational analytics, and a fully documented environment. JvR became the institutional knowledge resource for the team.',
+      challenge:
+        'A regional energy utility had an active workforce scheduling application used daily by schedulers and field technicians. The platform needed continuous feature development but lacked onboarding documentation and a long-term development partner.',
+      solution:
+        "Embedded directly within the client's development team for three years. Delivered ongoing Angular UI enhancements, extended the .NET REST API, and built a custom usage analytics tool. Authored an 80-page internal environment setup guide and assisted with onboarding the client's own new engineers.",
+      outcome:
+        'The platform grew steadily throughout the engagement — expanded admin workflows, new operational analytics, and a fully documented environment. JvR became the institutional knowledge resource for the team.',
       stat: { value: '3 Years', label: 'Embedded Partnership' },
-      impact: 'The most consistent feedback we receive: clients say they are glad to have us on their team — not working for them, on their team.',
+      impact:
+        'The most consistent feedback we receive: clients say they are glad to have us on their team — not working for them, on their team.',
     },
   ];
 
   caseStudyIndustries = [
-    { label: 'Retail',        icon: 'pi-shopping-cart', colorClass: 'blue'   },
-    { label: 'Manufacturing', icon: 'pi-cog',           colorClass: 'purple' },
-    { label: 'Energy',        icon: 'pi-bolt',          colorClass: 'orange' },
-    { label: 'Education',     icon: 'pi-book',          colorClass: 'blue'   },
-    { label: 'Insurance',     icon: 'pi-shield',        colorClass: 'purple' },
-    { label: 'Utilities',     icon: 'pi-building',      colorClass: 'orange' },
+    { label: 'Retail', icon: 'pi-shopping-cart', colorClass: 'blue' },
+    { label: 'Manufacturing', icon: 'pi-cog', colorClass: 'purple' },
+    { label: 'Energy', icon: 'pi-bolt', colorClass: 'orange' },
+    { label: 'Education', icon: 'pi-book', colorClass: 'blue' },
+    { label: 'Insurance', icon: 'pi-shield', colorClass: 'purple' },
+    { label: 'Utilities', icon: 'pi-building', colorClass: 'orange' },
   ];
 
   // ── About — milestones ────────────────────────────────────────────
   milestones = [
-    { year: '1990', text: 'Jay began his career as a software developer, starting on mainframes while keeping a close eye on the early internet.' },
-    { year: '1999', text: 'Jay joined a specialized internet software consultancy — and found a deep appreciation for the craft, the diversity of clients, and the people who simply love to build.' },
-    { year: '2010', text: 'JvR Enterprises was founded. After years of watching great companies drift away from their technical roots, Jay set out to build a firm that never would.' },
-    { year: '2014', text: 'Mike Wardman joined the team. Together, they led the development of Applications & Enrollment for National Heritage Academies\' Student Information System.' },
-    { year: '2020', text: 'Mike took on a new enterprise engagement at Amway and deepened his focus on AWS cloud infrastructure.' },
-    { year: '2022', text: 'Jay applied his Azure expertise to a major initiative with Meijer. Khiem Nguyen joined the team, bringing full-stack depth to a new engagement with Consumers Energy.' },
-    { year: '2026', text: 'The entire team embraces AI as a core part of the workflow — accelerating analysis, research, and delivery without replacing the craft.' },
+    {
+      year: '1990',
+      text: 'Jay began his career as a software developer, starting on mainframes while keeping a close eye on the early internet.',
+    },
+    {
+      year: '1999',
+      text: 'Jay joined a specialized internet software consultancy — and found a deep appreciation for the craft, the diversity of clients, and the people who simply love to build.',
+    },
+    {
+      year: '2010',
+      text: 'JvR Enterprises was founded. After years of watching great companies drift away from their technical roots, Jay set out to build a firm that never would.',
+    },
+    {
+      year: '2014',
+      text: "Mike Wardman joined the team. Together, they led the development of Applications & Enrollment for National Heritage Academies' Student Information System.",
+    },
+    {
+      year: '2020',
+      text: 'Mike took on a new enterprise engagement at Amway and deepened his focus on AWS cloud infrastructure.',
+    },
+    {
+      year: '2022',
+      text: 'Jay applied his Azure expertise to a major initiative with Meijer. Khiem Nguyen joined the team, bringing full-stack depth to a new engagement with Consumers Energy.',
+    },
+    {
+      year: '2026',
+      text: 'The entire team embraces AI as a core part of the workflow — accelerating analysis, research, and delivery without replacing the craft.',
+    },
   ];
 
   // ── About — values ────────────────────────────────────────────────
@@ -566,19 +638,22 @@ export class MegaPage {
       icon: 'pi-users',
       colorClass: 'blue',
       title: 'Success Is a Team Sport',
-      description: 'We tackle challenges together — with each other and with our clients. When something needs solving, we own it as a team. That means honest communication, shared accountability, and showing up fully, even when things get complicated.',
+      description:
+        'We tackle challenges together — with each other and with our clients. When something needs solving, we own it as a team. That means honest communication, shared accountability, and showing up fully, even when things get complicated.',
     },
     {
       icon: 'pi-bullseye',
       colorClass: 'purple',
       title: 'Right Tool, Not the Trending One',
-      description: 'We evaluate every technology on one question: does it genuinely help our clients? We are not here to sell the latest trend. We are here to find the right solution — and build it well.',
+      description:
+        'We evaluate every technology on one question: does it genuinely help our clients? We are not here to sell the latest trend. We are here to find the right solution — and build it well.',
     },
     {
       icon: 'pi-lightbulb',
       colorClass: 'orange',
       title: 'We Actually Love This Work',
-      description: 'Jay likes to say that the best developers would be writing code in a dark alley if it were illegal. That is the energy we look for in everyone we hire. Curiosity and genuine enthusiasm for the craft make all the difference.',
+      description:
+        'Jay likes to say that the best developers would be writing code in a dark alley if it were illegal. That is the energy we look for in everyone we hire. Curiosity and genuine enthusiasm for the craft make all the difference.',
     },
   ];
 
@@ -589,7 +664,7 @@ export class MegaPage {
       role: 'Founder & Principal Consultant',
       initials: 'JvR',
       colorClass: 'blue',
-      bio: 'Jay has been writing software since 1990 and working in internet consulting since 1999. He started JvR in 2010 with a clear goal: build a firm where developers are trusted partners, not order-takers. He specializes in Azure and enterprise systems, speaks at tech meetups across the region, and organizes Beer City Code — one of the Midwest\'s best developer conferences.',
+      bio: "Jay has been writing software since 1990 and working in internet consulting since 1999. He started JvR in 2010 with a clear goal: build a firm where developers are trusted partners, not order-takers. He specializes in Azure and enterprise systems, speaks at tech meetups across the region, and organizes Beer City Code — one of the Midwest's best developer conferences.",
       bio2: '',
       tags: ['Azure', 'Enterprise Architecture', 'C#', '.NET'],
     },
@@ -598,7 +673,7 @@ export class MegaPage {
       role: 'Senior Consultant — AWS & QA Automation',
       initials: 'MW',
       colorClass: 'purple',
-      bio: 'Mike joined JvR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies\' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation.',
+      bio: "Mike joined JvR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation.",
       bio2: 'Outside the office, he moonlights as a Dungeon Master running tabletop RPG campaigns, volunteers as a live-streaming technician for roller derby competitions, and runs his own home servers — always tinkering with the next interesting technology.',
       tags: ['AWS', 'Playwright', 'Test Automation', 'Node.js'],
     },
@@ -607,7 +682,7 @@ export class MegaPage {
       role: 'Full-Stack Consultant — Angular & .NET',
       initials: 'KN',
       colorClass: 'orange',
-      bio: 'Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master\'s in Applied Computer Science from Grand Valley State University and has been with JvR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development.',
+      bio: "Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master's in Applied Computer Science from Grand Valley State University and has been with JvR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development.",
       bio2: 'Outside work, he tends a garden monitored by a personal IoT system he built — with an Angular dashboard, Semantic Kernel AI backend, and multi-cloud integration. He also enjoys cooking, leatherwork, pottery, and woodworking.',
       tags: ['Angular', 'TypeScript / JavaScript', '.NET / C#', 'AI / Semantic Kernel'],
     },
