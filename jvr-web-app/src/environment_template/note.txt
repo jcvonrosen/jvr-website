@@ -1,0 +1,1 @@
+Be sure to remove the "_template" suffix from the environment folder and file name.
