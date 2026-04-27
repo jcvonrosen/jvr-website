@@ -9,7 +9,8 @@ import { InputMask } from 'primeng/inputmask';
 import { Button } from 'primeng/button';
 import { Message } from 'primeng/message';
 import { SubjectOption, ContactFormModel } from '../../interfaces/contact-form.interface';
-import { ResendProvider } from '../../provider/contact-email/resend.provider';
+// import { ResendProvider } from '../../provider/contact-email/resend.provider';
+import { PhpProvider } from 'src/app/provider/contact-email/php.provider';
 
 const EMPTY_FORM: ContactFormModel = {
   firstName: '',
@@ -31,7 +32,7 @@ const NAME_RE = /^[a-zA-Z\-]+$/;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactForm implements OnInit {
-  constructor(private emailProvider: ResendProvider) {}
+  constructor(private emailProvider: PhpProvider) {}
 
   // ── Must be declared before contactForm so validators can close over it ──
   readonly submitted = signal(false);
