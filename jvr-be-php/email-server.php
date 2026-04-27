@@ -1,12 +1,12 @@
 <?php 
+    ini_set('display_errors', 0);
+    error_reporting(0);
+    
     cors();
 
-    echo '<h1>Hi from jvr email server</h1>';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        previewHeaders();
-        previewData();
 
         $data = getRequestBodyData();
 
@@ -20,8 +20,8 @@
 
             $emailto = 'creativekhiem@gmail.com';
             $toname = 'CreativeKhiem';
-            $emailfrom = $data['email'];
-            $fromname = getUserFullName($data);
+            $emailfrom = 'jcvonrosen@jvrenterprises.com';
+            $fromname = 'John von Rosen';
             $subject = $data['subject'];
             $messagebody = $data['message'];
             
@@ -30,18 +30,26 @@
                 'From: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" . 
                 'X-Priority: 3' . "\r\n" . 
                 'X-Mailer: PHP ' . phpversion() .  "\r\n" . 
-                'Reply-To: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" .
+                'Reply-To: ' . getUserFullName($data) . ' <' . $data['email'] . '>' . "\r\n" .
                 'MIME-Version: 1.0' . "\r\n" . 
                 'Content-Transfer-Encoding: 8bit' . "\r\n" . 
                 'Content-Type: text/plain; charset=UTF-8' . "\r\n";
             $params = '-f ' . $emailfrom;
-            $isMailSent = mail($emailto, $subject, $messagebody, $headers, $params);
-            echo "<h1>$isMailSent</h1>";
 
-            send_response([
-                'status' => 'success',
-                'message' => 'Form has successfully been sent!',
-            ]);
+            $isMailSent = mail($emailto, $subject, $messagebody, $headers, $params);
+
+            if (!$isMailSent) {
+                send_response([
+                    'status' => 'failed',
+                    'message' => 'Mail server unavailable. Try again or contact us directly.',
+                ], 503);
+            }
+            else{
+                send_response([
+                    'status' => 'success',
+                    'message' => 'Form has successfully been sent!',
+                ]);
+            }
         }
         catch(Exception $e){
             send_response([

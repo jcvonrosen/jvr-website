@@ -183,6 +183,7 @@ export class ContactForm implements OnInit {
         this.submitSuccess.set(true);
       }
     } catch (err: unknown) {
+      console.log(err);
       const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
       this.submitError.set(msg);
     } finally {
